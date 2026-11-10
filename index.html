@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AffectLab | EEG–fNIRS Emotion Regulation Prototype</title>
+<meta name="application-version" content="3.0.0" />
+<style>
+:root{--bg:#f4f7fa;--ink:#17263e;--muted:#64758a;--line:#dee6ee;--primary:#126e7b;--primary-dark:#0a5260;--teal:#e8f5f4;--white:#fff;--amber:#a76618;--danger:#c04444;--side:#112438;--shadow:0 12px 38px rgba(22,41,64,.055)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;font-size:14px;line-height:1.6}button,input,select{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.48}a{color:inherit}.layout{min-height:100vh;display:flex}.sidebar{width:270px;flex-shrink:0;background:var(--side);color:#e5edf5;min-height:100vh;padding:29px 18px;display:flex;flex-direction:column}.brand{display:flex;gap:13px;align-items:center;padding:4px 8px 26px}.brand-mark{width:40px;height:40px;border:1px solid #386b79;border-radius:12px;background:linear-gradient(145deg,#19566a,#102e48);display:grid;place-items:center;color:#85dbd3;font-weight:900;font-size:21px}.brand-name{font-weight:760;letter-spacing:.2px;font-size:16px;line-height:1.3}.brand-small{font-size:10px;letter-spacing:1.7px;color:#90a8bd;margin-top:4px}.side-label{font-size:11px;color:#819ab0;letter-spacing:1.7px;padding:18px 15px 10px}.nav-btn{width:100%;background:transparent;border:0;color:#afc1d1;text-align:left;padding:12px 15px;border-radius:10px;display:flex;gap:13px;align-items:center;font-weight:600;margin:2px 0}.nav-btn:hover{background:#1d384e;color:#fff}.nav-btn.active{background:#214455;color:#fff;box-shadow:inset 3px 0 0 #76d8cd}.nav-icon{width:20px;text-align:center;font-size:17px}.side-bottom{margin-top:auto;padding:20px 13px 0;color:#94acbf;font-size:12px;border-top:1px solid #284359}.side-bottom strong{color:#e2f3f1;font-weight:650;display:block;margin-bottom:6px}.status-dot{display:inline-block;background:#58c4b2;width:8px;height:8px;border-radius:50%;margin-right:7px}.main{width:calc(100% - 270px);max-width:1540px;margin:0 auto;padding:38px 46px 60px}.eyebrow{text-transform:uppercase;letter-spacing:2.2px;color:var(--primary);font-size:11px;font-weight:800;margin:0 0 9px}.page-title{font-size:31px;line-height:1.15;letter-spacing:-.8px;margin:0 0 11px;font-weight:800}.page-desc{margin:0 0 27px;color:var(--muted);max-width:840px}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px}.metric,.panel{background:var(--white);border:1px solid #e2eaf0;border-radius:16px;box-shadow:var(--shadow)}.metric{padding:18px 20px}.metric-number{font-size:25px;font-weight:790;margin-top:3px;line-height:1.1}.metric-kicker{color:var(--muted);font-size:11px;font-weight:700;letter-spacing:.6px}.metric-note{font-size:11px;color:#8996a5;margin-top:7px}.panel{padding:24px;margin-bottom:19px}.panel-head{display:flex;align-items:start;justify-content:space-between;gap:18px;margin-bottom:20px}.panel h2{font-size:17px;line-height:1.4;margin:0 0 4px}.small,.hint{color:var(--muted);font-size:12px}.hint{margin:6px 0 0}.two-col{display:grid;grid-template-columns:1.2fr .8fr;gap:19px}.form-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:19px}.form-field{display:flex;flex-direction:column;gap:7px;min-width:0}.form-field label{font-weight:700;font-size:12px;color:#435770}.field{min-height:44px;border-radius:9px;border:1px solid #d7e2eb;padding:10px 12px;color:var(--ink);width:100%;background:#fff;outline:0}.field:focus{border-color:#2a98a7;box-shadow:0 0 0 3px rgba(30,138,151,.12)}.btn{border:1px solid #d5e1e8;background:#fff;color:#294159;border-radius:10px;padding:10px 15px;min-height:40px;font-weight:720;display:inline-flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap}.btn:hover:not(:disabled){background:#f1f6f8}.btn-primary{background:var(--primary);color:#fff;border-color:var(--primary)}.btn-primary:hover:not(:disabled){background:var(--primary-dark)}.btn-danger{color:#a53b3b;background:#fff;border-color:#f0d2d2}.btn-soft{background:var(--teal);color:var(--primary);border-color:#d2e8e4}.btn-lg{padding:13px 21px;min-height:48px}.pill{display:inline-flex;align-items:center;gap:6px;border:1px solid #d6e6e8;border-radius:99px;background:#eef6f5;padding:5px 10px;font-size:11px;color:#19616c;font-weight:720}.pill-gray{border-color:#e4e8ed;color:#65768a;background:#f6f8fa}.divider{height:1px;background:var(--line);margin:22px 0}.muted-bg{background:#f4f8fa;border:1px solid #e3ebef;border-radius:12px;padding:15px 17px}.section-tabs{display:flex;gap:9px;flex-wrap:wrap}.chip{border:1px solid #d5e2e9;color:#557084;background:#fff;padding:7px 12px;border-radius:8px;font-weight:700}.chip.active{background:#dcefee;border-color:#badbd8;color:#126674}.upload-zone{border:2px dashed #bbd5d8;border-radius:14px;background:#f7fbfb;min-height:152px;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:20px;transition:background .15s}.upload-zone.drag{background:#e4f4f1;border-color:#23909b}.upload-icon{font-size:27px;margin-bottom:4px}.upload-zone strong{font-size:14px}.upload-zone p{color:var(--muted);font-size:12px;margin:5px 0 12px}.image-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:13px}.image-card{border:1px solid #dfe7ed;border-radius:12px;overflow:hidden;background:#fff}.image-card img{width:100%;height:105px;object-fit:contain;background:#101820;display:block}.image-card-details{padding:10px}.img-name{white-space:nowrap;text-overflow:ellipsis;overflow:hidden;max-width:100%;font-size:12px;font-weight:700}.img-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:6px}.img-tag{font-size:10px;color:var(--muted)}.mini-delete{background:#fff;border:0;color:#a24f50;font-size:12px;padding:3px 5px}.bank-table{width:100%;border-collapse:collapse}.bank-table th,.bank-table td{border-bottom:1px solid #e8edf1;text-align:center;padding:10px 8px;font-size:12px}.bank-table th{color:var(--muted);font-weight:700}.bank-table td:first-child,.bank-table th:first-child{text-align:left}.good{color:#13816e;font-weight:700}.bad{color:var(--amber);font-weight:700}.run-check{display:flex;gap:10px;align-items:start;padding:14px 16px;border:1px solid #cfe8e2;background:#edf8f5;border-radius:11px;color:#236a61;font-size:13px}.run-check.warn{border-color:#f2dec7;background:#fff7ed;color:#965d21}.flow-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}.flow-step{background:#f2f6f8;border:1px solid #e1e8ee;padding:15px 10px;border-radius:11px;text-align:center}.flow-step span{display:block;color:#687c90;font-size:12px}.flow-step strong{font-size:19px;font-weight:800}.checkbox-row{display:flex;gap:9px;align-items:start;color:#4c6075;font-size:12px}.checkbox-row input{margin-top:3px;accent-color:var(--primary)}.button-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.callout{border-left:3px solid #40a39b;padding:12px 15px;background:#eef8f6;font-size:12px;border-radius:0 9px 9px 0;color:#335b61}.guide-step{display:flex;gap:14px;margin:18px 0}.guide-number{background:#e2f1ee;color:#14716d;display:grid;place-items:center;width:30px;height:30px;border-radius:9px;flex-shrink:0;font-weight:790}.guide-step strong{display:block}.guide-step p{margin:4px 0 0;color:var(--muted);font-size:13px}.table-scroll{overflow-x:auto}table.result-table{width:100%;border-collapse:collapse;min-width:850px}.result-table th{font-size:11px;letter-spacing:.2px;color:#738297;text-align:left;border-bottom:1px solid #e4eaf0;padding:12px 8px}.result-table td{font-size:12px;border-bottom:1px solid #edf1f4;padding:14px 8px}.result-table .btn{min-height:30px;padding:5px 9px;font-size:11px}.empty-state{border:1px dashed #d4e1e9;border-radius:13px;padding:30px 15px;text-align:center;color:var(--muted);background:#fafcfd}.hide{display:none!important}.toast{position:fixed;bottom:22px;right:22px;z-index:100;border-radius:11px;background:#163d4a;color:#fff;box-shadow:0 14px 36px rgba(0,0,0,.22);padding:13px 18px;max-width:380px;font-size:13px;opacity:0;transform:translateY(8px);transition:opacity .2s,transform .2s;pointer-events:none}.toast.show{opacity:1;transform:translateY(0)}.session-note{display:flex;align-items:center;gap:8px;color:#607b85;font-size:12px}.app-footer{color:#8a9caf;font-size:11px;margin-top:31px}
+/* Participant-facing fullscreen overlay */
+#experiment{position:fixed;inset:0;z-index:1000;background:#090d13;color:#e9eef2;display:none;flex-direction:column;overflow:hidden}#experiment.active{display:flex}#experiment:fullscreen{width:100vw;height:100vh}.exp-header{display:flex;justify-content:space-between;align-items:center;padding:14px 22px;min-height:60px;border-bottom:1px solid #202a34;gap:12px}.exp-eyebrow{font-size:10px;font-weight:740;color:#8ea1ac;letter-spacing:1.8px}.exp-sub{font-size:13px;color:#bac7d0;font-weight:630}.exp-center{flex:1;display:flex;justify-content:center;align-items:center;min-height:0;padding:8px 12px}.exp-content{height:100%;width:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;min-height:0}.exp-plus{font-size:44px;font-weight:250;color:#eee}.exp-visual{width:var(--stimulus-scale,100%);height:var(--stimulus-scale,100%);max-width:100%;max-height:100%;object-fit:contain;object-position:center;display:block;flex:0 0 auto}.exp-rating{width:min(1120px,92vw);display:flex;flex-direction:column;gap:22px;align-items:stretch;justify-content:center}.rating-title{text-align:center;font-size:clamp(24px,3.2vw,34px);font-weight:720;margin-bottom:8px}.rating-sub{text-align:center;color:#96a9b7;margin-top:-14px;margin-bottom:14px;font-size:14px}.scale-wrap{background:#121c25;border:1px solid #2a3947;border-radius:16px;padding:28px 32px}.scale-label{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:12px}.scale-label strong{font-size:16px}.scale-label small{color:#93a6b5;font-size:12px}.scale-opts{display:grid;grid-template-columns:repeat(5,1fr);gap:11px}.scale-btn{padding:13px 3px;border-radius:9px;border:1px solid #435567;background:#172532;color:#e4ebef;font-size:18px;font-weight:730;min-height:53px}.scale-btn:hover,.scale-btn:focus{border-color:#80d3ca;background:#244046}.scale-btn.selected{background:#176a70;color:#fff;border-color:#80cec1}.scale-ends{display:flex;justify-content:space-between;color:#91a4b3;font-size:12px;margin-top:8px}.exp-footer{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px;padding:10px 18px 12px;border-top:1px solid #202a34}.exp-progress{width:min(310px,100%);height:5px;border-radius:5px;background:#2a343d;overflow:hidden;margin-top:7px}.exp-progress-inner{background:#63c7b8;height:100%;width:0%;transition:width .15s}.exp-clock{font-variant-numeric:tabular-nums;font-weight:780;font-size:25px;color:#fff}.exp-clock-label{font-size:10px;color:#93a5b3;text-align:center;letter-spacing:1px}.exp-quit{justify-self:end;color:#aeb9c1;background:#16212b;border:1px solid #344450;border-radius:9px;padding:8px 14px;font-size:12px}.exp-quit:hover{color:#fff;border-color:#7d949e}.exp-controls{justify-self:end;display:flex;align-items:center;justify-content:flex-end;gap:14px;flex-wrap:wrap}.exp-size-control{display:flex;align-items:center;gap:9px;color:#bfd0da;font-size:12px;white-space:nowrap}.exp-size-control input{width:150px;accent-color:#63c7b8;cursor:pointer}.exp-size-value{display:inline-block;min-width:37px;text-align:right;color:#e9eef2;font-weight:700;font-variant-numeric:tabular-nums}.exp-skip{color:#e3edf2;background:#18313a;border:1px solid #36616a;border-radius:9px;padding:8px 13px;font-size:12px;font-weight:700;white-space:nowrap}.exp-skip:not(:disabled):hover{background:#23515a;border-color:#6eb9b0}.exp-skip:disabled{opacity:.35;cursor:not-allowed}.exp-quiet{font-size:12px;color:#96a7b3;letter-spacing:1px}.exp-loading{font-size:23px;font-weight:730;line-height:1.6;text-align:center}.exp-loading small{display:block;color:#8aa0ad;font-weight:400;font-size:14px;margin-top:9px}.nav-mobile{display:none}
+@media(max-width:1100px){.sidebar{width:220px}.main{width:calc(100% - 220px);padding:30px 25px}.two-col{grid-template-columns:1fr}.cards{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.layout{display:block}.sidebar{width:100%;min-height:auto;padding:13px 15px;display:block}.brand{padding:0}.brand-mark{width:35px;height:35px}.brand-small{display:none}.side-label,.side-bottom{display:none}.sidebar nav{display:flex;overflow:auto;gap:4px;margin-top:12px}.nav-btn{width:auto;flex-shrink:0;white-space:nowrap;padding:7px 10px;font-size:12px}.nav-icon{display:none}.main{width:100%;padding:23px 16px 45px}.page-title{font-size:26px}.form-grid{grid-template-columns:1fr 1fr;gap:13px}.panel{padding:18px}.flow-grid{grid-template-columns:repeat(2,1fr)}.metric{padding:15px}.exp-header{padding:10px 12px}.exp-center{padding:10px}.exp-footer{padding:10px 12px;gap:8px}.scale-wrap{padding:12px}.scale-opts{gap:5px}.exp-visual{max-height:100%}.rating-title{font-size:19px}.scale-label{display:block}.scale-label small{display:block}}
+@media(max-width:1000px){.exp-size-control input{width:105px}.exp-controls{gap:8px}.exp-footer{gap:9px}}
+@media(max-width:700px){.exp-footer{grid-template-columns:1fr auto;row-gap:10px}.exp-controls{grid-column:1/-1;justify-self:stretch;justify-content:center}.exp-size-control input{width:min(29vw,150px)}.exp-progress{width:100%}}
+</style>
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-mark">∿</div><div><div class="brand-name">AffectLab <span style="font-size:12px;font-weight:400;color:#91bcc4">/ 01</span></div><div class="brand-small">EEG × fNIRS RESEARCH</div></div></div>
+    <nav aria-label="Page navigation">
+      <div class="side-label">EXPERIMENT WORKSPACE</div>
+      <button class="nav-btn active" data-page="setup"><span class="nav-icon">◫</span>Experiment Setup</button>
+      <button class="nav-btn" data-page="library"><span class="nav-icon">▧</span>Emotion Image Library</button>
+      <button class="nav-btn" data-page="results"><span class="nav-icon">▤</span>Ratings & Data</button>
+      <button class="nav-btn" data-page="guide"><span class="nav-icon">ⓘ</span>User Guide</button>
+    </nav>
+    <div class="side-bottom"><strong><span class="status-dot"></span>Browser-local storage</strong>Public prototype. Use Demo Mode with a test ID. Imported images and session records stay in this browser. Use only stimuli you are authorised to import.</div>
+  </aside>
+  <main class="main">
+    <section id="page-setup" class="page">
+      <div class="eyebrow">EXPERIMENT CONTROL PANEL</div>
+      <h1 class="page-title">Emotion Image Experiment Dashboard</h1>
+      <p class="page-desc">Configure a pre- or post-intervention assessment with three blocks: Neutral Natural Exposure, Negative Natural Exposure and Negative Expressive Suppression. Use Demo Mode or import authorised local images, collect separate 1–5 valence and arousal ratings, and export browser event markers.</p>
+      <div class="cards">
+        <div class="metric"><div class="metric-kicker">STIMULUS TYPE</div><div class="metric-number">3 <span style="font-size:13px">conditions</span></div><div class="metric-note">NEU-NAT + NEG-NAT + NEG-SUP</div></div>
+        <div class="metric"><div class="metric-kicker">TRIAL STRUCTURE</div><div class="metric-number">30 <span style="font-size:13px">Trials</span></div><div class="metric-note">10 + 10 + 10 per assessment (default)</div></div>
+        <div class="metric"><div class="metric-kicker">SAM DIMENSIONS</div><div class="metric-number">2 <span style="font-size:13px">dimensions</span></div><div class="metric-note">Valence + Arousal</div></div>
+        <div class="metric"><div class="metric-kicker">IMAGES IN BANK</div><div class="metric-number" id="metric-photos">0</div><div class="metric-note">Images imported on this device</div></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><div><h2>01 · Participant & Experimental Conditions</h2><div class="small">All participants complete all three viewing conditions. Each participant undergoes both Exercise and Rest sessions, with Pre and Post assessments in each session.</div></div><span class="pill">Crossover Pilot Study</span></div>
+        <div class="form-grid">
+          <div class="form-field"><label for="participant">Participant ID</label><input class="field" id="participant" type="text" placeholder="e.g., P01" maxlength="40" autocomplete="off" value="P01"></div>
+          <div class="form-field"><label for="day">Session Day</label><select class="field" id="day"><option value="1">Day 1</option><option value="2">Day 2</option></select></div>
+          <div class="form-field"><label for="intervention">Intervention</label><select class="field" id="intervention"><option value="Exercise">Exercise — Moderate-Intensity Aerobic Exercise</option><option value="Rest">Rest — Seated Rest Control</option></select></div>
+          <div class="form-field"><label for="phase">Assessment Phase</label><select class="field" id="phase"><option value="Pre">Pre-intervention (Before)</option><option value="Post">Post-intervention (After)</option></select></div>
+          <div class="form-field"><label for="set">Image Set</label><select class="field" id="set"><option value="A">Set A</option><option value="B">Set B</option><option value="C">Set C</option><option value="D">Set D</option></select></div>
+        </div>
+        <div class="divider"></div>
+        <div class="panel-head" style="margin-bottom:14px"><div><h2>02 · Trial Parameters</h2><div class="small">Initial settings for equipment and protocol testing; adjust based on validation results before the formal study.</div></div></div>
+        <div class="form-grid">
+          <div class="form-field"><label for="count">Images per Viewing Condition / Assessment</label><select class="field" id="count"><option value="2">2 per condition (demo / debugging)</option><option value="5">5 per condition (short version)</option><option value="8">8 per condition (short version)</option><option value="10" selected>10 per condition (30 trials; study default)</option><option value="12">12 per condition (36 trials)</option></select></div>
+          <div class="form-field"><label for="fixTime">Fixation Cross (seconds)</label><input class="field" type="number" id="fixTime" min="1" max="30" value="2" step="1"></div>
+          <div class="form-field"><label for="imgTime">Image Presentation (seconds)</label><input class="field" type="number" id="imgTime" min="2" max="90" value="8" step="1"></div>
+          <div class="form-field"><label for="samTime">SAM Rating (seconds)</label><input class="field" type="number" id="samTime" min="3" max="90" value="8" step="1"></div>
+          <div class="form-field"><label for="restTime">Recovery Interval (seconds)</label><input class="field" type="number" id="restTime" min="3" max="120" value="20" step="1"></div>
+          <div class="form-field"><label for="order">Block Order (images randomised within each block)</label><select id="order" class="field"><option value="natural-first">NEU-NAT → NEG-NAT → NEG-SUP</option><option value="es-first">NEU-NAT → NEG-SUP → NEG-NAT (counterbalanced)</option></select></div>
+        </div>
+        <div class="divider"></div>
+        <div class="panel-head" style="margin-bottom:14px"><div><h2>03 · Single-Trial Structure</h2></div><span id="time-summary" class="pill pill-gray">30 Trials · Approx. 19 min</span></div>
+        <div class="flow-grid">
+          <div class="flow-step"><span>① Fixation · +</span><strong id="flow-fix">2s</strong></div>
+          <div class="flow-step"><span>② Visual Stimulus</span><strong id="flow-image">8s</strong></div>
+          <div class="flow-step"><span>③ SAM Rating</span><strong id="flow-sam">8s</strong></div>
+          <div class="flow-step"><span>④ Recovery · +</span><strong id="flow-rest">20s</strong></div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><div><h2>04 · Preparation & Launch</h2><div class="small">Import 10 authorised images per condition, or enable Demo Mode to test the workflow first.</div></div></div>
+        <div class="run-check warn" id="readiness"><span style="font-size:18px">◌</span><div>Checking the selected image set…</div></div>
+        <div style="height:16px"></div>
+        <label class="checkbox-row"><input type="checkbox" id="demo"><span><strong>Demo Mode</strong> (uses synthetic placeholders labelled DEMO; these are not validated emotional stimuli and are only for interface and timing checks.)</span></label>
+        <div style="height:20px"></div>
+        <div class="button-row"><button class="btn btn-primary btn-lg" id="start">▶ Start Emotion Experiment</button><button class="btn btn-soft btn-lg" id="go-library">＋ Import Stimulus Images</button><span class="session-note">Use a desktop or laptop in full-screen mode and keep this browser tab active.</span></div>
+      </div>
+    </section>
+    <section id="page-library" class="page hide">
+      <div class="eyebrow">STIMULUS MANAGEMENT</div><h1 class="page-title">Emotion Image Library</h1>
+      <p class="page-desc">Select an image set and task condition, then upload the matching images: NEU-NAT (neutral / natural viewing), NEG-NAT (negative / natural viewing), and NEG-SUP (negative / expressive suppression). Images are displayed without cropping and stored locally in the browser.</p>
+      <div class="two-col">
+        <div class="panel"><div class="panel-head"><div><h2>Add Stimulus Images</h2><div class="small">Select multiple files or drag and drop them here. Images are not sent to an external server.</div></div></div>
+          <div class="form-grid" style="grid-template-columns:repeat(2,minmax(0,1fr));margin-bottom:18px">
+            <div class="form-field"><label for="assetSet">Target Image Set</label><select class="field" id="assetSet"><option>A</option><option>B</option><option>C</option><option>D</option></select></div>
+            <div class="form-field"><label for="assetType">Viewing Condition</label><select class="field" id="assetType"><option value="WNeu">NEU-NAT · Neutral Natural Exposure</option><option value="WNeg">NEG-NAT · Negative Natural Exposure</option><option value="ES">NEG-SUP · Negative Expressive Suppression</option></select></div>
+          </div>
+          <div id="dropzone" class="upload-zone"><div class="upload-icon">▧</div><strong>Click or drag images here to upload</strong><p>Upload multiple images at once · JPG / PNG / WebP / GIF</p><button class="btn btn-primary" id="pickFiles">＋ Select Images</button><input id="imageInput" type="file" accept="image/jpeg,image/png,image/webp,image/gif,image/bmp,image/avif" multiple class="hide"></div>
+          <p class="hint" id="storage-hint">Note: Clearing browser site data or switching computers may remove stored images. Keep backup copies of the originals.</p>
+        </div>
+        <div class="panel"><div class="panel-head"><div><h2>Image Set Inventory</h2><div class="small">Each assessment requires 10 NEU-NAT + 10 NEG-NAT + 10 NEG-SUP images by default. Images must be unique across conditions.</div></div></div>
+          <table class="bank-table"><thead><tr><th>Image Set</th><th>NEU-NAT</th><th>NEG-NAT</th><th>NEG-SUP</th><th>Total</th></tr></thead><tbody id="bank-body"></tbody></table>
+          <div class="callout" style="margin-top:22px">We recommend assigning Sets A/B/C/D to Day 1 Pre, Day 1 Post, Day 2 Pre and Day 2 Post, respectively. Match the four sets as closely as possible on valence and arousal, and match negative stimulus intensity between NEG-NAT and NEG-SUP.</div>
+        </div>
+      </div>
+      <div class="panel"><div class="panel-head"><div><h2>Imported Images</h2><div class="small" id="gallery-count">0  images</div></div><div class="section-tabs" id="view-bank-tabs"><button class="chip active" data-bank="A">Set A</button><button class="chip" data-bank="B">Set B</button><button class="chip" data-bank="C">Set C</button><button class="chip" data-bank="D">Set D</button></div></div>
+        <div id="gallery" class="image-grid"></div>
+      </div>
+    </section>
+    <section id="page-results" class="page hide">
+      <div class="eyebrow">RESEARCH DATA</div><h1 class="page-title">Experiment Ratings & Event Records</h1>
+      <p class="page-desc">Recorded fields include SAM valence and arousal ratings, response times, and software timestamps for fixation, image presentation, rating and recovery. Export CSV files for use in Python, MATLAB or Excel.</p>
+      <div class="panel"><div class="panel-head"><div><h2>Completed / Interrupted Sessions</h2><div class="small" id="results-count">No sessions recorded</div></div><div class="button-row"><button id="exportAllTrials" class="btn btn-primary">↓ Export All Trial CSVs</button><button id="exportAllEvents" class="btn">↓ Export All Event CSVs</button></div></div>
+      <div id="results-container"></div></div>
+      <div class="callout">Note: These are browser-generated software timestamps (performance.now() and ISO time), <strong>NOT equivalent to hardware-synchronised EEG/fNIRS triggers</strong>. For millisecond-level EEG–fNIRS synchronisation, use TTL, LSL or another validated event-marker interface.</div>
+    </section>
+    <section id="page-guide" class="page hide">
+      <div class="eyebrow">QUICK START & RESEARCH NOTES</div><h1 class="page-title">User Guide</h1>
+      <p class="page-desc">This single-file app runs locally or from static hosting. Public demonstrations use synthetic images and test identifiers.</p>
+      <div class="panel"><h2>Start an Experiment in Four Steps</h2>
+        <div class="guide-step"><div class="guide-number">1</div><div><strong>Prepare Four Image Sets</strong><p>In the Emotion Image Library, import Sets A/B/C/D. For each set, provide 10 neutral images for NEU-NAT, 10 negative images for NEG-NAT, and 10 different negative images for NEG-SUP. Match valence and arousal across sets as closely as possible.</p></div></div>
+        <div class="guide-step"><div class="guide-number">2</div><div><strong>Enter Session Details</strong><p>Enter the Participant ID, Day, Exercise or Rest, Pre or Post, and the image set. All participants complete NEU-NAT, NEG-NAT and NEG-SUP. Counterbalance the order of NEG-NAT and NEG-SUP blocks across participants and assessments.</p></div></div>
+        <div class="guide-step"><div class="guide-number">3</div><div><strong>Launch the Full-Screen Emotion Task</strong><p>Complete the NEU-NAT block first, followed by NEG-NAT and NEG-SUP in counterbalanced order. Each trial displays a fixation cross, an image, valence/arousal rating scales, and a recovery interval. Instructions appear before every block. Unanswered ratings remain blank.</p></div></div>
+        <div class="guide-step"><div class="guide-number">4</div><div><strong>Export Data</strong><p>After finishing, open Ratings & Data to download Trial CSV (trial-level ratings) and Event CSV (timestamped event log). Back up approved research exports after each session. The condition column retains the legacy codes WNeu, WNeg and ES for compatibility.</p></div></div>
+      </div>
+      <div class="panel"><h2>Experiment & Data Quality Notes</h2>
+        <p>• Default paradigm: 10 NEU-NAT + 10 NEG-NAT + 10 NEG-SUP images (30 trials total). Each trial comprises 2 s fixation + 8 s image + 8 s SAM rating + 20 s recovery, totalling approximately 19 minutes, excluding block instructions and breaks.</p>
+        <p>• <strong>NEU-NAT: </strong>View neutral images naturally.<strong>NEG-NAT: </strong>View negative images naturally, without intentionally regulating your emotions.<strong>NEG-SUP: </strong>When viewing negative images, suppress outward emotional expressions (facial and bodily) without deliberately changing your internal feelings. Give SAM ratings of your actual subjective experience in all three conditions.</p>
+        <p>• This application uses <strong>1–5 SAM-style numerical ratings</strong>: Valence 1 = very unpleasant, 5 = very pleasant; Arousal 1 = very calm, 5 = highly aroused. The numeric buttons are a practical alternative interface and <strong>are NOT the validated standard SAM pictograms</strong>. If the study requires the standard SAM, replace this interface and verify the scale permissions and instructions.</p>
+        <p>• Original IAPS images are not embedded. The research team is responsible for obtaining and licensing stimuli. This version presents still images. Browser events document software state changes. Audio playback, hardware triggers and raw EEG/fNIRS acquisition require a separate implementation.</p>
+        <p>• During the experiment, use the <strong>Image size</strong> slider to resize the stimulus while preserving its aspect ratio. Set the same percentage for every participant to standardise visual angle. <strong>Skip Trial</strong> advances immediately to the next trial and marks the skipped trial in both CSV exports; partial SAM responses from a skipped trial are discarded.</p>
+        <p>• Switching to another tab, putting the computer to sleep, or reloading the page can affect timing and data integrity. Where possible, the app logs visibility_hidden and visibility_visible events, but cannot guarantee recovery of interrupted trials.</p>
+      </div>
+    </section>
+    <div class="app-footer">AffectLab · Visual Prototype · NEU-NAT / NEG-NAT / NEG-SUP · Version 3.0.0</div>
+  </main>
+</div>
+
+<div id="experiment" role="application" aria-label="Experiment Display">
+  <header class="exp-header"><div><div class="exp-eyebrow">AFFECTLAB / EMOTION PARADIGM</div><div class="exp-sub" id="exp-session-label">P01 · Day 1 · Pre-intervention</div></div><div class="exp-sub" id="exp-trial-label">Preparing</div></header>
+  <div class="exp-center"><div class="exp-content" id="exp-content"><div class="exp-loading">Preparing experiment…<small>Keep this page in the foreground</small></div></div></div>
+  <footer class="exp-footer"><div><div class="exp-quiet" id="exp-stage">PREPARING</div><div class="exp-progress"><div class="exp-progress-inner" id="exp-progress-inner"></div></div></div><div><div id="exp-clock" class="exp-clock">—</div><div class="exp-clock-label">SECONDS LEFT</div></div><div class="exp-controls"><label class="exp-size-control" for="exp-size-range">Image size <input id="exp-size-range" type="range" min="30" max="100" value="100" step="5" aria-label="Image size percentage"><output class="exp-size-value" id="exp-size-value" for="exp-size-range">100%</output></label><button class="exp-skip" id="exp-skip" type="button" disabled title="Skip the current trial and mark it as skipped in the exported data">Skip Trial →</button><button class="exp-quit" id="exp-stop" type="button">End Experiment ×</button></div></footer>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<script>
+(()=>{'use strict';
+const $=id=>document.getElementById(id),$$=q=>Array.from(document.querySelectorAll(q));
+const KEYS={sessions:'affectlab-sessions-v1'};const TYPES=['WNeu','WNeg','ES'];const SETS=['A','B','C','D'];const CONDITION_CODE = {WNeu:'NEU-NAT',WNeg:'NEG-NAT',ES:'NEG-SUP'};
+let database=null,memoryStore=[],bank=[],photoURLs=new Map(),viewSet='A',run=null,animationId=null,toastTimer=null,dbPersistent=true,imageSizePercent=100;
+function toast(message){const e=$('toast');e.textContent=message;e.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>e.classList.remove('show'),4200)}
+function makeId(){return (typeof crypto!=='undefined'&&crypto.randomUUID)?crypto.randomUUID():Date.now().toString(36)+'-'+Math.random().toString(36).slice(2)}
+function nowIso(){return new Date().toISOString()}function safeText(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function initDatabase(){return new Promise(resolve=>{if(!window.indexedDB){dbPersistent=false;resolve();return}try{const request=indexedDB.open('AffectLabImageBank',1);request.onupgradeneeded=()=>{const db=request.result;if(!db.objectStoreNames.contains('pictures'))db.createObjectStore('pictures',{keyPath:'id'})};request.onsuccess=()=>{database=request.result;resolve()};request.onerror=()=>{dbPersistent=false;resolve()}}catch(_){dbPersistent=false;resolve()}})}
+function storageAll(){return new Promise(resolve=>{if(!database){resolve(memoryStore.slice());return}const tx=database.transaction('pictures','readonly');const req=tx.objectStore('pictures').getAll();req.onsuccess=()=>resolve(req.result||[]);req.onerror=()=>resolve(memoryStore.slice())})}
+function storagePut(item){return new Promise((resolve,reject)=>{if(!database){memoryStore.push(item);resolve();return}try{const tx=database.transaction('pictures','readwrite');tx.objectStore('pictures').put(item);tx.oncomplete=()=>resolve();tx.onerror=()=>reject(tx.error||new Error('storage error'))}catch(e){reject(e)}})}
+function storageDel(id){return new Promise((resolve,reject)=>{if(!database){memoryStore=memoryStore.filter(x=>x.id!==id);resolve();return}const tx=database.transaction('pictures','readwrite');tx.objectStore('pictures').delete(id);tx.oncomplete=()=>resolve();tx.onerror=()=>reject(tx.error||new Error('storage error'))})}
+function photoSrc(item){if(item.demo)return item.src;if(!photoURLs.has(item.id))photoURLs.set(item.id,URL.createObjectURL(item.blob));return photoURLs.get(item.id)}
+function changePage(page){$$('.page').forEach(e=>e.classList.toggle('hide',e.id!=='page-'+page));$$('.nav-btn').forEach(e=>e.classList.toggle('active',e.dataset.page===page));window.scrollTo({top:0,behavior:'instant'});if(page==='results')renderResults();if(page==='library')renderLibrary()}
+$$('.nav-btn').forEach(b=>b.addEventListener('click',()=>changePage(b.dataset.page)));$('go-library').addEventListener('click',()=>changePage('library'));
+function numberVal(id,min,max){const n=Number($(id).value);return Number.isFinite(n)?Math.min(max,Math.max(min,Math.round(n))):min}
+function getConfig(){return{participant:$('participant').value.trim(),day:$('day').value,intervention:$('intervention').value,phase:$('phase').value,set:$('set').value,perType:numberVal('count',2,12),fix:numberVal('fixTime',1,30),image:numberVal('imgTime',2,90),sam:numberVal('samTime',3,90),rest:numberVal('restTime',3,120),order:$('order').value,demo:$('demo').checked}}
+ function updateSummary(){
+  const c=getConfig(),total=c.perType*3,sec=total*(c.fix+c.image+c.sam+c.rest);
+  $('flow-fix').textContent=c.fix+'s';$('flow-image').textContent=c.image+'s';$('flow-sam').textContent=c.sam+'s';$('flow-rest').textContent=c.rest+'s';
+  $('time-summary').textContent=`${total} trials (NEU-NAT ${c.perType} + NEG-NAT ${c.perType} + NEG-SUP ${c.perType}) · Approx. ${Math.floor(sec/60)} min ${String(sec%60).padStart(2,'0')} sec`;
+  const counts=Object.fromEntries(TYPES.map(type=>[type,bank.filter(x=>x.set===c.set&&x.type===type).length]));
+  const ready=TYPES.every(type=>counts[type]>=c.perType)||c.demo;
+  const el=$('readiness');el.classList.toggle('warn',!ready);
+  const msg=c.demo?'Demo Mode uses synthetic placeholder images. Exported rows carry isDemo=true.':`Set ${c.set}: NEU-NAT ${counts.WNeu}/${c.perType}, NEG-NAT ${counts.WNeg}/${c.perType}, NEG-SUP ${counts.ES}/${c.perType}.`+(ready?' All three conditions are ready.':' Not enough images: import stimuli for each condition or enable Demo Mode.');
+  el.innerHTML='<span style="font-size:18px">'+(ready?'✓':'!')+'</span><div>'+safeText(msg)+'</div>';
+  $('start').disabled=!ready||!c.participant;
+ }
+
+['participant','day','intervention','phase','set','count','fixTime','imgTime','samTime','restTime','order','demo'].forEach(id=>$(id).addEventListener('input',updateSummary));
+ function renderLibrary(){
+  $('metric-photos').textContent=bank.length;
+  $('bank-body').innerHTML=SETS.map(set=>{
+   const counts=Object.fromEntries(TYPES.map(t=>[t,bank.filter(p=>p.set===set&&p.type===t).length]));
+   const c=getConfig().perType;
+   return `<tr><td><strong>Set ${set}</strong></td>${TYPES.map(t=>`<td class="${counts[t]>=c?'good':'bad'}">${counts[t]}</td>`).join('')}<td>${TYPES.reduce((a,t)=>a+counts[t],0)}</td></tr>`;
+  }).join('');
+  $$('[data-bank]').forEach(b=>b.classList.toggle('active',b.dataset.bank===viewSet));
+  const visible=bank.filter(x=>x.set===viewSet);
+  $('gallery-count').textContent='Set '+viewSet+' · '+visible.length+' images';
+  $('gallery').innerHTML=visible.length?visible.map(p=>`<div class="image-card"><img src="${photoSrc(p)}" alt="${safeText(p.name)}"><div class="image-card-details"><div class="img-name" title="${safeText(p.name)}">${safeText(p.name)}</div><div class="img-bottom"><span class="img-tag">${safeText(CONDITION_CODE[p.type])} · ${(p.size/1024).toFixed(0)} KB</span><button class="mini-delete" data-remove="${p.id}" title="Delete image">Delete</button></div></div></div>`).join(''):'<div class="empty-state" style="grid-column:1/-1">Set '+viewSet+' has no images yet. Select a viewing condition above and import some images.</div>';
+  updateSummary();
+ }
+
+$('view-bank-tabs').addEventListener('click',e=>{let b=e.target.closest('[data-bank]');if(b){viewSet=b.dataset.bank;$('assetSet').value=viewSet;renderLibrary()}});
+$('gallery').addEventListener('click',async e=>{const b=e.target.closest('[data-remove]');if(!b)return;const obj=bank.find(p=>p.id===b.dataset.remove);if(!obj)return;if(!window.confirm('Delete image: '+obj.name+'?'))return;try{await storageDel(obj.id);if(photoURLs.has(obj.id)){URL.revokeObjectURL(photoURLs.get(obj.id));photoURLs.delete(obj.id)}bank=bank.filter(p=>p.id!==obj.id);renderLibrary();toast('Image deleted')}catch(err){toast('Deletion failed: '+err.message)}});
+async function importFiles(files){const allowed=['image/jpeg','image/png','image/webp','image/gif','image/bmp','image/avif'];const imgs=Array.from(files).filter(x=>x.type.startsWith('image/')||allowed.includes(x.type));if(!imgs.length){toast('No supported image files found');return}const set=$('assetSet').value,type=$('assetType').value;let ok=0,fail=0;for(const file of imgs){const image={id:makeId(),set,type,name:file.name,size:file.size,blob:file,created:nowIso()};try{await storagePut(image);bank.push(image);ok++}catch(_){fail++}}viewSet=set;renderLibrary();toast('Imported '+ok+' '+CONDITION_CODE[type]+' images'+(fail?', '+fail+' failed (possibly due to insufficient local storage)':''));$('imageInput').value=''}
+$('pickFiles').addEventListener('click',e=>{e.stopPropagation();$('imageInput').click()});$('dropzone').addEventListener('click',e=>{if(e.target.id!=='pickFiles')$('imageInput').click()});$('imageInput').addEventListener('change',e=>importFiles(e.target.files));['dragenter','dragover'].forEach(ev=>$('dropzone').addEventListener(ev,e=>{e.preventDefault();$('dropzone').classList.add('drag')}));['dragleave','drop'].forEach(ev=>$('dropzone').addEventListener(ev,e=>{e.preventDefault();$('dropzone').classList.remove('drag')}));$('dropzone').addEventListener('drop',e=>importFiles(e.dataTransfer.files));
+function getSessions(){try{return JSON.parse(localStorage.getItem(KEYS.sessions)||'[]')}catch(_){return[]}}
+function saveSessions(records){try{localStorage.setItem(KEYS.sessions,JSON.stringify(records));return true}catch(_){return false}}
+function dummyImg(type,index){const neg=type!=='WNeu';let c1=neg?'#4e5369':'#6b8790',c2=neg?'#252939':'#304c59';const title=CONDITION_CODE[type];const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="${c1}"/><stop offset="1" stop-color="${c2}"/></linearGradient></defs><rect width="1200" height="720" fill="url(#g)"/><circle cx="600" cy="306" r="116" fill="#ffffff" opacity="0.09"/><text x="600" y="315" font-size="72" text-anchor="middle" font-family="sans-serif" font-weight="700" fill="white">${title}</text><text x="600" y="405" font-size="31" text-anchor="middle" font-family="sans-serif" fill="#e6e9ec">DEMO  /  ${String(index).padStart(2,'0')}</text><text x="600" y="645" font-size="22" text-anchor="middle" font-family="sans-serif" fill="#dbe4e7">TEST PLACEHOLDER — NOT AN EMOTIONAL STIMULUS</text></svg>`;return 'data:image/svg+xml;charset=UTF-8,'+encodeURIComponent(svg)}
+function shuffled(a){let arr=a.slice();for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]]}return arr}
+ function buildTrials(c){
+  const types=c.order==='es-first'?['WNeu','ES','WNeg']:['WNeu','WNeg','ES'];
+  let out=[];
+  for(const type of types){
+    const entries=c.demo?Array.from({length:c.perType},(_,i)=>({id:`DEMO-${type}-${i+1}`,type,set:c.set,name:`DEMO_${type}_${i+1}.svg`,demo:true,src:dummyImg(type,i+1)})):
+       shuffled(bank.filter(p=>p.type===type&&p.set===c.set)).slice(0,c.perType);
+    if(entries.length<c.perType)return [];
+    out.push(...entries.map(image=>({image,condition:type})));
+  }
+  return out.map((item,i)=>({...item,number:i+1,fixationMs:null,imageOnsetMs:null,ratingOnsetMs:null,recoveryOnsetMs:null,valence:null,arousal:null,valenceRTms:null,arousalRTms:null,visibilityInterrupted:false,skipped:false,skippedAtStep:null,skipTimeMs:null,imageSizeAtOnsetPercent:null}));
+ }
+
+function elapsed(){return Math.round(performance.now()-run.t0)}
+function logEvent(event,trial=null,detail=''){if(!run)return;run.events.push({sessionId:run.id,participant:run.c.participant,day:run.c.day,intervention:run.c.intervention,condition:trial?trial.condition:'',phase:run.c.phase,set:run.c.set,isDemo:run.c.demo,event,trial:trial?trial.number:'',imageType:trial?trial.image.type:'',imageFile:trial?trial.image.name:'',elapsedMs:elapsed(),utcIso:nowIso(),detail})}
+function setContent(html){$('exp-content').innerHTML=html}
+function setSkipAvailable(available){$('exp-skip').disabled=!available}
+function applyImageSize(value){
+ imageSizePercent=Math.min(100,Math.max(30,Math.round(Number(value)||100)));
+ $('exp-size-range').value=String(imageSizePercent);
+ $('exp-size-value').textContent=imageSizePercent+'%';
+ $('exp-content').style.setProperty('--stimulus-scale',imageSizePercent+'%');
+}
+$('exp-size-range').addEventListener('input',e=>applyImageSize(e.target.value));
+$('exp-size-range').addEventListener('change',()=>{
+ if(run)logEvent('image_size_changed',run.inInstruction?null:run.trials[run.index]||null,'sizePercent='+imageSizePercent);
+});
+async function preloadTrials(trials){const sources=trials.map(t=>photoSrc(t.image));const unique=[...new Set(sources)];await Promise.all(unique.map(src=>new Promise(resolve=>{let i=new Image();let done=false;const finish=()=>{if(!done){done=true;resolve()}};i.onload=finish;i.onerror=finish;i.src=src;if(i.complete)finish();setTimeout(finish,4000)})))}
+function submitStart(){if(run){toast('An experiment is already running');return}let c=getConfig();if(!c.participant){toast('Please enter a Participant ID');return}let trials=buildTrials(c);if(trials.length!==c.perType*3){toast('Not enough images. Please import the required stimuli first.');return}run={id:'AFL-'+Date.now()+'-'+Math.random().toString(36).slice(2,7),c,startedAt:nowIso(),endedAt:null,status:'running',t0:performance.now(),events:[],trials,index:0,step:0,stepStart:null,deadline:null,looping:false,interrupted:false,inInstruction:true};setSkipAvailable(false);applyImageSize(imageSizePercent);$('experiment').classList.add('active');document.body.style.overflow='hidden';$('exp-content').innerHTML='<div class="exp-loading">Preloading images<small>Keep this page active; the experiment will automatically advance through the trials.</small></div>';$('exp-trial-label').textContent='Preparing';$('exp-clock').textContent='—';$('exp-progress-inner').style.width='0%';$('exp-stage').textContent='PREPARING';$('exp-session-label').textContent=c.participant+' · Day '+c.day+' · '+c.intervention+' · '+c.phase+' · NEU-NAT / NEG-NAT / NEG-SUP';if($('experiment').requestFullscreen){$('experiment').requestFullscreen().catch(()=>{})}logEvent('session_start');preloadTrials(trials).then(()=>{if(!run)return;logEvent('image_preload_complete');showInstructions()}).catch(()=>{if(run){toast('Failed to preload images');endRun('aborted')}})}
+$('start').addEventListener('click',submitStart);
+ function showInstructions(){
+  if(!run)return;run.inInstruction=true;setSkipAvailable(false);
+  $('exp-stage').textContent='TASK INSTRUCTIONS';$('exp-clock').textContent='—';$('exp-trial-label').textContent='Ready to begin';
+  setContent(`<div class="exp-rating" style="max-width:1120px"><div class="rating-title">Emotion Image Experiment · General Instructions</div><div class="rating-sub">NEU-NAT + NEG-NAT + NEG-SUP · ${run.c.demo?'Demo Mode':'Research stimuli'} · ${run.trials.length} trials</div><div class="scale-wrap" style="font-size:clamp(17px,2.15vw,22px);line-height:2.05;padding:34px 38px"><p style="margin:0 0 18px"><b>NEU-NAT: </b>View neutral images naturally.<br><b>NEG-NAT: </b>View negative images naturally and allow emotional responses to arise.<br><b>NEG-SUP: </b>While viewing negative images, suppress facial expressions and other outward emotional responses. Do not deliberately alter your internal feelings or divert your attention.</p><p style="margin:0;color:#b6c7d2">After each image, rate <b style="color:white">your actual internal feelings</b> for valence (pleasantness) and arousal (activation). Keep your head as still as possible. Instructions will be repeated before each block.</p></div><button id="begin-real" type="button" class="btn btn-primary btn-lg" style="align-self:center;width:360px;min-height:58px;font-size:18px">I Understand · Continue to First Block →</button></div>`);
+  logEvent('instructions_onset');
+  $('begin-real').addEventListener('click',()=>{if(!run)return;logEvent('participant_ready');showBlockInstruction()},{once:true});
+ }
+ function showBlockInstruction(){
+   if(!run||run.index>=run.trials.length)return;run.inInstruction=true;setSkipAvailable(false);
+   const type=run.trials[run.index].condition;
+   const info={
+    WNeu:{title:'NEU-NAT · Neutral Natural Exposure',cn:'View the following neutral images naturally. Do not deliberately control or regulate your emotions.'},
+    WNeg:{title:'NEG-NAT · Negative Natural Exposure',cn:'View the following negative images naturally. Allow your emotions to arise without deliberately suppressing or changing your feelings.'},
+    ES:{title:'NEG-SUP · Negative Expressive Suppression',cn:'Look carefully at the negative images while suppressing facial expressions and other outward signs of emotion. Do not re-interpret the images or divert your attention.'}
+   }[type];
+   $('exp-stage').textContent='BLOCK INSTRUCTIONS';$('exp-clock').textContent='—';$('exp-trial-label').textContent=CONDITION_CODE[type]+' · '+run.c.perType+' trials';
+   setContent(`<div class="exp-rating" style="max-width:780px"><div class="rating-title">${info.title}</div><div class="rating-sub">${run.c.perType} images in this block · Complete SAM ratings after each image</div><div class="scale-wrap" style="font-size:19px;line-height:1.8;text-align:center"><p style="margin:0">${info.cn}</p><p style="color:#b6c7d2;font-size:14px">Rate your actual internal feelings, even when you are suppressing their outward expression.</p></div><button id="begin-block" type="button" class="btn btn-primary btn-lg" style="align-self:center;width:280px">Start ${CONDITION_CODE[type]} →</button></div>`);
+   logEvent('block_instructions_onset',run.trials[run.index]);
+   $('begin-block').addEventListener('click',()=>{if(!run)return;logEvent('block_start',run.trials[run.index]);beginStep()},{once:true});
+ }
+
+const STEPS=['fixation','image','sam','recovery'];
+function getDuration(c,step){return [c.fix,c.image,c.sam,c.rest][step]*1000}
+function beginStep(){if(!run)return;if(run.index>=run.trials.length){endRun('completed');return}run.inInstruction=false;setSkipAvailable(true);const t=run.trials[run.index],step=run.step,stepName=STEPS[step];run.stepStart=performance.now();run.deadline=run.stepStart+getDuration(run.c,step);const rel=elapsed();if(step===0)t.fixationMs=rel;if(step===1){t.imageOnsetMs=rel;t.imageSizeAtOnsetPercent=imageSizePercent}if(step===2)t.ratingOnsetMs=rel;if(step===3)t.recoveryOnsetMs=rel;logEvent(stepName+'_onset',t);$('exp-trial-label').textContent=CONDITION_CODE[t.condition]+' · Trial '+t.number+' / '+run.trials.length;$('exp-stage').textContent=({fixation:'FIXATION',image:'IMAGE VIEWING',sam:'SAM RATING',recovery:'RECOVERY'})[stepName];$('exp-progress-inner').style.width=((run.index+step/4)/run.trials.length*100)+'%';if(step===0)setContent('<div class="exp-plus" aria-label="Fixation cross">+</div>');if(step===1){const source=photoSrc(t.image);setContent('<img id="shown-stimulus" class="exp-visual" alt="Emotion stimulus" src="'+source+'" />')}if(step===2){setContent(`<div class="exp-rating"><div class="rating-title">Please rate how the previous image actually made you feel</div><div class="rating-sub">SAM-inspired · 1–5 Numerical Response</div><div class="scale-wrap"><div class="scale-label"><strong>Valence · Pleasantness</strong><small>How pleasant or unpleasant did you feel?</small></div><div class="scale-opts" data-dimension="valence">${[1,2,3,4,5].map(i=>`<button class="scale-btn" type="button" data-rating="${i}" data-dim="valence">${i}</button>`).join('')}</div><div class="scale-ends"><span>1 · Very unpleasant</span><span>5 · Very pleasant</span></div></div><div class="scale-wrap"><div class="scale-label"><strong>Arousal · Emotional Activation</strong><small>How calm or emotionally activated did you feel?</small></div><div class="scale-opts" data-dimension="arousal">${[1,2,3,4,5].map(i=>`<button class="scale-btn" type="button" data-rating="${i}" data-dim="arousal">${i}</button>`).join('')}</div><div class="scale-ends"><span>1 · Very calm</span><span>5 · Highly aroused</span></div></div></div>`)}if(step===3)setContent('<div class="exp-plus" aria-label="Recovery interval">+</div>');cancelAnimationFrame(animationId);animationId=requestAnimationFrame(tick)}
+function tick(){if(!run)return;let remain=Math.max(0,run.deadline-performance.now());$('exp-clock').textContent=(remain/1000).toFixed(1);if(remain<=0){nextStep();return}animationId=requestAnimationFrame(tick)}
+ function nextStep(){
+  if(!run)return;
+  const t=run.trials[run.index];
+  if(run.step===2&&(t.valence===null||t.arousal===null))logEvent('sam_missing_response',t,`valence=${t.valence??'NA'};arousal=${t.arousal??'NA'}`);
+  run.step++;
+  if(run.step>3){
+    logEvent('trial_complete',t);
+    run.step=0;run.index++;
+    if(run.index<run.trials.length&&run.trials[run.index].condition!==t.condition){logEvent('block_end',t);showBlockInstruction();return}
+    if(run.index>=run.trials.length)logEvent('block_end',t);
+  }
+  beginStep();
+ }
+
+function skipCurrentTrial(){
+ if(!run||run.inInstruction||run.deadline===null||run.index>=run.trials.length)return;
+ const t=run.trials[run.index];
+ if(t.skipped)return;
+ t.skipped=true;
+ t.skippedAtStep=STEPS[run.step];
+ t.skipTimeMs=elapsed();
+ // Discard any partial ratings; a skipped trial must not be analysed as a valid response.
+ t.valence=null;t.arousal=null;t.valenceRTms=null;t.arousalRTms=null;
+ logEvent('trial_skipped',t,'during='+t.skippedAtStep+';imageSizePercent='+imageSizePercent);
+ cancelAnimationFrame(animationId);
+ run.index++;run.step=0;run.deadline=null;run.stepStart=null;
+ $('exp-progress-inner').style.width=(run.index/run.trials.length*100)+'%';
+ if(run.index>=run.trials.length){logEvent('block_end',t);endRun('completed');return}
+ if(run.trials[run.index].condition!==t.condition){logEvent('block_end',t);showBlockInstruction();return}
+ beginStep();
+}
+$('exp-skip').addEventListener('click',skipCurrentTrial);
+$('exp-content').addEventListener('click',e=>{const btn=e.target.closest('button[data-dim][data-rating]');if(!btn||!run||run.step!==2)return;const t=run.trials[run.index];const dim=btn.dataset.dim,v=Number(btn.dataset.rating);t[dim]=v;t[dim+'RTms']=Math.round(performance.now()-run.stepStart);$$(`button[data-dim="${dim}"]`).forEach(b=>b.classList.toggle('selected',b===btn));logEvent('sam_'+dim+'_response',t,String(v))});
+function endRun(status){if(!run)return;cancelAnimationFrame(animationId);run.status=status;run.endedAt=nowIso();logEvent('session_'+status);const complete=run;const sessions=getSessions();sessions.unshift({id:complete.id,c:complete.c,startedAt:complete.startedAt,endedAt:complete.endedAt,status:complete.status,trials:complete.trials.map(t=>({...t,image:{id:t.image.id,type:t.image.type,set:t.image.set,name:t.image.name}})),events:complete.events});const ok=saveSessions(sessions.slice(0,100));run=null;setSkipAvailable(false);$('experiment').classList.remove('active');document.body.style.overflow='';if(document.fullscreenElement)document.exitFullscreen().catch(()=>{});changePage('results');toast(status==='completed'?'Experiment completed; data '+(ok?'saved locally':'generated, but local storage failed. Please export immediately'):'The session was interrupted. Recorded data can still be exported.');if(!ok){window.__unsavedLastSession=sessions[0];renderResults()}}
+$('exp-stop').addEventListener('click',()=>{if(run&&confirm('End this experiment early? Ratings already collected will be retained.'))endRun('aborted')});document.addEventListener('visibilitychange',()=>{if(run){logEvent(document.hidden?'visibility_hidden':'visibility_visible',run.trials[run.index]||null);if(document.hidden){run.interrupted=true;const t=run.trials[run.index];if(t)t.visibilityInterrupted=true}}});document.addEventListener('fullscreenchange',()=>{if(run)logEvent(document.fullscreenElement?'fullscreen_enter':'fullscreen_exit')});
+function csvCell(v){if(v===null||v===undefined)return '';const s=String(v);return /[",\r\n]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s}
+function csv(rows){if(!rows.length)return '';const keys=Object.keys(rows[0]);return '\ufeff'+keys.map(csvCell).join(',')+'\r\n'+rows.map(r=>keys.map(k=>csvCell(r[k])).join(',')).join('\r\n')}
+ function exportTrials(sessions){
+  const out=[];
+  for(const s of sessions)for(const t of s.trials){out.push({
+   sessionId:s.id,participant:s.c.participant,day:s.c.day,intervention:s.c.intervention,
+   phase:s.c.phase,imageSet:s.c.set,isDemo:s.c.demo,sessionStatus:s.status,
+   sessionStartUtc:s.startedAt,trial:t.number,condition:t.condition||t.image.type,
+   imageType:(t.condition||t.image.type)==='WNeu'?'Neutral':'Negative',
+   imageFile:t.image.name,imageId:t.image.id,
+   valence:t.valence,arousal:t.arousal,valenceResponseMs:t.valenceRTms,arousalResponseMs:t.arousalRTms,
+   fixationOnsetMs:t.fixationMs,imageOnsetMs:t.imageOnsetMs,samOnsetMs:t.ratingOnsetMs,
+   recoveryOnsetMs:t.recoveryOnsetMs,visibilityInterrupted:t.visibilityInterrupted,
+   skipped:t.skipped??false,skippedAtStep:t.skippedAtStep??null,skipTimeMs:t.skipTimeMs??null,imageSizeAtOnsetPercent:t.imageSizeAtOnsetPercent??null,
+   durationFixSec:s.c.fix,durationImageSec:s.c.image,durationSamSec:s.c.sam,durationRecoverySec:s.c.rest
+  })}
+  return out;
+ }
+
+function exportEvents(sessions){return sessions.flatMap(s=>s.events||[])}
+function downloadText(textData,filename){const blob=new Blob([textData],{type:'text/csv;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=filename;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),5000)}
+function exportSome(sessions,type){if(!sessions.length){toast('There are no session records yet');return}const rows=type==='trials'?exportTrials(sessions):exportEvents(sessions);if(!rows.length){toast('No corresponding records were generated for this session');return}const dt=new Date().toISOString().slice(0,10),prefix=sessions.length===1?sessions[0].c.participant+'_'+sessions[0].c.phase+'_'+sessions[0].c.intervention:'ALL';downloadText(csv(rows),'AffectLab_'+prefix+'_'+(type==='trials'?'TrialData':'EventMarkers')+'_'+dt+'.csv');toast('CSV exported')}
+$('exportAllTrials').addEventListener('click',()=>exportSome(getDisplaySessions(),'trials'));
+$('exportAllEvents').addEventListener('click',()=>exportSome(getDisplaySessions(),'events'));
+function getDisplaySessions(){const ss=getSessions(),temp=window.__unsavedLastSession;if(temp&&!ss.find(x=>x.id===temp.id))ss.unshift(temp);return ss}
+function renderResults(){const sessions=getDisplaySessions();$('results-count').textContent=sessions.length+' session(s)';$('exportAllTrials').disabled=!sessions.length;$('exportAllEvents').disabled=!sessions.length;if(!sessions.length){$('results-container').innerHTML='<div class="empty-state">No data yet. SAM ratings and software event logs will appear here after a session.</div>';return}let html='<div class="table-scroll"><table class="result-table"><thead><tr><th>Date / ID</th><th>Participant</th><th>Day / Condition</th><th>Phase / Set</th><th>Images Shown (Valid)</th><th>Status</th><th>Export</th></tr></thead><tbody>';for(const s of sessions){const n=s.trials.filter(x=>x.imageOnsetMs!==null&&!x.skipped).length,skipped=s.trials.filter(x=>x.skipped).length;html+=`<tr><td>${safeText(s.startedAt.slice(0,16).replace('T',' '))}<br><span class="hint">${safeText(s.id.slice(-10))}</span></td><td><strong>${safeText(s.c.participant)}</strong>${s.c.demo?' <span class="pill pill-gray">DEMO</span>':''}</td><td>Day ${safeText(s.c.day)}<br>${safeText(s.c.intervention)}</td><td>${safeText(s.c.phase)}<br>Set ${safeText(s.c.set)} · NEU-NAT / NEG-NAT / NEG-SUP</td><td>${n} / ${s.trials.length}${skipped?`<br><span class="bad">${skipped} skipped</span>`:''}</td><td>${s.status==='completed'?'<span class="good">Completed</span>':'<span class="bad">Interrupted</span>'}</td><td><div class="button-row"><button class="btn" data-export-trials="${s.id}">Trials</button><button class="btn" data-export-events="${s.id}">Events</button><button class="btn btn-danger" data-delete-session="${s.id}" title="Delete record">×</button></div></td></tr>`}html+='</tbody></table></div>';$('results-container').innerHTML=html}
+$('results-container').addEventListener('click',e=>{const b=e.target.closest('button[data-export-trials],button[data-export-events],button[data-delete-session]');if(!b)return;const sessions=getDisplaySessions(),id=b.dataset.exportTrials||b.dataset.exportEvents||b.dataset.deleteSession;if(b.dataset.deleteSession){if(!confirm('Permanently delete this session and all its ratings? This action cannot be undone.'))return;saveSessions(getSessions().filter(s=>s.id!==id));if(window.__unsavedLastSession?.id===id)delete window.__unsavedLastSession;renderResults();toast('Local session record deleted');return}const session=sessions.find(s=>s.id===id);if(session)exportSome([session],b.dataset.exportTrials?'trials':'events')});
+async function init(){await initDatabase();bank=await storageAll();if(!dbPersistent)$('storage-hint').textContent='Persistent offline image storage is unavailable in this browser. Images may disappear after refreshing. Use Chrome or Edge before importing study stimuli.';renderLibrary();updateSummary();renderResults();}
+window.addEventListener('beforeunload',e=>{if(run){e.preventDefault();e.returnValue=''}});window.addEventListener('pagehide',()=>{for(const url of photoURLs.values())URL.revokeObjectURL(url)});
+init().catch(err=>{console.error(err);toast('Initialisation failed. Please try Chrome or Edge.')});
+})();
+</script>
+</body>
+</html>
