@@ -1,38 +1,102 @@
-# AffectLab EEG–fNIRS Emotion Regulation Prototype
+# AffectLab v5.0.0 – Audiovisual EEG–fNIRS Emotion Paradigm
 
-AffectLab v3.0.0 is a single-file browser application for piloting the visual component of a prefrontal EEG–fNIRS emotion-regulation study. It configures one assessment at a time within a planned exercise/rest crossover and records subjective ratings and browser events. The audiovisual research protocol is a separate development step.
+AffectLab is a single-file browser application for piloting the stimulus side of a prefrontal EEG–fNIRS study of acute aerobic exercise and expressive suppression. Version 4.0.0 adds paired audio to the v3.0.0 visual paradigm. The v3 architecture, settings, session storage key (`affectlab-sessions-v1`), default timing and both CSV exports are kept. Existing v3 column names are kept, and new columns are added alongside them.
 
-| Display code | Condition | Legacy code in the CSV and local image bank |
-| --- | --- | --- |
-| NEU-NAT | Neutral Natural Exposure | `WNeu` |
-| NEG-NAT | Negative Natural Exposure | `WNeg` |
-| NEG-SUP | Negative Expressive Suppression | `ES` |
+| Display code | Condition | Legacy code (CSV `condition`, image bank) | Event-code offset |
+| --- | --- | --- | --- |
+| NEU-NAT | Neutral natural exposure | `WNeu` | 1 |
+| NEG-NAT | Negative natural exposure | `WNeg` | 2 |
+| NEG-SUP | Negative expressive suppression | `ES` | 3 |
+
+## What changed in v5.0.0
+
+- **New look**: refreshed operator interface (colour, cards, buttons), a segmented AV / VO / AO modality switch, and a proportional trial timeline that shows the relative length of each phase. The participant screen is calmer: a neutral dark background, a drawn fixation cross, operator header and footer dimmed until hovered, and round 1–5 rating buttons.
+- **Audio-only (AO) mode** for the pilot comparison of AO, VO and AV. AO uses the same image–sound pairs as AV but plays only the sound over the fixation cross (the image is not shown). Stimulus onset is logged as `stimulus_onset` (codes 21–23, the same offsets as `image_onset`).
+- **Audio onset within the stimulus window** (`Audio Onset within Stimulus (s)`, default 0). For example, 1 s centres a 6 s IADS-E clip in an 8 s window. The duration check now reports clips that run past the window or end more than 0.5 s early.
+- **Two new trial-CSV columns** (64 in total): `imageShown` and `audioOnsetDelaySec`. `modality` is `av`, `visual` or `audio`.
+- Participant instructions are worded for each modality (watch and listen / view / listen).
+
+v4 data remain readable; all v4 columns, event codes and the session storage key are unchanged.
+
+## What changed in v4.0.0 (from v3.0.0)
+
+- **Modality setting**: *Audiovisual (paired image + audio)* (default) or *Visual only* (v3 behaviour).
+- **Audio pairing**: by a pairing manifest (CSV), or by an identical file stem in the same set and condition (`NEG_01.png` ↔ `NEG_01.wav`). Before the session, the app lists conditions with too few pairs and pairs whose durations differ by more than 0.5 s.
+- **Playback**: Web Audio API. All clips are decoded and preloaded before the first trial, and RMS and peak levels are logged per clip. One fixed gain applies to the whole session. At stimulus offset the sound fades out (default 50 ms), so no clip runs into the next phase. Only one clip can play at a time.
+- **Level check**: before an audiovisual session can start, a 1 kHz reference tone (2 s, −20 dBFS) must be played at the session gain. The tone is required again after any gain change. The browser cannot measure sound pressure, so set the system volume and headphones to the approved level with a sound level meter.
+- **Autoplay policy**: the audio context is started by the operator's click (reference tone or Start); no audio plays without a user gesture.
+- **Failure handling**: if a clip is missing, fails to decode or fails to play, the trial continues visually. An `audio_error` event (code 90) is logged, the row gets `audioStatus` ≠ `ok` and `audioValid = false`. Nothing fails silently.
+- **Optional STOP cue** (`STOP Cue (seconds; 0 = off)`, default 0), for the alternative timing considered earlier. The default timing does not change.
+- **Practice flag** (`isPractice`), **photodiode patch** (48 px corner square, white during the stimulus) and a numeric **event code** for every event.
+- **Validity flags**: `trialStatus`, `ratingValid` and `audioValid`. Missing ratings stay empty and are never filled in.
+- **Marker hook**: if the page defines `window.AffectLabMarker = function ({code, event, trial, elapsedMs}) {…}`, it is called synchronously for every logged event, and `markerHookCalled` records whether the call succeeded. No acquisition integration is included.
 
 ## Run a demonstration
 
-1. Open the deployed page or serve this folder over HTTP. For local use, run `python -m http.server 8000` in this folder and open `http://localhost:8000/` in desktop Chrome or Edge.
-2. Enter a synthetic participant identifier such as `DEMO-01`. Select session day, exercise/rest, pre/post and set A–D.
-3. Enable **Demo Mode** for program-generated placeholders. To test local import, use the **Emotion Image Library** and select an image set and task before selecting authorised files. Demo Mode bypasses the imported image bank.
-4. Start the experiment and accept the general and block instructions. The default is 10 trials per condition and 30 per assessment. Each default trial runs 2 s fixation, 8 s visual stimulus, 8 s rating and 20 s recovery. The 19-minute nominal duration excludes instructions and transitions. The two block-order options keep NEU-NAT first and swap the negative blocks.
-5. Rate valence and arousal independently on SAM-inspired 1–5 numeric scales. The image-size slider adjusts the presentation box from 30% to 100%, preserving aspect ratio. **Skip Trial** records a skipped row and clears partial trial ratings.
-6. Open **Ratings & Data** and download the trial CSV and event CSV.
+1. Serve this folder over HTTP: `python -m http.server 8000`, then open `http://localhost:8000/` in desktop Chrome or Edge. Opening `index.html` from the file system also works, but storage behaves per file path.
+2. Enter a test ID such as `DEMO-01`, then choose the day, Exercise/Rest, Pre/Post and set A–D.
+3. Leave **Stimulus Modality** on *Audiovisual*. Tick **Demo Mode** to use generated placeholder images and tones; no import is needed.
+4. In **Audio Playback & Level Check**, set the gain and press **Play 1 kHz Reference Tone**. The green confirmation line must appear before Start is enabled.
+5. Start, accept the instructions and run the trials. The defaults are 10 trials per condition (30 per assessment) with 2 s fixation, 8 s audiovisual stimulus, 8 s rating and 20 s recovery, giving 38 s per trial and 19 min per assessment, excluding instructions. Use **Skip Trial** or **End Experiment** to test interruption handling.
+6. Open **Ratings & Data** and download the trial CSV and the event CSV.
 
-## Data and timing
+To try real files, import the material in `sample_assets/` in the **Emotion Image Library**. Import `images/` per condition under **Add Stimulus Images**. Import `audio/` per condition under **Add Stimulus Audio**. Optionally load `sample_pairing_manifest.csv` under **Pairing Manifest → Load Manifest CSV**. All sample files are synthetic test assets (labelled images and tones/noise at −26 dBFS RMS) generated for this package. They are not emotional stimuli.
 
-- Images are stored in IndexedDB for this browser origin. The image bank falls back to memory if IndexedDB is unavailable. Sessions are stored in localStorage after completion or explicit interruption, up to the most recent 100 records. Export promptly for approved research use. Moving to another origin or browser profile does not migrate local records.
-- Trial CSV records include session metadata, condition code, image identifier, both ratings and response times, software phase onsets, image-size setting and skip status. Event CSV records include the session ID, trial number, event, software elapsed time from `performance.now()`, UTC wall-clock time and event details. Use `isDemo` to filter test records. Both exports use UTF-8.
-- Software phase times mark browser state transitions. They do not measure physical display onset or hardware trigger times. This version has no audio playback, device acquisition, or EEG/fNIRS synchronization interface. Keep the browser tab in the foreground. Test system timing separately before research use.
-- The public demo uses generated SVG placeholders. This release includes no participant records, hardware design files, keys, or third-party stimulus images. The software license covers the code and generated demo graphics. Obtain separate permission for any imported material and use test IDs on the public demo.
+## Pairing manifest
+
+Download the template with **Pairing Manifest → Download Template**. Columns:
+
+```
+set,condition,image,audio,category,valence,arousal
+A,NEU-NAT,NEU_01.jpg,NEU_01.wav,neutral,,
+A,NEG-NAT,NEG_01.jpg,NEG_01.wav,fear,,
+A,NEG-SUP,NEG_11.jpg,NEG_11.wav,fear,,
+```
+
+`condition` accepts NEU-NAT / NEG-NAT / NEG-SUP (or WNeu / WNeg / ES). `category`, `valence` and `arousal` are optional normative values copied into each trial row (`stimulusCategory`, `normValence`, `normArousal`). They are there to document the matching of NEG-NAT and NEG-SUP clips on category, normative ratings, duration, loudness and onset.
+
+## Data files
+
+**Trial CSV (62 columns, one row per planned trial).**
+
+- Session: `sessionId, appVersion, participant, day, intervention, phase, imageSet, modality, isDemo, isPractice, sessionStatus, sessionStartUtc`
+- Stimulus: `trial, condition, conditionCode, imageType, imageFile, imageId, pairId, audioFile, audioId, audioDurationSec, audioRmsDbfs, stimulusCategory, normValence, normArousal`
+- Ratings: `valence, arousal, valenceResponseMs, arousalResponseMs` (1–5; empty if not given)
+- Timing (ms from session start, `performance.now()` clock): `fixationOnsetMs, imageOnsetMs, visualFrameMs, audioScheduledMs, audioOnsetEstMs, avOffsetEstMs, audioOutputLatencyMs, audioBaseLatencyMs, stimulusOffsetMs, stimulusDurationMs, stopOnsetMs, samOnsetMs, recoveryOnsetMs`
+- Status: `audioStatus` (ok / missing / decode_failed / play_error / visual_only), `audioEndedBeforeOffset, visibilityInterrupted, skipped, skippedAtStep, skipTimeMs, imageSizeAtOnsetPercent, trialStatus` (complete / incomplete_rating / skipped / interrupted / visibility_interrupted / not_presented), `ratingValid` (true only if `trialStatus = complete`), `audioValid`
+- Settings: `durationFixSec, durationImageSec, durationStopSec, durationSamSec, durationRecoverySec, audioGainPercent, audioFadeMs, audioCheckUtc, photodiodeMarker`
+
+`visualFrameMs` is the timestamp of the first animation frame after the image is inserted. `audioOnsetEstMs` maps the audio context's output timestamp to the same clock, and includes the reported output latency where the browser provides it. `avOffsetEstMs = audioOnsetEstMs − visualFrameMs`. All three are software estimates (see *Timing limits*).
+
+**Event CSV (one row per event).** `sessionId, appVersion, participant, day, intervention, condition, conditionCode, phase, set, isDemo, isPractice, event, eventCode, trial, imageType, imageFile, audioFile, elapsedMs, utcIso, markerHookCalled, detail`
+
+**Event codes.**
+
+| Code | Event | Code | Event |
+| --- | --- | --- | --- |
+| 1 / 2 / 3 | session start / completed / aborted | 50 | rating screen onset |
+| 10 | fixation onset | 51 / 52 | valence / arousal response |
+| 21–23 | image onset (+1 NEU-NAT, +2 NEG-NAT, +3 NEG-SUP) | 53 | rating complete |
+| 31–33 | audio onset (same offsets) | 60 | recovery onset |
+| 40 | stimulus offset (fade starts) | 70 / 71 | trial complete / skipped |
+| 45 | STOP cue onset (only if enabled) | 80 / 81 | block start / end |
+| 90 | audio error | 0 | informational (preload, instructions, visual frame, visibility change, audio end) |
+
+Code 95 (`audio_check`) is reserved. The reference-tone time is stored in `audioCheckUtc` instead.
+
+Sessions are stored in this browser's localStorage, and images and audio in IndexedDB (`AffectLabImageBank`, stores `pictures` and `sounds`). Nothing is uploaded. Export promptly and keep exports with the approved data-management plan. Use `isDemo` and `isPractice` to filter test rows.
+
+## Timing limits (read before research use)
+
+- All times are **browser software timestamps**. They show when the program issued an event, not when light left the screen or sound left the headphones.
+- Display timing depends on the refresh rate, compositor and browser. In a background or occluded tab, the display loop is throttled, and the first frame can be delayed by hundreds of milliseconds (observed in testing; see `VERIFICATION.md`). The timer backstop keeps phase durations correct, but `visualFrameMs` and `avOffsetEstMs` are not valid there. Run studies in a foreground fullscreen window.
+- Audio output latency reported by the browser is an estimate, and Bluetooth audio adds variable delay. Use wired headphones.
+- **This software does not synchronise EEG or fNIRS hardware.** Before research use, measure visual onset with the photodiode patch and a light sensor, and sound onset by audio loopback. Then confirm that shared markers appear in both acquisition systems.
+
+## Stimuli and licensing
+
+The MIT licence (`LICENSE`) covers the code and the generated demo and sample assets only. Research images and audio (for example IAPS, IADS or other databases) must be obtained under their own licence or permission. Do not commit them to a public repository. Use test IDs on any public deployment.
 
 ## Publish on GitHub Pages
 
-1. In your GitHub account, create a public repository named `EEG-fNIRS-Emotion-Experiment` or select a dedicated public repository you own.
-2. Commit `index.html`, `README.md`, `LICENSE` and `.nojekyll` to the root of `main`. The commit must contain these deployment files only. In the web upload UI, ensure `.nojekyll` is included as a separate file if your file picker hides it.
-3. Under **Settings → Pages → Build and deployment**, choose **Deploy from a branch**, select **main** and **/(root)**, then save.
-4. After the Pages deployment succeeds, open **Visit site** in an incognito desktop window. Run Demo Mode with a test ID and verify both CSV exports. Use the URL shown by GitHub Pages in the report.
-
-Official setup documentation is available at https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site.
-
-## Release checks
-
-A JavaScript regression used a virtual clock and simulated browser APIs to complete all 30 default demo trials and a separate six-trial image-import sequence. It checked separate ratings, alternate block order, image-size changes, skip and missing-response handling, session fields, and generation of the two CSV files. Run the desktop browser checks in the publishing steps to verify native storage, display and downloads on the hosted origin.
+Commit `index.html`, `README.md`, `VERIFICATION.md`, `LICENSE`, `.nojekyll` and, optionally, `sample_assets/` to the root of `main`. Then choose **Settings → Pages → Deploy from a branch → main / (root)**. Open the published URL in a private desktop window, run Demo Mode with a test ID and download both CSV files.

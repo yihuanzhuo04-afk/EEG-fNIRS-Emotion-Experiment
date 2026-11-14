@@ -1,0 +1,7 @@
+set,condition,image,audio,category,valence,arousal
+A,NEU-NAT,NEU_01.png,NEU_01.wav,neutral,,
+A,NEU-NAT,NEU_02.png,NEU_02.wav,neutral,,
+A,NEG-NAT,NEG_01.png,NEG_01.wav,synthetic-negative,,
+A,NEG-NAT,NEG_02.png,NEG_02.wav,synthetic-negative,,
+A,NEG-SUP,NEG_11.png,NEG_11.wav,synthetic-negative,,
+A,NEG-SUP,NEG_12.png,NEG_12.wav,synthetic-negative,,

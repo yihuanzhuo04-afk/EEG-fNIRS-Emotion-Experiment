@@ -3,17 +3,83 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>AffectLab | EEG–fNIRS Emotion Regulation Prototype</title>
-<meta name="application-version" content="3.0.0" />
+<title>AffectLab | EEG–fNIRS Audiovisual Emotion Regulation Prototype</title>
+<meta name="application-version" content="5.0.0" />
 <style>
 :root{--bg:#f4f7fa;--ink:#17263e;--muted:#64758a;--line:#dee6ee;--primary:#126e7b;--primary-dark:#0a5260;--teal:#e8f5f4;--white:#fff;--amber:#a76618;--danger:#c04444;--side:#112438;--shadow:0 12px 38px rgba(22,41,64,.055)}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;font-size:14px;line-height:1.6}button,input,select{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.48}a{color:inherit}.layout{min-height:100vh;display:flex}.sidebar{width:270px;flex-shrink:0;background:var(--side);color:#e5edf5;min-height:100vh;padding:29px 18px;display:flex;flex-direction:column}.brand{display:flex;gap:13px;align-items:center;padding:4px 8px 26px}.brand-mark{width:40px;height:40px;border:1px solid #386b79;border-radius:12px;background:linear-gradient(145deg,#19566a,#102e48);display:grid;place-items:center;color:#85dbd3;font-weight:900;font-size:21px}.brand-name{font-weight:760;letter-spacing:.2px;font-size:16px;line-height:1.3}.brand-small{font-size:10px;letter-spacing:1.7px;color:#90a8bd;margin-top:4px}.side-label{font-size:11px;color:#819ab0;letter-spacing:1.7px;padding:18px 15px 10px}.nav-btn{width:100%;background:transparent;border:0;color:#afc1d1;text-align:left;padding:12px 15px;border-radius:10px;display:flex;gap:13px;align-items:center;font-weight:600;margin:2px 0}.nav-btn:hover{background:#1d384e;color:#fff}.nav-btn.active{background:#214455;color:#fff;box-shadow:inset 3px 0 0 #76d8cd}.nav-icon{width:20px;text-align:center;font-size:17px}.side-bottom{margin-top:auto;padding:20px 13px 0;color:#94acbf;font-size:12px;border-top:1px solid #284359}.side-bottom strong{color:#e2f3f1;font-weight:650;display:block;margin-bottom:6px}.status-dot{display:inline-block;background:#58c4b2;width:8px;height:8px;border-radius:50%;margin-right:7px}.main{width:calc(100% - 270px);max-width:1540px;margin:0 auto;padding:38px 46px 60px}.eyebrow{text-transform:uppercase;letter-spacing:2.2px;color:var(--primary);font-size:11px;font-weight:800;margin:0 0 9px}.page-title{font-size:31px;line-height:1.15;letter-spacing:-.8px;margin:0 0 11px;font-weight:800}.page-desc{margin:0 0 27px;color:var(--muted);max-width:840px}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px}.metric,.panel{background:var(--white);border:1px solid #e2eaf0;border-radius:16px;box-shadow:var(--shadow)}.metric{padding:18px 20px}.metric-number{font-size:25px;font-weight:790;margin-top:3px;line-height:1.1}.metric-kicker{color:var(--muted);font-size:11px;font-weight:700;letter-spacing:.6px}.metric-note{font-size:11px;color:#8996a5;margin-top:7px}.panel{padding:24px;margin-bottom:19px}.panel-head{display:flex;align-items:start;justify-content:space-between;gap:18px;margin-bottom:20px}.panel h2{font-size:17px;line-height:1.4;margin:0 0 4px}.small,.hint{color:var(--muted);font-size:12px}.hint{margin:6px 0 0}.two-col{display:grid;grid-template-columns:1.2fr .8fr;gap:19px}.form-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:19px}.form-field{display:flex;flex-direction:column;gap:7px;min-width:0}.form-field label{font-weight:700;font-size:12px;color:#435770}.field{min-height:44px;border-radius:9px;border:1px solid #d7e2eb;padding:10px 12px;color:var(--ink);width:100%;background:#fff;outline:0}.field:focus{border-color:#2a98a7;box-shadow:0 0 0 3px rgba(30,138,151,.12)}.btn{border:1px solid #d5e1e8;background:#fff;color:#294159;border-radius:10px;padding:10px 15px;min-height:40px;font-weight:720;display:inline-flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap}.btn:hover:not(:disabled){background:#f1f6f8}.btn-primary{background:var(--primary);color:#fff;border-color:var(--primary)}.btn-primary:hover:not(:disabled){background:var(--primary-dark)}.btn-danger{color:#a53b3b;background:#fff;border-color:#f0d2d2}.btn-soft{background:var(--teal);color:var(--primary);border-color:#d2e8e4}.btn-lg{padding:13px 21px;min-height:48px}.pill{display:inline-flex;align-items:center;gap:6px;border:1px solid #d6e6e8;border-radius:99px;background:#eef6f5;padding:5px 10px;font-size:11px;color:#19616c;font-weight:720}.pill-gray{border-color:#e4e8ed;color:#65768a;background:#f6f8fa}.divider{height:1px;background:var(--line);margin:22px 0}.muted-bg{background:#f4f8fa;border:1px solid #e3ebef;border-radius:12px;padding:15px 17px}.section-tabs{display:flex;gap:9px;flex-wrap:wrap}.chip{border:1px solid #d5e2e9;color:#557084;background:#fff;padding:7px 12px;border-radius:8px;font-weight:700}.chip.active{background:#dcefee;border-color:#badbd8;color:#126674}.upload-zone{border:2px dashed #bbd5d8;border-radius:14px;background:#f7fbfb;min-height:152px;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:20px;transition:background .15s}.upload-zone.drag{background:#e4f4f1;border-color:#23909b}.upload-icon{font-size:27px;margin-bottom:4px}.upload-zone strong{font-size:14px}.upload-zone p{color:var(--muted);font-size:12px;margin:5px 0 12px}.image-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:13px}.image-card{border:1px solid #dfe7ed;border-radius:12px;overflow:hidden;background:#fff}.image-card img{width:100%;height:105px;object-fit:contain;background:#101820;display:block}.image-card-details{padding:10px}.img-name{white-space:nowrap;text-overflow:ellipsis;overflow:hidden;max-width:100%;font-size:12px;font-weight:700}.img-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:6px}.img-tag{font-size:10px;color:var(--muted)}.mini-delete{background:#fff;border:0;color:#a24f50;font-size:12px;padding:3px 5px}.bank-table{width:100%;border-collapse:collapse}.bank-table th,.bank-table td{border-bottom:1px solid #e8edf1;text-align:center;padding:10px 8px;font-size:12px}.bank-table th{color:var(--muted);font-weight:700}.bank-table td:first-child,.bank-table th:first-child{text-align:left}.good{color:#13816e;font-weight:700}.bad{color:var(--amber);font-weight:700}.run-check{display:flex;gap:10px;align-items:start;padding:14px 16px;border:1px solid #cfe8e2;background:#edf8f5;border-radius:11px;color:#236a61;font-size:13px}.run-check.warn{border-color:#f2dec7;background:#fff7ed;color:#965d21}.flow-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}.flow-step{background:#f2f6f8;border:1px solid #e1e8ee;padding:15px 10px;border-radius:11px;text-align:center}.flow-step span{display:block;color:#687c90;font-size:12px}.flow-step strong{font-size:19px;font-weight:800}.checkbox-row{display:flex;gap:9px;align-items:start;color:#4c6075;font-size:12px}.checkbox-row input{margin-top:3px;accent-color:var(--primary)}.button-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.callout{border-left:3px solid #40a39b;padding:12px 15px;background:#eef8f6;font-size:12px;border-radius:0 9px 9px 0;color:#335b61}.guide-step{display:flex;gap:14px;margin:18px 0}.guide-number{background:#e2f1ee;color:#14716d;display:grid;place-items:center;width:30px;height:30px;border-radius:9px;flex-shrink:0;font-weight:790}.guide-step strong{display:block}.guide-step p{margin:4px 0 0;color:var(--muted);font-size:13px}.table-scroll{overflow-x:auto}table.result-table{width:100%;border-collapse:collapse;min-width:850px}.result-table th{font-size:11px;letter-spacing:.2px;color:#738297;text-align:left;border-bottom:1px solid #e4eaf0;padding:12px 8px}.result-table td{font-size:12px;border-bottom:1px solid #edf1f4;padding:14px 8px}.result-table .btn{min-height:30px;padding:5px 9px;font-size:11px}.empty-state{border:1px dashed #d4e1e9;border-radius:13px;padding:30px 15px;text-align:center;color:var(--muted);background:#fafcfd}.hide{display:none!important}.toast{position:fixed;bottom:22px;right:22px;z-index:100;border-radius:11px;background:#163d4a;color:#fff;box-shadow:0 14px 36px rgba(0,0,0,.22);padding:13px 18px;max-width:380px;font-size:13px;opacity:0;transform:translateY(8px);transition:opacity .2s,transform .2s;pointer-events:none}.toast.show{opacity:1;transform:translateY(0)}.session-note{display:flex;align-items:center;gap:8px;color:#607b85;font-size:12px}.app-footer{color:#8a9caf;font-size:11px;margin-top:31px}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;font-size:14px;line-height:1.6}button,input,select{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.48}a{color:inherit}.layout{min-height:100vh;display:flex}.sidebar{width:270px;flex-shrink:0;background:var(--side);color:#e5edf5;min-height:100vh;padding:29px 18px;display:flex;flex-direction:column}.brand{display:flex;gap:13px;align-items:center;padding:4px 8px 26px}.brand-mark{width:40px;height:40px;border:1px solid #386b79;border-radius:12px;background:linear-gradient(145deg,#19566a,#102e48);display:grid;place-items:center;color:#85dbd3;font-weight:900;font-size:21px}.brand-name{font-weight:760;letter-spacing:.2px;font-size:16px;line-height:1.3}.brand-small{font-size:10px;letter-spacing:1.7px;color:#90a8bd;margin-top:4px}.side-label{font-size:11px;color:#819ab0;letter-spacing:1.7px;padding:18px 15px 10px}.nav-btn{width:100%;background:transparent;border:0;color:#afc1d1;text-align:left;padding:12px 15px;border-radius:10px;display:flex;gap:13px;align-items:center;font-weight:600;margin:2px 0}.nav-btn:hover{background:#1d384e;color:#fff}.nav-btn.active{background:#214455;color:#fff;box-shadow:inset 3px 0 0 #76d8cd}.nav-icon{width:20px;text-align:center;font-size:17px}.side-bottom{margin-top:auto;padding:20px 13px 0;color:#94acbf;font-size:12px;border-top:1px solid #284359}.side-bottom strong{color:#e2f3f1;font-weight:650;display:block;margin-bottom:6px}.status-dot{display:inline-block;background:#58c4b2;width:8px;height:8px;border-radius:50%;margin-right:7px}.main{width:calc(100% - 270px);max-width:1540px;margin:0 auto;padding:38px 46px 60px}.eyebrow{text-transform:uppercase;letter-spacing:2.2px;color:var(--primary);font-size:11px;font-weight:800;margin:0 0 9px}.page-title{font-size:31px;line-height:1.15;letter-spacing:-.8px;margin:0 0 11px;font-weight:800}.page-desc{margin:0 0 27px;color:var(--muted);max-width:840px}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px}.metric,.panel{background:var(--white);border:1px solid #e2eaf0;border-radius:16px;box-shadow:var(--shadow)}.metric{padding:18px 20px}.metric-number{font-size:25px;font-weight:790;margin-top:3px;line-height:1.1}.metric-kicker{color:var(--muted);font-size:11px;font-weight:700;letter-spacing:.6px}.metric-note{font-size:11px;color:#8996a5;margin-top:7px}.panel{padding:24px;margin-bottom:19px}.panel-head{display:flex;align-items:start;justify-content:space-between;gap:18px;margin-bottom:20px}.panel h2{font-size:17px;line-height:1.4;margin:0 0 4px}.small,.hint{color:var(--muted);font-size:12px}.hint{margin:6px 0 0}.two-col{display:grid;grid-template-columns:1.2fr .8fr;gap:19px}.form-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:19px}.form-field{display:flex;flex-direction:column;gap:7px;min-width:0}.form-field label{font-weight:700;font-size:12px;color:#435770}.field{min-height:44px;border-radius:9px;border:1px solid #d7e2eb;padding:10px 12px;color:var(--ink);width:100%;background:#fff;outline:0}.field:focus{border-color:#2a98a7;box-shadow:0 0 0 3px rgba(30,138,151,.12)}.btn{border:1px solid #d5e1e8;background:#fff;color:#294159;border-radius:10px;padding:10px 15px;min-height:40px;font-weight:720;display:inline-flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap}.btn:hover:not(:disabled){background:#f1f6f8}.btn-primary{background:var(--primary);color:#fff;border-color:var(--primary)}.btn-primary:hover:not(:disabled){background:var(--primary-dark)}.btn-danger{color:#a53b3b;background:#fff;border-color:#f0d2d2}.btn-soft{background:var(--teal);color:var(--primary);border-color:#d2e8e4}.btn-lg{padding:13px 21px;min-height:48px}.pill{display:inline-flex;align-items:center;gap:6px;border:1px solid #d6e6e8;border-radius:99px;background:#eef6f5;padding:5px 10px;font-size:11px;color:#19616c;font-weight:720}.pill-gray{border-color:#e4e8ed;color:#65768a;background:#f6f8fa}.divider{height:1px;background:var(--line);margin:22px 0}.muted-bg{background:#f4f8fa;border:1px solid #e3ebef;border-radius:12px;padding:15px 17px}.section-tabs{display:flex;gap:9px;flex-wrap:wrap}.chip{border:1px solid #d5e2e9;color:#557084;background:#fff;padding:7px 12px;border-radius:8px;font-weight:700}.chip.active{background:#dcefee;border-color:#badbd8;color:#126674}.upload-zone{border:2px dashed #bbd5d8;border-radius:14px;background:#f7fbfb;min-height:152px;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:20px;transition:background .15s}.upload-zone.drag{background:#e4f4f1;border-color:#23909b}.upload-icon{font-size:27px;margin-bottom:4px}.upload-zone strong{font-size:14px}.upload-zone p{color:var(--muted);font-size:12px;margin:5px 0 12px}.image-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:13px}.image-card{border:1px solid #dfe7ed;border-radius:12px;overflow:hidden;background:#fff}.image-card img{width:100%;height:105px;object-fit:contain;background:#101820;display:block}.image-card-details{padding:10px}.img-name{white-space:nowrap;text-overflow:ellipsis;overflow:hidden;max-width:100%;font-size:12px;font-weight:700}.img-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:6px}.img-tag{font-size:10px;color:var(--muted)}.mini-delete{background:#fff;border:0;color:#a24f50;font-size:12px;padding:3px 5px}.bank-table{width:100%;border-collapse:collapse}.bank-table th,.bank-table td{border-bottom:1px solid #e8edf1;text-align:center;padding:10px 8px;font-size:12px}.bank-table th{color:var(--muted);font-weight:700}.bank-table td:first-child,.bank-table th:first-child{text-align:left}.good{color:#13816e;font-weight:700}.bad{color:var(--amber);font-weight:700}.run-check{display:flex;gap:10px;align-items:start;padding:14px 16px;border:1px solid #cfe8e2;background:#edf8f5;border-radius:11px;color:#236a61;font-size:13px}.run-check.warn{border-color:#f2dec7;background:#fff7ed;color:#965d21}.flow-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px}.flow-step{background:#f2f6f8;border:1px solid #e1e8ee;padding:15px 10px;border-radius:11px;text-align:center}.flow-step span{display:block;color:#687c90;font-size:12px}.flow-step strong{font-size:19px;font-weight:800}.checkbox-row{display:flex;gap:9px;align-items:start;color:#4c6075;font-size:12px}.checkbox-row input{margin-top:3px;accent-color:var(--primary)}.button-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.callout{border-left:3px solid #40a39b;padding:12px 15px;background:#eef8f6;font-size:12px;border-radius:0 9px 9px 0;color:#335b61}.guide-step{display:flex;gap:14px;margin:18px 0}.guide-number{background:#e2f1ee;color:#14716d;display:grid;place-items:center;width:30px;height:30px;border-radius:9px;flex-shrink:0;font-weight:790}.guide-step strong{display:block}.guide-step p{margin:4px 0 0;color:var(--muted);font-size:13px}.table-scroll{overflow-x:auto}table.result-table{width:100%;border-collapse:collapse;min-width:850px}.result-table th{font-size:11px;letter-spacing:.2px;color:#738297;text-align:left;border-bottom:1px solid #e4eaf0;padding:12px 8px}.result-table td{font-size:12px;border-bottom:1px solid #edf1f4;padding:14px 8px}.result-table .btn{min-height:30px;padding:5px 9px;font-size:11px}.empty-state{border:1px dashed #d4e1e9;border-radius:13px;padding:30px 15px;text-align:center;color:var(--muted);background:#fafcfd}.hide{display:none!important}.toast{position:fixed;bottom:22px;right:22px;z-index:100;border-radius:11px;background:#163d4a;color:#fff;box-shadow:0 14px 36px rgba(0,0,0,.22);padding:13px 18px;max-width:380px;font-size:13px;opacity:0;transform:translateY(8px);transition:opacity .2s,transform .2s;pointer-events:none}.toast.show{opacity:1;transform:translateY(0)}.session-note{display:flex;align-items:center;gap:8px;color:#607b85;font-size:12px}.app-footer{color:#8a9caf;font-size:11px;margin-top:31px}
 /* Participant-facing fullscreen overlay */
-#experiment{position:fixed;inset:0;z-index:1000;background:#090d13;color:#e9eef2;display:none;flex-direction:column;overflow:hidden}#experiment.active{display:flex}#experiment:fullscreen{width:100vw;height:100vh}.exp-header{display:flex;justify-content:space-between;align-items:center;padding:14px 22px;min-height:60px;border-bottom:1px solid #202a34;gap:12px}.exp-eyebrow{font-size:10px;font-weight:740;color:#8ea1ac;letter-spacing:1.8px}.exp-sub{font-size:13px;color:#bac7d0;font-weight:630}.exp-center{flex:1;display:flex;justify-content:center;align-items:center;min-height:0;padding:8px 12px}.exp-content{height:100%;width:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;min-height:0}.exp-plus{font-size:44px;font-weight:250;color:#eee}.exp-visual{width:var(--stimulus-scale,100%);height:var(--stimulus-scale,100%);max-width:100%;max-height:100%;object-fit:contain;object-position:center;display:block;flex:0 0 auto}.exp-rating{width:min(1120px,92vw);display:flex;flex-direction:column;gap:22px;align-items:stretch;justify-content:center}.rating-title{text-align:center;font-size:clamp(24px,3.2vw,34px);font-weight:720;margin-bottom:8px}.rating-sub{text-align:center;color:#96a9b7;margin-top:-14px;margin-bottom:14px;font-size:14px}.scale-wrap{background:#121c25;border:1px solid #2a3947;border-radius:16px;padding:28px 32px}.scale-label{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:12px}.scale-label strong{font-size:16px}.scale-label small{color:#93a6b5;font-size:12px}.scale-opts{display:grid;grid-template-columns:repeat(5,1fr);gap:11px}.scale-btn{padding:13px 3px;border-radius:9px;border:1px solid #435567;background:#172532;color:#e4ebef;font-size:18px;font-weight:730;min-height:53px}.scale-btn:hover,.scale-btn:focus{border-color:#80d3ca;background:#244046}.scale-btn.selected{background:#176a70;color:#fff;border-color:#80cec1}.scale-ends{display:flex;justify-content:space-between;color:#91a4b3;font-size:12px;margin-top:8px}.exp-footer{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px;padding:10px 18px 12px;border-top:1px solid #202a34}.exp-progress{width:min(310px,100%);height:5px;border-radius:5px;background:#2a343d;overflow:hidden;margin-top:7px}.exp-progress-inner{background:#63c7b8;height:100%;width:0%;transition:width .15s}.exp-clock{font-variant-numeric:tabular-nums;font-weight:780;font-size:25px;color:#fff}.exp-clock-label{font-size:10px;color:#93a5b3;text-align:center;letter-spacing:1px}.exp-quit{justify-self:end;color:#aeb9c1;background:#16212b;border:1px solid #344450;border-radius:9px;padding:8px 14px;font-size:12px}.exp-quit:hover{color:#fff;border-color:#7d949e}.exp-controls{justify-self:end;display:flex;align-items:center;justify-content:flex-end;gap:14px;flex-wrap:wrap}.exp-size-control{display:flex;align-items:center;gap:9px;color:#bfd0da;font-size:12px;white-space:nowrap}.exp-size-control input{width:150px;accent-color:#63c7b8;cursor:pointer}.exp-size-value{display:inline-block;min-width:37px;text-align:right;color:#e9eef2;font-weight:700;font-variant-numeric:tabular-nums}.exp-skip{color:#e3edf2;background:#18313a;border:1px solid #36616a;border-radius:9px;padding:8px 13px;font-size:12px;font-weight:700;white-space:nowrap}.exp-skip:not(:disabled):hover{background:#23515a;border-color:#6eb9b0}.exp-skip:disabled{opacity:.35;cursor:not-allowed}.exp-quiet{font-size:12px;color:#96a7b3;letter-spacing:1px}.exp-loading{font-size:23px;font-weight:730;line-height:1.6;text-align:center}.exp-loading small{display:block;color:#8aa0ad;font-weight:400;font-size:14px;margin-top:9px}.nav-mobile{display:none}
+#experiment{position:fixed;inset:0;z-index:1000;background:#090d13;color:#e9eef2;display:none;flex-direction:column;overflow:hidden}#experiment.active{display:flex}#experiment:fullscreen{width:100vw;height:100vh}.exp-header{display:flex;justify-content:space-between;align-items:center;padding:14px 22px;min-height:60px;border-bottom:1px solid #202a34;gap:12px}.exp-eyebrow{font-size:10px;font-weight:740;color:#8ea1ac;letter-spacing:1.8px}.exp-sub{font-size:13px;color:#bac7d0;font-weight:630}.exp-center{flex:1;display:flex;justify-content:center;align-items:center;min-height:0;padding:8px 12px}.exp-content{height:100%;width:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;min-height:0}.exp-plus{font-size:44px;font-weight:250;color:#eee}.exp-visual{width:var(--stimulus-scale,100%);height:var(--stimulus-scale,100%);max-width:100%;max-height:100%;object-fit:contain;object-position:center;display:block;flex:0 0 auto}.exp-rating{width:min(1120px,92vw);display:flex;flex-direction:column;gap:22px;align-items:stretch;justify-content:center}.rating-title{text-align:center;font-size:clamp(24px,3.2vw,34px);font-weight:720;margin-bottom:8px}.rating-sub{text-align:center;color:#96a9b7;margin-top:-14px;margin-bottom:14px;font-size:14px}.scale-wrap{background:#121c25;border:1px solid #2a3947;border-radius:16px;padding:28px 32px}.scale-label{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:12px}.scale-label strong{font-size:16px}.scale-label small{color:#93a6b5;font-size:12px}.scale-opts{display:grid;grid-template-columns:repeat(5,1fr);gap:11px}.scale-btn{padding:13px 3px;border-radius:9px;border:1px solid #435567;background:#172532;color:#e4ebef;font-size:18px;font-weight:730;min-height:53px}.scale-btn:hover,.scale-btn:focus{border-color:#80d3ca;background:#244046}.scale-btn.selected{background:#176a70;color:#fff;border-color:#80cec1}.scale-ends{display:flex;justify-content:space-between;color:#91a4b3;font-size:12px;margin-top:8px}.exp-footer{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px;padding:10px 18px 12px;border-top:1px solid #202a34}.exp-progress{width:min(310px,100%);height:5px;border-radius:5px;background:#2a343d;overflow:hidden;margin-top:7px}.exp-progress-inner{background:#63c7b8;height:100%;width:0%;transition:width .15s}.exp-clock{font-variant-numeric:tabular-nums;font-weight:780;font-size:25px;color:#fff}.exp-clock-label{font-size:10px;color:#93a5b3;text-align:center;letter-spacing:1px}.exp-quit{justify-self:end;color:#aeb9c1;background:#16212b;border:1px solid #344450;border-radius:9px;padding:8px 14px;font-size:12px}.exp-quit:hover{color:#fff;border-color:#7d949e}.exp-controls{justify-self:end;display:flex;align-items:center;justify-content:flex-end;gap:14px;flex-wrap:wrap}.exp-size-control{display:flex;align-items:center;gap:9px;color:#bfd0da;font-size:12px;white-space:nowrap}.exp-size-control input{width:150px;accent-color:#63c7b8;cursor:pointer}.exp-size-value{display:inline-block;min-width:37px;text-align:right;color:#e9eef2;font-weight:700;font-variant-numeric:tabular-nums}.exp-skip{color:#e3edf2;background:#18313a;border:1px solid #36616a;border-radius:9px;padding:8px 13px;font-size:12px;font-weight:700;white-space:nowrap}.exp-skip:not(:disabled):hover{background:#23515a;border-color:#6eb9b0}.exp-skip:disabled{opacity:.35;cursor:not-allowed}.exp-quiet{font-size:12px;color:#96a7b3;letter-spacing:1px}.exp-loading{font-size:23px;font-weight:730;line-height:1.6;text-align:center}.exp-loading small{display:block;color:#8aa0ad;font-weight:400;font-size:14px;margin-top:9px}.nav-mobile{display:none}.exp-stop{font-size:58px;font-weight:800;letter-spacing:6px;color:#f1f4f6}#photodiode-patch{position:fixed;left:0;bottom:0;width:48px;height:48px;background:#000;z-index:1002}#photodiode-patch.on{background:#fff}.range-row{display:flex;align-items:center;gap:12px}.range-row input{flex:1;accent-color:var(--primary)}.status-line{font-size:12px;color:var(--muted);margin-top:8px}.status-line.good{color:#13816e}
 @media(max-width:1100px){.sidebar{width:220px}.main{width:calc(100% - 220px);padding:30px 25px}.two-col{grid-template-columns:1fr}.cards{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:700px){.layout{display:block}.sidebar{width:100%;min-height:auto;padding:13px 15px;display:block}.brand{padding:0}.brand-mark{width:35px;height:35px}.brand-small{display:none}.side-label,.side-bottom{display:none}.sidebar nav{display:flex;overflow:auto;gap:4px;margin-top:12px}.nav-btn{width:auto;flex-shrink:0;white-space:nowrap;padding:7px 10px;font-size:12px}.nav-icon{display:none}.main{width:100%;padding:23px 16px 45px}.page-title{font-size:26px}.form-grid{grid-template-columns:1fr 1fr;gap:13px}.panel{padding:18px}.flow-grid{grid-template-columns:repeat(2,1fr)}.metric{padding:15px}.exp-header{padding:10px 12px}.exp-center{padding:10px}.exp-footer{padding:10px 12px;gap:8px}.scale-wrap{padding:12px}.scale-opts{gap:5px}.exp-visual{max-height:100%}.rating-title{font-size:19px}.scale-label{display:block}.scale-label small{display:block}}
 @media(max-width:1000px){.exp-size-control input{width:105px}.exp-controls{gap:8px}.exp-footer{gap:9px}}
 @media(max-width:700px){.exp-footer{grid-template-columns:1fr auto;row-gap:10px}.exp-controls{grid-column:1/-1;justify-self:stretch;justify-content:center}.exp-size-control input{width:min(29vw,150px)}.exp-progress{width:100%}}
+</style>
+
+<style id="v5-theme">
+:root{--bg:#f3f5f9;--ink:#141c2b;--muted:#5d6b80;--line:#e3e8ef;--primary:#2f6fde;--primary-dark:#2358b8;--teal:#eaf1fd;--side:#0f1729;--accent:#16a394;--shadow:0 1px 2px rgba(16,24,40,.04),0 8px 24px rgba(16,24,40,.06);--radius:16px}
+body{background:radial-gradient(1200px 500px at 85% -10%,#e6eefc 0,rgba(230,238,252,0) 60%),var(--bg);letter-spacing:.05px}
+.sidebar{background:linear-gradient(180deg,#101a2e 0,#0b1222 100%);border-right:1px solid #1c2740}
+.brand-mark{background:linear-gradient(135deg,#2f6fde,#16a394);border:0;color:#fff;box-shadow:0 6px 18px rgba(47,111,222,.35)}
+.brand-small{color:#8fa3c2}.side-label{color:#6f84a6}
+.nav-btn{color:#b9c6dc;border-radius:12px;transition:background .15s,color .15s}
+.nav-btn:hover{background:rgba(255,255,255,.06)}
+.nav-btn.active{background:rgba(47,111,222,.18);color:#fff;box-shadow:inset 3px 0 0 #5b94ff}
+.status-dot{background:#3ddc97;box-shadow:0 0 0 3px rgba(61,220,151,.18)}
+.eyebrow{color:var(--primary);letter-spacing:2.4px}
+.page-title{font-size:30px;letter-spacing:-.6px}
+.metric,.panel{border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+.metric{position:relative;overflow:hidden}
+.metric::after{content:"";position:absolute;inset:auto -30px -30px auto;width:90px;height:90px;border-radius:50%;background:radial-gradient(circle,rgba(47,111,222,.10),rgba(47,111,222,0) 70%)}
+.metric-number{font-size:27px;letter-spacing:-.5px}
+.panel{padding:26px 28px}
+.panel h2{font-size:16.5px;letter-spacing:-.1px}
+.field{border-radius:10px;border-color:#d9e0ea;transition:border-color .15s,box-shadow .15s}
+.field:focus{border-color:var(--primary);box-shadow:0 0 0 4px rgba(47,111,222,.12)}
+.btn{border-radius:11px;transition:background .15s,border-color .15s,transform .05s}
+.btn:active:not(:disabled){transform:translateY(1px)}
+.btn-primary{background:linear-gradient(180deg,#3a7bea,#2b65cf);border-color:#2b65cf;box-shadow:0 6px 16px rgba(47,111,222,.25)}
+.btn-primary:hover:not(:disabled){background:linear-gradient(180deg,#346fd6,#2358b8)}
+.btn-soft{background:#eef3fd;color:#2358b8;border-color:#d8e4fb}
+.pill{background:#eef3fd;border-color:#d8e4fb;color:#2358b8}
+.chip.active{background:#eaf1fd;border-color:#c9daf9;color:#2358b8}
+.callout{border-left-color:var(--primary);background:#f1f5fd;color:#33476b}
+.run-check{border-radius:12px}
+.upload-zone{border-color:#c9d6ea;background:#f8faff}.upload-zone.drag{background:#eaf1fd;border-color:var(--primary)}
+/* segmented modality control */
+.seg{display:inline-flex;background:#eef2f8;border:1px solid #dfe6f0;border-radius:12px;padding:4px;gap:4px;flex-wrap:wrap}
+.seg button{border:0;background:transparent;color:#4a5b75;font-weight:700;padding:9px 14px;border-radius:9px;min-height:38px}
+.seg button.on{background:#fff;color:#1f4fa8;box-shadow:0 1px 3px rgba(16,24,40,.12)}
+.seg-note{font-size:12px;color:var(--muted);margin-top:8px}
+/* proportional trial timeline */
+.flow-grid{display:flex;gap:6px;align-items:stretch}
+.flow-step{flex:1 1 0;min-width:64px;border:0;border-radius:12px;padding:14px 10px;color:#fff;text-align:left;transition:flex-grow .25s}
+.flow-step span{color:rgba(255,255,255,.85);font-size:11.5px;font-weight:600}
+.flow-step strong{font-size:18px}
+.flow-step:nth-child(1){background:#64748b}.flow-step:nth-child(2){background:linear-gradient(135deg,#2f6fde,#5b8ff0)}
+.flow-step:nth-child(3){background:#c2410c}.flow-step:nth-child(4){background:#16a394}.flow-step:nth-child(5){background:#94a3b8}
+.flow-step.off{display:none}
+/* participant screen: calm, low-distraction */
+#experiment{background:#14171c}
+.exp-header,.exp-footer{border-color:#22272f;opacity:.42;transition:opacity .2s}
+.exp-header:hover,.exp-footer:hover{opacity:1}
+.exp-plus{position:relative;width:44px;height:44px;font-size:0}
+.exp-plus::before,.exp-plus::after{content:"";position:absolute;background:#e8ecf1;border-radius:2px}
+.exp-plus::before{left:20px;top:0;width:4px;height:44px}.exp-plus::after{top:20px;left:0;height:4px;width:44px}
+.exp-listen{display:flex;flex-direction:column;align-items:center;gap:26px}
+.exp-listen small{color:#7f8b9b;font-size:13px;letter-spacing:1.4px}
+.scale-wrap{background:#1b2028;border-color:#2a313c;border-radius:20px}
+.scale-opts{gap:14px}
+.scale-btn{border-radius:999px;aspect-ratio:1/1;min-height:0;width:100%;max-width:74px;justify-self:center;background:#222935;border-color:#3a4454;font-size:20px;transition:background .12s,border-color .12s,transform .08s}
+.scale-btn:hover,.scale-btn:focus{background:#2a3446;border-color:#7ea6f5}
+.scale-btn.selected{background:linear-gradient(180deg,#3a7bea,#2b65cf);border-color:#9bbcf8;transform:scale(1.06)}
+.scale-ends{font-size:12.5px;color:#9aa7b8}
+.rating-title{font-weight:650;letter-spacing:-.2px}
+.exp-progress-inner{background:linear-gradient(90deg,#3a7bea,#16a394)}
+.instr-card{background:#1b2028;border:1px solid #2a313c;border-radius:22px;padding:34px 40px;line-height:1.9}
+.instr-cond{display:grid;grid-template-columns:auto 1fr;gap:10px 16px;align-items:baseline;margin:0 0 18px}
+.instr-tag{font-size:12px;font-weight:800;letter-spacing:1px;padding:4px 10px;border-radius:999px;background:#26324a;color:#a9c4ff;white-space:nowrap}
+.instr-tag.neg{background:#3a2a2a;color:#ffb8a8}.instr-tag.sup{background:#2e2a44;color:#c9b8ff}
 </style>
 </head>
 <body>
@@ -23,21 +89,21 @@
     <nav aria-label="Page navigation">
       <div class="side-label">EXPERIMENT WORKSPACE</div>
       <button class="nav-btn active" data-page="setup"><span class="nav-icon">◫</span>Experiment Setup</button>
-      <button class="nav-btn" data-page="library"><span class="nav-icon">▧</span>Emotion Image Library</button>
+      <button class="nav-btn" data-page="library"><span class="nav-icon">▧</span>Stimulus Library</button>
       <button class="nav-btn" data-page="results"><span class="nav-icon">▤</span>Ratings & Data</button>
       <button class="nav-btn" data-page="guide"><span class="nav-icon">ⓘ</span>User Guide</button>
     </nav>
-    <div class="side-bottom"><strong><span class="status-dot"></span>Browser-local storage</strong>Public prototype. Use Demo Mode with a test ID. Imported images and session records stay in this browser. Use only stimuli you are authorised to import.</div>
+    <div class="side-bottom"><strong><span class="status-dot"></span>Browser-local storage</strong>Public prototype. Use Demo Mode with a test ID. Imported images, audio and session records stay in this browser. Use only stimuli you are authorised to import.</div>
   </aside>
   <main class="main">
     <section id="page-setup" class="page">
       <div class="eyebrow">EXPERIMENT CONTROL PANEL</div>
-      <h1 class="page-title">Emotion Image Experiment Dashboard</h1>
-      <p class="page-desc">Configure a pre- or post-intervention assessment with three blocks: Neutral Natural Exposure, Negative Natural Exposure and Negative Expressive Suppression. Use Demo Mode or import authorised local images, collect separate 1–5 valence and arousal ratings, and export browser event markers.</p>
+      <h1 class="page-title">Emotion Stimulus Experiment Dashboard</h1>
+      <p class="page-desc">Configure a pre- or post-intervention assessment with three blocks: Neutral Natural Exposure, Negative Natural Exposure and Negative Expressive Suppression. Present paired audiovisual stimuli (or images only), use Demo Mode or import authorised local images and audio, collect separate 1–5 valence and arousal ratings, and export browser event markers.</p>
       <div class="cards">
         <div class="metric"><div class="metric-kicker">STIMULUS TYPE</div><div class="metric-number">3 <span style="font-size:13px">conditions</span></div><div class="metric-note">NEU-NAT + NEG-NAT + NEG-SUP</div></div>
         <div class="metric"><div class="metric-kicker">TRIAL STRUCTURE</div><div class="metric-number">30 <span style="font-size:13px">Trials</span></div><div class="metric-note">10 + 10 + 10 per assessment (default)</div></div>
-        <div class="metric"><div class="metric-kicker">SAM DIMENSIONS</div><div class="metric-number">2 <span style="font-size:13px">dimensions</span></div><div class="metric-note">Valence + Arousal</div></div>
+        <div class="metric"><div class="metric-kicker">AUDIO IN BANK</div><div class="metric-number" id="metric-sounds">0</div><div class="metric-note">Audio files imported on this device</div></div>
         <div class="metric"><div class="metric-kicker">IMAGES IN BANK</div><div class="metric-number" id="metric-photos">0</div><div class="metric-note">Images imported on this device</div></div>
       </div>
       <div class="panel">
@@ -52,10 +118,12 @@
         <div class="divider"></div>
         <div class="panel-head" style="margin-bottom:14px"><div><h2>02 · Trial Parameters</h2><div class="small">Initial settings for equipment and protocol testing; adjust based on validation results before the formal study.</div></div></div>
         <div class="form-grid">
-          <div class="form-field"><label for="count">Images per Viewing Condition / Assessment</label><select class="field" id="count"><option value="2">2 per condition (demo / debugging)</option><option value="5">5 per condition (short version)</option><option value="8">8 per condition (short version)</option><option value="10" selected>10 per condition (30 trials; study default)</option><option value="12">12 per condition (36 trials)</option></select></div>
+          <div class="form-field" style="grid-column:1/-1"><label>Stimulus Modality</label><div class="seg" id="modality-seg" role="radiogroup" aria-label="Stimulus modality"><button type="button" data-mod="av" class="on" role="radio">AV · Audiovisual</button><button type="button" data-mod="visual" role="radio">VO · Visual only</button><button type="button" data-mod="audio" role="radio">AO · Audio only</button></div><select class="field hide" id="modality"><option value="av" selected>Audiovisual (paired image + audio)</option><option value="visual">Visual only</option><option value="audio">Audio only</option></select><div class="seg-note">The pilot compares AO, VO and AV with the same image–sound pairs: AO plays the paired sound over the fixation cross, VO shows the image without sound.</div></div>
+          <div class="form-field"><label for="count">Stimuli per Viewing Condition / Assessment</label><select class="field" id="count"><option value="2">2 per condition (demo / debugging)</option><option value="5">5 per condition (short version)</option><option value="8">8 per condition (short version)</option><option value="10" selected>10 per condition (30 trials; study default)</option><option value="12">12 per condition (36 trials)</option></select></div>
           <div class="form-field"><label for="fixTime">Fixation Cross (seconds)</label><input class="field" type="number" id="fixTime" min="1" max="30" value="2" step="1"></div>
-          <div class="form-field"><label for="imgTime">Image Presentation (seconds)</label><input class="field" type="number" id="imgTime" min="2" max="90" value="8" step="1"></div>
-          <div class="form-field"><label for="samTime">SAM Rating (seconds)</label><input class="field" type="number" id="samTime" min="3" max="90" value="8" step="1"></div>
+          <div class="form-field"><label for="imgTime">Stimulus Presentation (seconds)</label><input class="field" type="number" id="imgTime" min="2" max="90" value="8" step="1"></div>
+          <div class="form-field"><label for="stopTime">STOP Cue (seconds; 0 = off)</label><input class="field" type="number" id="stopTime" min="0" max="10" value="0" step="1"></div>
+          <div class="form-field"><label for="samTime">Rating Window (seconds)</label><input class="field" type="number" id="samTime" min="3" max="90" value="8" step="1"></div>
           <div class="form-field"><label for="restTime">Recovery Interval (seconds)</label><input class="field" type="number" id="restTime" min="3" max="120" value="20" step="1"></div>
           <div class="form-field"><label for="order">Block Order (images randomised within each block)</label><select id="order" class="field"><option value="natural-first">NEU-NAT → NEG-NAT → NEG-SUP</option><option value="es-first">NEU-NAT → NEG-SUP → NEG-NAT (counterbalanced)</option></select></div>
         </div>
@@ -63,23 +131,38 @@
         <div class="panel-head" style="margin-bottom:14px"><div><h2>03 · Single-Trial Structure</h2></div><span id="time-summary" class="pill pill-gray">30 Trials · Approx. 19 min</span></div>
         <div class="flow-grid">
           <div class="flow-step"><span>① Fixation · +</span><strong id="flow-fix">2s</strong></div>
-          <div class="flow-step"><span>② Visual Stimulus</span><strong id="flow-image">8s</strong></div>
-          <div class="flow-step"><span>③ SAM Rating</span><strong id="flow-sam">8s</strong></div>
-          <div class="flow-step"><span>④ Recovery · +</span><strong id="flow-rest">20s</strong></div>
+          <div class="flow-step"><span id="flow-image-label">② Audiovisual Stimulus</span><strong id="flow-image">8s</strong></div>
+          <div class="flow-step"><span>③ STOP Cue</span><strong id="flow-stop">off</strong></div>
+          <div class="flow-step"><span>④ Rating</span><strong id="flow-sam">8s</strong></div>
+          <div class="flow-step"><span>⑤ Recovery · +</span><strong id="flow-rest">20s</strong></div>
         </div>
       </div>
+      <div class="panel" id="audio-panel">
+        <div class="panel-head"><div><h2>Audio Playback & Level Check</h2><div class="small">Playback uses the Web Audio API with one fixed gain for every trial. Run the reference tone after any change to gain, headphones or system volume.</div></div><span class="pill" id="audio-pill">Audiovisual</span></div>
+        <div class="form-grid">
+          <div class="form-field"><label for="audioGain">Playback Gain (fixed for the session)</label><div class="range-row"><input type="range" id="audioGain" min="0" max="100" value="80" step="5"><output id="audioGainValue">80%</output></div></div>
+          <div class="form-field"><label for="fadeMs">Fade-out at Stimulus Offset (ms)</label><input class="field" type="number" id="fadeMs" min="0" max="500" value="50" step="10"></div><div class="form-field"><label for="audioDelay">Audio Onset within Stimulus (s)</label><input class="field" type="number" id="audioDelay" min="0" max="10" value="0" step="0.5"><span class="hint" style="margin:0">0 = with the image. 1 s centres a 6 s IADS-E clip in an 8 s window.</span></div>
+          <div class="form-field"><label>&nbsp;</label><button class="btn btn-soft" id="audio-check" type="button">♪ Play 1 kHz Reference Tone (2 s, −20 dBFS)</button></div>
+        </div>
+        <div class="status-line" id="audio-check-status">Audio level not yet checked in this browser session.</div>
+        <div style="height:12px"></div>
+        <label class="checkbox-row"><input type="checkbox" id="photodiode"><span><strong>Photodiode marker</strong> (a 48 px square in the lower-left corner turns white during the stimulus, for external measurement of visual onset)</span></label>
+        <div class="callout" style="margin-top:14px">The browser cannot measure sound pressure level. Set the system volume and headphones to the level specified in the approved protocol and verify it with a sound level meter before testing participants.</div>
+      </div>
       <div class="panel">
-        <div class="panel-head"><div><h2>04 · Preparation & Launch</h2><div class="small">Import 10 authorised images per condition, or enable Demo Mode to test the workflow first.</div></div></div>
+        <div class="panel-head"><div><h2>04 · Preparation & Launch</h2><div class="small">Import 10 authorised images (and paired audio files) per condition, or enable Demo Mode to test the workflow first.</div></div></div>
         <div class="run-check warn" id="readiness"><span style="font-size:18px">◌</span><div>Checking the selected image set…</div></div>
         <div style="height:16px"></div>
-        <label class="checkbox-row"><input type="checkbox" id="demo"><span><strong>Demo Mode</strong> (uses synthetic placeholders labelled DEMO; these are not validated emotional stimuli and are only for interface and timing checks.)</span></label>
+        <label class="checkbox-row"><input type="checkbox" id="demo"><span><strong>Demo Mode</strong> (uses synthetic placeholder images and audio labelled DEMO; these are not validated emotional stimuli and are only for interface and timing checks.)</span></label>
+        <div style="height:10px"></div>
+        <label class="checkbox-row"><input type="checkbox" id="practice"><span><strong>Practice run</strong> (rows are flagged isPractice=true and should be excluded from analysis)</span></label>
         <div style="height:20px"></div>
-        <div class="button-row"><button class="btn btn-primary btn-lg" id="start">▶ Start Emotion Experiment</button><button class="btn btn-soft btn-lg" id="go-library">＋ Import Stimulus Images</button><span class="session-note">Use a desktop or laptop in full-screen mode and keep this browser tab active.</span></div>
+        <div class="button-row"><button class="btn btn-primary btn-lg" id="start">▶ Start Emotion Experiment</button><button class="btn btn-soft btn-lg" id="go-library">＋ Import Stimuli</button><span class="session-note">Use a desktop or laptop in full-screen mode and keep this browser tab active.</span></div>
       </div>
     </section>
     <section id="page-library" class="page hide">
-      <div class="eyebrow">STIMULUS MANAGEMENT</div><h1 class="page-title">Emotion Image Library</h1>
-      <p class="page-desc">Select an image set and task condition, then upload the matching images: NEU-NAT (neutral / natural viewing), NEG-NAT (negative / natural viewing), and NEG-SUP (negative / expressive suppression). Images are displayed without cropping and stored locally in the browser.</p>
+      <div class="eyebrow">STIMULUS MANAGEMENT</div><h1 class="page-title">Stimulus Library</h1>
+      <p class="page-desc">Select an image set and task condition, then upload the matching images: NEU-NAT (neutral / natural viewing), NEG-NAT (negative / natural viewing), and NEG-SUP (negative / expressive suppression). Images are displayed without cropping. Audio files are paired with images that have the same file name (e.g. NEG_03.jpg ↔ NEG_03.wav) in the same set and condition, or through an optional pairing manifest. Everything is stored locally in the browser.</p>
       <div class="two-col">
         <div class="panel"><div class="panel-head"><div><h2>Add Stimulus Images</h2><div class="small">Select multiple files or drag and drop them here. Images are not sent to an external server.</div></div></div>
           <div class="form-grid" style="grid-template-columns:repeat(2,minmax(0,1fr));margin-bottom:18px">
@@ -89,25 +172,40 @@
           <div id="dropzone" class="upload-zone"><div class="upload-icon">▧</div><strong>Click or drag images here to upload</strong><p>Upload multiple images at once · JPG / PNG / WebP / GIF</p><button class="btn btn-primary" id="pickFiles">＋ Select Images</button><input id="imageInput" type="file" accept="image/jpeg,image/png,image/webp,image/gif,image/bmp,image/avif" multiple class="hide"></div>
           <p class="hint" id="storage-hint">Note: Clearing browser site data or switching computers may remove stored images. Keep backup copies of the originals.</p>
         </div>
-        <div class="panel"><div class="panel-head"><div><h2>Image Set Inventory</h2><div class="small">Each assessment requires 10 NEU-NAT + 10 NEG-NAT + 10 NEG-SUP images by default. Images must be unique across conditions.</div></div></div>
-          <table class="bank-table"><thead><tr><th>Image Set</th><th>NEU-NAT</th><th>NEG-NAT</th><th>NEG-SUP</th><th>Total</th></tr></thead><tbody id="bank-body"></tbody></table>
+        <div class="panel"><div class="panel-head"><div><h2>Image Set Inventory</h2><div class="small">Each assessment requires 10 NEU-NAT + 10 NEG-NAT + 10 NEG-SUP stimuli by default. Cells show images / images with paired audio (AV).</div></div></div>
+          <table class="bank-table"><thead><tr><th>Image Set</th><th>NEU-NAT</th><th>NEG-NAT</th><th>NEG-SUP</th><th>Total images</th></tr></thead><tbody id="bank-body"></tbody></table>
           <div class="callout" style="margin-top:22px">We recommend assigning Sets A/B/C/D to Day 1 Pre, Day 1 Post, Day 2 Pre and Day 2 Post, respectively. Match the four sets as closely as possible on valence and arousal, and match negative stimulus intensity between NEG-NAT and NEG-SUP.</div>
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="panel"><div class="panel-head"><div><h2>Add Stimulus Audio</h2><div class="small">WAV (preferred) or MP3. Files are decoded on import to record duration and RMS / peak level; nothing is uploaded.</div></div></div>
+          <div class="form-grid" style="grid-template-columns:repeat(2,minmax(0,1fr));margin-bottom:18px">
+            <div class="form-field"><label for="audioSet">Target Set</label><select class="field" id="audioSet"><option>A</option><option>B</option><option>C</option><option>D</option></select></div>
+            <div class="form-field"><label for="audioType">Viewing Condition</label><select class="field" id="audioType"><option value="WNeu">NEU-NAT · Neutral Natural Exposure</option><option value="WNeg">NEG-NAT · Negative Natural Exposure</option><option value="ES">NEG-SUP · Negative Expressive Suppression</option></select></div>
+          </div>
+          <div class="button-row"><button class="btn btn-primary" id="pickAudio" type="button">＋ Select Audio Files</button><input id="audioInput" type="file" accept="audio/wav,audio/x-wav,audio/mpeg,audio/mp3,audio/ogg,audio/mp4,.wav,.mp3,.ogg,.m4a" multiple class="hide"></div>
+          <p class="hint">Use only audio you are licensed to use. Match NEG-NAT and NEG-SUP clips on emotional category, valence, arousal, level and duration before import.</p>
+        </div>
+        <div class="panel"><div class="panel-head"><div><h2>Pairing Manifest (optional)</h2><div class="small">CSV columns: set, condition, image, audio[, category, valence, arousal]. The manifest overrides file-name pairing and its category / normative ratings are copied into the trial CSV.</div></div></div>
+          <div class="button-row"><button class="btn" id="pickManifest" type="button">Load Manifest CSV</button><button class="btn" id="manifestTemplate" type="button">Download Template</button><button class="btn btn-danger" id="clearManifest" type="button">Clear</button><input id="manifestInput" type="file" accept=".csv,text/csv" class="hide"></div>
+          <div class="status-line" id="manifest-status"></div>
         </div>
       </div>
       <div class="panel"><div class="panel-head"><div><h2>Imported Images</h2><div class="small" id="gallery-count">0  images</div></div><div class="section-tabs" id="view-bank-tabs"><button class="chip active" data-bank="A">Set A</button><button class="chip" data-bank="B">Set B</button><button class="chip" data-bank="C">Set C</button><button class="chip" data-bank="D">Set D</button></div></div>
         <div id="gallery" class="image-grid"></div>
       </div>
+      <div class="panel"><div class="panel-head"><div><h2>Imported Audio</h2><div class="small" id="sound-count">0 audio files</div></div></div><div id="sound-list"></div></div>
     </section>
     <section id="page-results" class="page hide">
       <div class="eyebrow">RESEARCH DATA</div><h1 class="page-title">Experiment Ratings & Event Records</h1>
-      <p class="page-desc">Recorded fields include SAM valence and arousal ratings, response times, and software timestamps for fixation, image presentation, rating and recovery. Export CSV files for use in Python, MATLAB or Excel.</p>
+      <p class="page-desc">Recorded fields include valence and arousal ratings, response times, trial status, audio status and software timestamps for fixation, image and audio onset, stimulus offset, rating and recovery. Export CSV files for use in Python, MATLAB or Excel.</p>
       <div class="panel"><div class="panel-head"><div><h2>Completed / Interrupted Sessions</h2><div class="small" id="results-count">No sessions recorded</div></div><div class="button-row"><button id="exportAllTrials" class="btn btn-primary">↓ Export All Trial CSVs</button><button id="exportAllEvents" class="btn">↓ Export All Event CSVs</button></div></div>
       <div id="results-container"></div></div>
-      <div class="callout">Note: These are browser-generated software timestamps (performance.now() and ISO time), <strong>NOT equivalent to hardware-synchronised EEG/fNIRS triggers</strong>. For millisecond-level EEG–fNIRS synchronisation, use TTL, LSL or another validated event-marker interface.</div>
+      <div class="callout">Note: These are browser-generated software timestamps (performance.now() and ISO time), <strong>NOT equivalent to hardware-synchronised EEG/fNIRS triggers</strong>. audioOnsetEstMs is the Web Audio scheduler's estimate of output time and visualFrameMs is the first animation frame after the image was inserted; neither is a measured physical onset. For millisecond-level EEG–fNIRS synchronisation, validate with a photodiode / audio loopback and use TTL, LSL or another validated event-marker interface (an optional <code>window.AffectLabMarker</code> callback receives every event code).</div>
     </section>
     <section id="page-guide" class="page hide">
       <div class="eyebrow">QUICK START & RESEARCH NOTES</div><h1 class="page-title">User Guide</h1>
-      <p class="page-desc">This single-file app runs locally or from static hosting. Public demonstrations use synthetic images and test identifiers.</p>
+      <p class="page-desc">This single-file app runs locally or from static hosting. Public demonstrations use synthetic images, synthetic audio and test identifiers.</p>
       <div class="panel"><h2>Start an Experiment in Four Steps</h2>
         <div class="guide-step"><div class="guide-number">1</div><div><strong>Prepare Four Image Sets</strong><p>In the Emotion Image Library, import Sets A/B/C/D. For each set, provide 10 neutral images for NEU-NAT, 10 negative images for NEG-NAT, and 10 different negative images for NEG-SUP. Match valence and arousal across sets as closely as possible.</p></div></div>
         <div class="guide-step"><div class="guide-number">2</div><div><strong>Enter Session Details</strong><p>Enter the Participant ID, Day, Exercise or Rest, Pre or Post, and the image set. All participants complete NEU-NAT, NEG-NAT and NEG-SUP. Counterbalance the order of NEG-NAT and NEG-SUP blocks across participants and assessments.</p></div></div>
@@ -115,15 +213,15 @@
         <div class="guide-step"><div class="guide-number">4</div><div><strong>Export Data</strong><p>After finishing, open Ratings & Data to download Trial CSV (trial-level ratings) and Event CSV (timestamped event log). Back up approved research exports after each session. The condition column retains the legacy codes WNeu, WNeg and ES for compatibility.</p></div></div>
       </div>
       <div class="panel"><h2>Experiment & Data Quality Notes</h2>
-        <p>• Default paradigm: 10 NEU-NAT + 10 NEG-NAT + 10 NEG-SUP images (30 trials total). Each trial comprises 2 s fixation + 8 s image + 8 s SAM rating + 20 s recovery, totalling approximately 19 minutes, excluding block instructions and breaks.</p>
+        <p>• Default paradigm: 10 NEU-NAT + 10 NEG-NAT + 10 NEG-SUP stimuli (30 trials total). Each trial comprises 2 s fixation + 8 s audiovisual (or visual) stimulus + optional STOP cue (0 s by default) + 8 s rating + 20 s recovery, approximately 19 minutes excluding block instructions and breaks.</p><p>• <strong>Audio:</strong> import WAV/MP3 files with the same file name as their image (or load a pairing manifest). Image and audio start in the same browser callback; audio fades out over the configured time at stimulus offset and never overlaps the next trial. A missing or undecodable file is logged (audioStatus) and the trial is shown visually only, so it can be excluded. Run the reference-tone check before each session.</p>
         <p>• <strong>NEU-NAT: </strong>View neutral images naturally.<strong>NEG-NAT: </strong>View negative images naturally, without intentionally regulating your emotions.<strong>NEG-SUP: </strong>When viewing negative images, suppress outward emotional expressions (facial and bodily) without deliberately changing your internal feelings. Give SAM ratings of your actual subjective experience in all three conditions.</p>
         <p>• This application uses <strong>1–5 SAM-style numerical ratings</strong>: Valence 1 = very unpleasant, 5 = very pleasant; Arousal 1 = very calm, 5 = highly aroused. The numeric buttons are a practical alternative interface and <strong>are NOT the validated standard SAM pictograms</strong>. If the study requires the standard SAM, replace this interface and verify the scale permissions and instructions.</p>
-        <p>• Original IAPS images are not embedded. The research team is responsible for obtaining and licensing stimuli. This version presents still images. Browser events document software state changes. Audio playback, hardware triggers and raw EEG/fNIRS acquisition require a separate implementation.</p>
+        <p>• No IAPS or other third-party stimuli are embedded. The research team is responsible for obtaining and licensing images and audio. Browser events document software state changes; hardware triggers and raw EEG/fNIRS acquisition require a separate, validated implementation.</p>
         <p>• During the experiment, use the <strong>Image size</strong> slider to resize the stimulus while preserving its aspect ratio. Set the same percentage for every participant to standardise visual angle. <strong>Skip Trial</strong> advances immediately to the next trial and marks the skipped trial in both CSV exports; partial SAM responses from a skipped trial are discarded.</p>
         <p>• Switching to another tab, putting the computer to sleep, or reloading the page can affect timing and data integrity. Where possible, the app logs visibility_hidden and visibility_visible events, but cannot guarantee recovery of interrupted trials.</p>
       </div>
     </section>
-    <div class="app-footer">AffectLab · Visual Prototype · NEU-NAT / NEG-NAT / NEG-SUP · Version 3.0.0</div>
+    <div class="app-footer">AffectLab · Audiovisual emotion paradigm · NEU-NAT / NEG-NAT / NEG-SUP · Version 5.0.0</div>
   </main>
 </div>
 
@@ -132,179 +230,301 @@
   <div class="exp-center"><div class="exp-content" id="exp-content"><div class="exp-loading">Preparing experiment…<small>Keep this page in the foreground</small></div></div></div>
   <footer class="exp-footer"><div><div class="exp-quiet" id="exp-stage">PREPARING</div><div class="exp-progress"><div class="exp-progress-inner" id="exp-progress-inner"></div></div></div><div><div id="exp-clock" class="exp-clock">—</div><div class="exp-clock-label">SECONDS LEFT</div></div><div class="exp-controls"><label class="exp-size-control" for="exp-size-range">Image size <input id="exp-size-range" type="range" min="30" max="100" value="100" step="5" aria-label="Image size percentage"><output class="exp-size-value" id="exp-size-value" for="exp-size-range">100%</output></label><button class="exp-skip" id="exp-skip" type="button" disabled title="Skip the current trial and mark it as skipped in the exported data">Skip Trial →</button><button class="exp-quit" id="exp-stop" type="button">End Experiment ×</button></div></footer>
 </div>
+<div id="photodiode-patch" class="hide" aria-hidden="true"></div>
 <div class="toast" id="toast" role="status"></div>
 <script>
 (()=>{'use strict';
+const VERSION='5.0.0';
 const $=id=>document.getElementById(id),$$=q=>Array.from(document.querySelectorAll(q));
-const KEYS={sessions:'affectlab-sessions-v1'};const TYPES=['WNeu','WNeg','ES'];const SETS=['A','B','C','D'];const CONDITION_CODE = {WNeu:'NEU-NAT',WNeg:'NEG-NAT',ES:'NEG-SUP'};
-let database=null,memoryStore=[],bank=[],photoURLs=new Map(),viewSet='A',run=null,animationId=null,toastTimer=null,dbPersistent=true,imageSizePercent=100;
-function toast(message){const e=$('toast');e.textContent=message;e.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>e.classList.remove('show'),4200)}
+const KEYS={sessions:'affectlab-sessions-v1',manifest:'affectlab-pairing-manifest-v1'};
+const TYPES=['WNeu','WNeg','ES'];const SETS=['A','B','C','D'];
+const CONDITION_CODE={WNeu:'NEU-NAT',WNeg:'NEG-NAT',ES:'NEG-SUP'};
+const CODE_TO_TYPE={'NEU-NAT':'WNeu','NEG-NAT':'WNeg','NEG-SUP':'ES',WNEU:'WNeu',WNEG:'WNeg',ES:'ES'};
+// Numeric event codes for later alignment with EEG/fNIRS recordings (software codes, not hardware triggers).
+const EVENT_CODE={stimulus_onset:20,session_start:1,session_completed:2,session_aborted:3,fixation_onset:10,image_onset:20,audio_onset:30,stimulus_offset:40,stop_onset:45,sam_onset:50,sam_valence_response:51,sam_arousal_response:52,sam_complete:53,recovery_onset:60,trial_complete:70,trial_skipped:71,block_start:80,block_end:81,audio_error:90,audio_check:95};
+const CONDITION_OFFSET={WNeu:1,WNeg:2,ES:3};
+let database=null,memoryStore={pictures:[],sounds:[]},bank=[],sounds=[],photoURLs=new Map(),viewSet='A',run=null,animationId=null,toastTimer=null,dbPersistent=true,imageSizePercent=100;
+let audioCtx=null,masterGain=null,audioBuffers=new Map(),audioCheckUtc=null,activeAudio=null;
+function toast(message){const e=$('toast');e.textContent=message;e.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>e.classList.remove('show'),4800)}
 function makeId(){return (typeof crypto!=='undefined'&&crypto.randomUUID)?crypto.randomUUID():Date.now().toString(36)+'-'+Math.random().toString(36).slice(2)}
 function nowIso(){return new Date().toISOString()}function safeText(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function initDatabase(){return new Promise(resolve=>{if(!window.indexedDB){dbPersistent=false;resolve();return}try{const request=indexedDB.open('AffectLabImageBank',1);request.onupgradeneeded=()=>{const db=request.result;if(!db.objectStoreNames.contains('pictures'))db.createObjectStore('pictures',{keyPath:'id'})};request.onsuccess=()=>{database=request.result;resolve()};request.onerror=()=>{dbPersistent=false;resolve()}}catch(_){dbPersistent=false;resolve()}})}
-function storageAll(){return new Promise(resolve=>{if(!database){resolve(memoryStore.slice());return}const tx=database.transaction('pictures','readonly');const req=tx.objectStore('pictures').getAll();req.onsuccess=()=>resolve(req.result||[]);req.onerror=()=>resolve(memoryStore.slice())})}
-function storagePut(item){return new Promise((resolve,reject)=>{if(!database){memoryStore.push(item);resolve();return}try{const tx=database.transaction('pictures','readwrite');tx.objectStore('pictures').put(item);tx.oncomplete=()=>resolve();tx.onerror=()=>reject(tx.error||new Error('storage error'))}catch(e){reject(e)}})}
-function storageDel(id){return new Promise((resolve,reject)=>{if(!database){memoryStore=memoryStore.filter(x=>x.id!==id);resolve();return}const tx=database.transaction('pictures','readwrite');tx.objectStore('pictures').delete(id);tx.oncomplete=()=>resolve();tx.onerror=()=>reject(tx.error||new Error('storage error'))})}
+function stemOf(name){return String(name||'').replace(/\.[^.]+$/,'').trim().toLowerCase()}
+const HAS_AUDIO=m=>m==='av'||m==='audio',HAS_IMAGE=m=>m!=='audio';
+const MOD_NAME={av:'Audiovisual',visual:'Visual only',audio:'Audio only'};
+function words(m){return m==='av'?{verb:'Watch and listen to',ing:'watching and listening to',noun:'clips',one:'clip'}:m==='audio'?{verb:'Listen to',ing:'listening to',noun:'sounds',one:'sound'}:{verb:'View',ing:'viewing',noun:'images',one:'image'}}
+function round1(x){return x===null||x===undefined||!Number.isFinite(x)?null:Math.round(x*10)/10}
+
+/* ---------- local storage: IndexedDB with in-memory fallback (images and audio) ---------- */
+function initDatabase(){return new Promise(resolve=>{if(!window.indexedDB){dbPersistent=false;resolve();return}try{const request=indexedDB.open('AffectLabImageBank',2);request.onupgradeneeded=()=>{const db=request.result;if(!db.objectStoreNames.contains('pictures'))db.createObjectStore('pictures',{keyPath:'id'});if(!db.objectStoreNames.contains('sounds'))db.createObjectStore('sounds',{keyPath:'id'})};request.onsuccess=()=>{database=request.result;resolve()};request.onerror=()=>{dbPersistent=false;resolve()}}catch(_){dbPersistent=false;resolve()}})}
+function storeAll(store){return new Promise(resolve=>{if(!database){resolve(memoryStore[store].slice());return}try{const tx=database.transaction(store,'readonly');const req=tx.objectStore(store).getAll();req.onsuccess=()=>resolve(req.result||[]);req.onerror=()=>resolve(memoryStore[store].slice())}catch(_){resolve(memoryStore[store].slice())}})}
+function storePut(store,item){return new Promise((resolve,reject)=>{if(!database){memoryStore[store].push(item);resolve();return}try{const tx=database.transaction(store,'readwrite');tx.objectStore(store).put(item);tx.oncomplete=()=>resolve();tx.onerror=()=>reject(tx.error||new Error('storage error'))}catch(e){reject(e)}})}
+function storeDel(store,id){return new Promise((resolve,reject)=>{if(!database){memoryStore[store]=memoryStore[store].filter(x=>x.id!==id);resolve();return}const tx=database.transaction(store,'readwrite');tx.objectStore(store).delete(id);tx.oncomplete=()=>resolve();tx.onerror=()=>reject(tx.error||new Error('storage error'))})}
 function photoSrc(item){if(item.demo)return item.src;if(!photoURLs.has(item.id))photoURLs.set(item.id,URL.createObjectURL(item.blob));return photoURLs.get(item.id)}
+
+/* ---------- Web Audio ---------- */
+function ensureAudio(){if(audioCtx)return audioCtx;const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return null;try{audioCtx=new AC({latencyHint:'interactive'})}catch(_){audioCtx=new AC()}masterGain=audioCtx.createGain();masterGain.gain.value=gainValue();masterGain.connect(audioCtx.destination);return audioCtx}
+function gainValue(){return Math.min(1,Math.max(0,Number($('audioGain').value)/100))}
+async function resumeAudio(){const ctx=ensureAudio();if(!ctx)return false;if(ctx.state!=='running'){try{await ctx.resume()}catch(_){}}return ctx.state==='running'}
+function decodeArrayBuffer(ab){const ctx=ensureAudio();if(!ctx)return Promise.reject(new Error('Web Audio API unavailable'));return new Promise((resolve,reject)=>{try{const p=ctx.decodeAudioData(ab,resolve,reject);if(p&&typeof p.then==='function')p.then(resolve,reject)}catch(e){reject(e)}})}
+function bufferLevels(buf){let sum=0,n=0,peak=0;for(let ch=0;ch<buf.numberOfChannels;ch++){const d=buf.getChannelData(ch);for(let i=0;i<d.length;i++){const v=d[i];sum+=v*v;const a=Math.abs(v);if(a>peak)peak=a}n+=d.length}const rms=Math.sqrt(sum/Math.max(1,n));return{rmsDb:rms>0?round1(20*Math.log10(rms)):null,peakDb:peak>0?round1(20*Math.log10(peak)):null}}
+// Synthetic placeholder audio for Demo Mode: equal-RMS tone (neutral) or filtered noise (negative). NOT emotional stimuli.
+function demoBuffer(type,seconds){const ctx=ensureAudio();if(!ctx)return null;const sr=ctx.sampleRate,len=Math.max(1,Math.round(seconds*sr)),buf=ctx.createBuffer(1,len,sr),d=buf.getChannelData(0);let lp=0;for(let i=0;i<len;i++){const t=i/sr;let v;if(type==='WNeu'){v=Math.sin(2*Math.PI*220*t)+0.6*Math.sin(2*Math.PI*330*t)}else{const w=Math.random()*2-1;lp=0.96*lp+0.04*w;v=lp*6+0.5*Math.sin(2*Math.PI*55*t)}const edge=Math.min(1,t/0.05,(seconds-t)/0.05);d[i]=v*Math.max(0,edge)}let s=0;for(let i=0;i<len;i++)s+=d[i]*d[i];const target=Math.pow(10,-26/20),k=target/Math.sqrt(s/len||1);for(let i=0;i<len;i++)d[i]*=k;return buf}
+function stopActiveAudio(fadeMs){if(!activeAudio)return;const a=activeAudio;activeAudio=null;try{const now=audioCtx.currentTime,f=Math.max(0,fadeMs||0)/1000;a.gain.gain.cancelScheduledValues(now);a.gain.gain.setValueAtTime(a.gain.gain.value,now);a.gain.gain.linearRampToValueAtTime(0,now+f);a.src.stop(now+f+0.02)}catch(_){try{a.src.stop()}catch(__){}}}
+async function playReferenceTone(){const ok=await resumeAudio();if(!ok){toast('Audio could not start in this browser. Check that the tab is not muted and try again.');return}masterGain.gain.value=gainValue();const ctx=audioCtx,osc=ctx.createOscillator(),g=ctx.createGain();osc.frequency.value=1000;const now=ctx.currentTime,amp=Math.pow(10,-20/20);g.gain.setValueAtTime(0,now);g.gain.linearRampToValueAtTime(amp,now+0.02);g.gain.setValueAtTime(amp,now+1.98);g.gain.linearRampToValueAtTime(0,now+2);osc.connect(g).connect(masterGain);osc.start(now);osc.stop(now+2.05);audioCheckUtc=nowIso();$('audio-check-status').textContent='Reference tone played at '+$('audioGain').value+'% gain ('+new Date().toLocaleTimeString()+'). Confirm the level with the approved procedure before testing participants.';$('audio-check-status').classList.add('good');updateSummary()}
+
+/* ---------- navigation, configuration and summary ---------- */
 function changePage(page){$$('.page').forEach(e=>e.classList.toggle('hide',e.id!=='page-'+page));$$('.nav-btn').forEach(e=>e.classList.toggle('active',e.dataset.page===page));window.scrollTo({top:0,behavior:'instant'});if(page==='results')renderResults();if(page==='library')renderLibrary()}
 $$('.nav-btn').forEach(b=>b.addEventListener('click',()=>changePage(b.dataset.page)));$('go-library').addEventListener('click',()=>changePage('library'));
 function numberVal(id,min,max){const n=Number($(id).value);return Number.isFinite(n)?Math.min(max,Math.max(min,Math.round(n))):min}
-function getConfig(){return{participant:$('participant').value.trim(),day:$('day').value,intervention:$('intervention').value,phase:$('phase').value,set:$('set').value,perType:numberVal('count',2,12),fix:numberVal('fixTime',1,30),image:numberVal('imgTime',2,90),sam:numberVal('samTime',3,90),rest:numberVal('restTime',3,120),order:$('order').value,demo:$('demo').checked}}
- function updateSummary(){
-  const c=getConfig(),total=c.perType*3,sec=total*(c.fix+c.image+c.sam+c.rest);
-  $('flow-fix').textContent=c.fix+'s';$('flow-image').textContent=c.image+'s';$('flow-sam').textContent=c.sam+'s';$('flow-rest').textContent=c.rest+'s';
-  $('time-summary').textContent=`${total} trials (NEU-NAT ${c.perType} + NEG-NAT ${c.perType} + NEG-SUP ${c.perType}) · Approx. ${Math.floor(sec/60)} min ${String(sec%60).padStart(2,'0')} sec`;
-  const counts=Object.fromEntries(TYPES.map(type=>[type,bank.filter(x=>x.set===c.set&&x.type===type).length]));
-  const ready=TYPES.every(type=>counts[type]>=c.perType)||c.demo;
-  const el=$('readiness');el.classList.toggle('warn',!ready);
-  const msg=c.demo?'Demo Mode uses synthetic placeholder images. Exported rows carry isDemo=true.':`Set ${c.set}: NEU-NAT ${counts.WNeu}/${c.perType}, NEG-NAT ${counts.WNeg}/${c.perType}, NEG-SUP ${counts.ES}/${c.perType}.`+(ready?' All three conditions are ready.':' Not enough images: import stimuli for each condition or enable Demo Mode.');
-  el.innerHTML='<span style="font-size:18px">'+(ready?'✓':'!')+'</span><div>'+safeText(msg)+'</div>';
-  $('start').disabled=!ready||!c.participant;
- }
+function getConfig(){return{participant:$('participant').value.trim(),day:$('day').value,intervention:$('intervention').value,phase:$('phase').value,set:$('set').value,perType:numberVal('count',2,12),fix:numberVal('fixTime',1,30),image:numberVal('imgTime',2,90),stop:numberVal('stopTime',0,10),sam:numberVal('samTime',3,90),rest:numberVal('restTime',3,120),order:$('order').value,demo:$('demo').checked,practice:$('practice').checked,modality:$('modality').value,fadeMs:numberVal('fadeMs',0,500),audioGain:numberVal('audioGain',0,100),photodiode:$('photodiode').checked,audioDelay:Math.min(10,Math.max(0,Math.round((Number($('audioDelay').value)||0)*2)/2)),appVersion:VERSION}}
+function getManifest(){try{return JSON.parse(localStorage.getItem(KEYS.manifest)||'[]')}catch(_){return[]}}
+function manifestEntry(image){const m=getManifest();const name=String(image.name||'').toLowerCase();return m.find(r=>r.set===image.set&&r.type===image.type&&r.image===name)||null}
+function pairFor(image){if(image.demo)return image.demoAudio||null;const entry=manifestEntry(image);const pool=sounds.filter(s=>s.set===image.set&&s.type===image.type);let s=null;if(entry&&entry.audio)s=pool.find(x=>x.name.toLowerCase()===entry.audio)||null;else s=pool.find(x=>x.stem===stemOf(image.name))||null;return s}
+function pairedImages(set,type){return bank.filter(p=>p.set===set&&p.type===type&&pairFor(p))}
+function updateSummary(){
+ const c=getConfig(),total=c.perType*3,sec=total*(c.fix+c.image+c.stop+c.sam+c.rest);
+ $('flow-fix').textContent=c.fix+'s';$('flow-image').textContent=c.image+'s';$('flow-stop').textContent=c.stop?c.stop+'s':'off';$('flow-sam').textContent=c.sam+'s';$('flow-rest').textContent=c.rest+'s';
+ $('flow-image-label').textContent='② '+({av:'Audiovisual',visual:'Visual',audio:'Auditory'})[c.modality]+' stimulus';[[0,c.fix],[1,c.image],[2,c.stop],[3,c.sam],[4,c.rest]].forEach(([i,v])=>{const el=$$('.flow-step')[i];el.style.flexGrow=String(Math.max(v,0.0001));el.classList.toggle('off',!v)});$$('#modality-seg button').forEach(b=>b.classList.toggle('on',b.dataset.mod===c.modality));$('audio-pill').textContent=MOD_NAME[c.modality];
+ $('time-summary').textContent=`${total} trials (NEU-NAT ${c.perType} + NEG-NAT ${c.perType} + NEG-SUP ${c.perType}) · Approx. ${Math.floor(sec/60)} min ${String(sec%60).padStart(2,'0')} sec`;
+ $('audio-panel').classList.toggle('hide',!HAS_AUDIO(c.modality));
+ const av=HAS_AUDIO(c.modality);
+ const counts=Object.fromEntries(TYPES.map(type=>[type,av?pairedImages(c.set,type).length:bank.filter(x=>x.set===c.set&&x.type===type).length]));
+ let ready=TYPES.every(type=>counts[type]>=c.perType)||c.demo;let msg;
+ if(c.demo)msg='Demo Mode ('+MOD_NAME[c.modality]+') uses synthetic placeholder '+(c.modality==='audio'?'audio':'images'+(av?' and audio':''))+(av?' (equal-RMS tone / filtered noise)':'')+'. Exported rows carry isDemo=true.';
+ else msg=`Set ${c.set}${av?' (paired image + audio)':''}: NEU-NAT ${counts.WNeu}/${c.perType}, NEG-NAT ${counts.WNeg}/${c.perType}, NEG-SUP ${counts.ES}/${c.perType}.`+(ready?' All three conditions are ready.':av?' Not enough paired stimuli: each image needs an audio file with the same name (or a manifest pairing) in the same set and condition.':' Not enough images: import stimuli for each condition or enable Demo Mode.');
+ if(av&&!audioCheckUtc){ready=false;msg+=' Run the audio level check before starting.'}
+ if(av&&!c.demo){const mism=durationWarnings(c);if(mism)msg+=' '+mism}
+ const el=$('readiness');el.classList.toggle('warn',!ready);
+ el.innerHTML='<span style="font-size:18px">'+(ready?'✓':'!')+'</span><div>'+safeText(msg)+'</div>';
+ $('start').disabled=!ready||!c.participant;
+}
+function durationWarnings(c){const pairs=TYPES.flatMap(t=>pairedImages(c.set,t).map(p=>pairFor(p))).filter(s=>s&&Number.isFinite(s.duration));const longer=pairs.filter(s=>c.audioDelay+s.duration>c.image+0.05).length,shorter=pairs.filter(s=>c.audioDelay+s.duration<c.image-0.5).length;let m=[];if(longer)m.push(`${longer} clip(s) run past the ${c.image}s stimulus window with a ${c.audioDelay}s onset and will be faded at offset`);if(shorter)m.push(`${shorter} clip(s) end more than 0.5 s before stimulus offset (silent tail)`);return m.length?m.join('; ')+'.':''}
+['participant','day','intervention','phase','set','count','fixTime','imgTime','stopTime','samTime','restTime','order','demo','practice','modality','fadeMs','photodiode','audioDelay'].forEach(id=>$(id).addEventListener('input',updateSummary));
+$('modality-seg').addEventListener('click',e=>{const b=e.target.closest('button[data-mod]');if(!b)return;$('modality').value=b.dataset.mod;updateSummary()});
+$('audioGain').addEventListener('input',()=>{$('audioGainValue').textContent=$('audioGain').value+'%';if(masterGain)masterGain.gain.value=gainValue();audioCheckUtc=null;$('audio-check-status').textContent='Gain changed: run the level check again.';$('audio-check-status').classList.remove('good');updateSummary()});
+$('audio-check').addEventListener('click',playReferenceTone);
 
-['participant','day','intervention','phase','set','count','fixTime','imgTime','samTime','restTime','order','demo'].forEach(id=>$(id).addEventListener('input',updateSummary));
- function renderLibrary(){
-  $('metric-photos').textContent=bank.length;
-  $('bank-body').innerHTML=SETS.map(set=>{
-   const counts=Object.fromEntries(TYPES.map(t=>[t,bank.filter(p=>p.set===set&&p.type===t).length]));
-   const c=getConfig().perType;
-   return `<tr><td><strong>Set ${set}</strong></td>${TYPES.map(t=>`<td class="${counts[t]>=c?'good':'bad'}">${counts[t]}</td>`).join('')}<td>${TYPES.reduce((a,t)=>a+counts[t],0)}</td></tr>`;
-  }).join('');
-  $$('[data-bank]').forEach(b=>b.classList.toggle('active',b.dataset.bank===viewSet));
-  const visible=bank.filter(x=>x.set===viewSet);
-  $('gallery-count').textContent='Set '+viewSet+' · '+visible.length+' images';
-  $('gallery').innerHTML=visible.length?visible.map(p=>`<div class="image-card"><img src="${photoSrc(p)}" alt="${safeText(p.name)}"><div class="image-card-details"><div class="img-name" title="${safeText(p.name)}">${safeText(p.name)}</div><div class="img-bottom"><span class="img-tag">${safeText(CONDITION_CODE[p.type])} · ${(p.size/1024).toFixed(0)} KB</span><button class="mini-delete" data-remove="${p.id}" title="Delete image">Delete</button></div></div></div>`).join(''):'<div class="empty-state" style="grid-column:1/-1">Set '+viewSet+' has no images yet. Select a viewing condition above and import some images.</div>';
-  updateSummary();
- }
-
-$('view-bank-tabs').addEventListener('click',e=>{let b=e.target.closest('[data-bank]');if(b){viewSet=b.dataset.bank;$('assetSet').value=viewSet;renderLibrary()}});
-$('gallery').addEventListener('click',async e=>{const b=e.target.closest('[data-remove]');if(!b)return;const obj=bank.find(p=>p.id===b.dataset.remove);if(!obj)return;if(!window.confirm('Delete image: '+obj.name+'?'))return;try{await storageDel(obj.id);if(photoURLs.has(obj.id)){URL.revokeObjectURL(photoURLs.get(obj.id));photoURLs.delete(obj.id)}bank=bank.filter(p=>p.id!==obj.id);renderLibrary();toast('Image deleted')}catch(err){toast('Deletion failed: '+err.message)}});
-async function importFiles(files){const allowed=['image/jpeg','image/png','image/webp','image/gif','image/bmp','image/avif'];const imgs=Array.from(files).filter(x=>x.type.startsWith('image/')||allowed.includes(x.type));if(!imgs.length){toast('No supported image files found');return}const set=$('assetSet').value,type=$('assetType').value;let ok=0,fail=0;for(const file of imgs){const image={id:makeId(),set,type,name:file.name,size:file.size,blob:file,created:nowIso()};try{await storagePut(image);bank.push(image);ok++}catch(_){fail++}}viewSet=set;renderLibrary();toast('Imported '+ok+' '+CONDITION_CODE[type]+' images'+(fail?', '+fail+' failed (possibly due to insufficient local storage)':''));$('imageInput').value=''}
+/* ---------- stimulus library: images, audio and pairing manifest ---------- */
+function renderLibrary(){
+ $('metric-photos').textContent=bank.length;$('metric-sounds').textContent=sounds.length;
+ const c=getConfig().perType;
+ $('bank-body').innerHTML=SETS.map(set=>{const counts=Object.fromEntries(TYPES.map(t=>[t,bank.filter(p=>p.set===set&&p.type===t).length]));const pairs=Object.fromEntries(TYPES.map(t=>[t,pairedImages(set,t).length]));return `<tr><td><strong>Set ${set}</strong></td>${TYPES.map(t=>`<td class="${counts[t]>=c?'good':'bad'}">${counts[t]} <span class="hint">/ ${pairs[t]} AV</span></td>`).join('')}<td>${TYPES.reduce((a,t)=>a+counts[t],0)}</td></tr>`}).join('');
+ $$('[data-bank]').forEach(b=>b.classList.toggle('active',b.dataset.bank===viewSet));
+ const visible=bank.filter(x=>x.set===viewSet);
+ $('gallery-count').textContent='Set '+viewSet+' · '+visible.length+' images';
+ $('gallery').innerHTML=visible.length?visible.map(p=>{const s=pairFor(p);return `<div class="image-card"><img src="${photoSrc(p)}" alt="${safeText(p.name)}"><div class="image-card-details"><div class="img-name" title="${safeText(p.name)}">${safeText(p.name)}</div><div class="img-tag">${s?'♪ '+safeText(s.name)+' · '+(s.duration?s.duration.toFixed(1)+'s':''):'<span class="bad">no paired audio</span>'}</div><div class="img-bottom"><span class="img-tag">${safeText(CONDITION_CODE[p.type])} · ${(p.size/1024).toFixed(0)} KB</span><button class="mini-delete" data-remove="${p.id}" title="Delete image">Delete</button></div></div></div>`}).join(''):'<div class="empty-state" style="grid-column:1/-1">Set '+viewSet+' has no images yet. Select a viewing condition above and import some images.</div>';
+ const vs=sounds.filter(x=>x.set===viewSet);
+ $('sound-count').textContent='Set '+viewSet+' · '+vs.length+' audio files';
+ $('sound-list').innerHTML=vs.length?'<table class="bank-table"><thead><tr><th>Audio file</th><th>Condition</th><th>Duration</th><th>RMS / peak (dBFS)</th><th>Paired image</th><th></th></tr></thead><tbody>'+vs.map(s=>{const img=bank.find(p=>p.set===s.set&&p.type===s.type&&pairFor(p)===s);return `<tr><td>${safeText(s.name)}</td><td>${CONDITION_CODE[s.type]}</td><td>${s.duration?s.duration.toFixed(2)+' s':'—'}</td><td>${s.rmsDb??'—'} / ${s.peakDb??'—'}</td><td>${img?safeText(img.name):'<span class="bad">none</span>'}</td><td><button class="mini-delete" data-remove-sound="${s.id}">Delete</button></td></tr>`}).join('')+'</tbody></table>':'<div class="empty-state">No audio in Set '+viewSet+'. Name each audio file like its image (e.g. NEG_03.jpg ↔ NEG_03.wav) or import a pairing manifest.</div>';
+ const m=getManifest();$('manifest-status').textContent=m.length?m.length+' manifest pairings loaded (manifest overrides filename matching).':'No manifest loaded: images and audio are paired by identical file names within the same set and condition.';
+ updateSummary();
+}
+$('view-bank-tabs').addEventListener('click',e=>{let b=e.target.closest('[data-bank]');if(b){viewSet=b.dataset.bank;$('assetSet').value=viewSet;$('audioSet').value=viewSet;renderLibrary()}});
+$('gallery').addEventListener('click',async e=>{const b=e.target.closest('[data-remove]');if(!b)return;const obj=bank.find(p=>p.id===b.dataset.remove);if(!obj)return;if(!window.confirm('Delete image: '+obj.name+'?'))return;try{await storeDel('pictures',obj.id);if(photoURLs.has(obj.id)){URL.revokeObjectURL(photoURLs.get(obj.id));photoURLs.delete(obj.id)}bank=bank.filter(p=>p.id!==obj.id);renderLibrary();toast('Image deleted')}catch(err){toast('Deletion failed: '+err.message)}});
+$('sound-list').addEventListener('click',async e=>{const b=e.target.closest('[data-remove-sound]');if(!b)return;const obj=sounds.find(s=>s.id===b.dataset.removeSound);if(!obj||!window.confirm('Delete audio: '+obj.name+'?'))return;try{await storeDel('sounds',obj.id);audioBuffers.delete(obj.id);sounds=sounds.filter(s=>s.id!==obj.id);renderLibrary();toast('Audio deleted')}catch(err){toast('Deletion failed: '+err.message)}});
+async function importFiles(files){const allowed=['image/jpeg','image/png','image/webp','image/gif','image/bmp','image/avif'];const imgs=Array.from(files).filter(x=>x.type.startsWith('image/')||allowed.includes(x.type));if(!imgs.length){toast('No supported image files found');return}const set=$('assetSet').value,type=$('assetType').value;let ok=0,fail=0;for(const file of imgs){const image={id:makeId(),set,type,name:file.name,size:file.size,blob:file,created:nowIso()};try{await storePut('pictures',image);bank.push(image);ok++}catch(_){fail++}}viewSet=set;renderLibrary();toast('Imported '+ok+' '+CONDITION_CODE[type]+' images'+(fail?', '+fail+' failed (possibly due to insufficient local storage)':''));$('imageInput').value=''}
+async function importAudio(files){const list=Array.from(files).filter(f=>f.type.startsWith('audio/')||/\.(wav|mp3|ogg|m4a|flac)$/i.test(f.name));if(!list.length){toast('No supported audio files found (WAV or MP3 recommended)');return}const set=$('audioSet').value,type=$('audioType').value;let ok=0,fail=[];for(const file of list){try{const ab=await file.arrayBuffer();const buf=await decodeArrayBuffer(ab.slice(0));const lv=bufferLevels(buf);const rec={id:makeId(),set,type,name:file.name,stem:stemOf(file.name),size:file.size,blob:file,duration:Math.round(buf.duration*1000)/1000,sampleRate:buf.sampleRate,channels:buf.numberOfChannels,rmsDb:lv.rmsDb,peakDb:lv.peakDb,created:nowIso()};await storePut('sounds',rec);sounds.push(rec);audioBuffers.set(rec.id,buf);ok++}catch(err){fail.push(file.name)}}viewSet=set;renderLibrary();toast('Imported '+ok+' '+CONDITION_CODE[type]+' audio file(s)'+(fail.length?'; could not decode: '+fail.join(', '):''));$('audioInput').value=''}
+function parseManifest(text){const lines=text.replace(/^﻿/,'').split(/\r?\n/).filter(l=>l.trim());if(lines.length<2)throw new Error('Manifest has no data rows');const head=lines[0].split(',').map(h=>h.trim().toLowerCase());const idx=k=>head.indexOf(k);for(const k of['set','condition','image','audio'])if(idx(k)<0)throw new Error('Missing column: '+k);return lines.slice(1).map(l=>{const v=l.split(',').map(x=>x.trim());const type=CODE_TO_TYPE[(v[idx('condition')]||'').toUpperCase()];if(!type)throw new Error('Unknown condition in row: '+l);return{set:(v[idx('set')]||'').toUpperCase(),type,image:(v[idx('image')]||'').toLowerCase(),audio:(v[idx('audio')]||'').toLowerCase(),category:idx('category')>=0?v[idx('category')]:'',normValence:idx('valence')>=0?v[idx('valence')]:'',normArousal:idx('arousal')>=0?v[idx('arousal')]:''}})}
+$('manifestInput').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;try{const rows=parseManifest(await f.text());localStorage.setItem(KEYS.manifest,JSON.stringify(rows));toast('Loaded '+rows.length+' pairings from '+f.name);renderLibrary()}catch(err){toast('Manifest not loaded: '+err.message)}$('manifestInput').value=''});
+$('pickManifest').addEventListener('click',()=>$('manifestInput').click());
+$('clearManifest').addEventListener('click',()=>{localStorage.removeItem(KEYS.manifest);renderLibrary();toast('Manifest cleared; filename pairing in use')});
+$('manifestTemplate').addEventListener('click',()=>downloadText('﻿set,condition,image,audio,category,valence,arousal\r\nA,NEU-NAT,NEU_01.jpg,NEU_01.wav,neutral,,\r\nA,NEG-NAT,NEG_01.jpg,NEG_01.wav,fear,,\r\nA,NEG-SUP,NEG_11.jpg,NEG_11.wav,fear,,\r\n','AffectLab_pairing_manifest_template.csv'));
 $('pickFiles').addEventListener('click',e=>{e.stopPropagation();$('imageInput').click()});$('dropzone').addEventListener('click',e=>{if(e.target.id!=='pickFiles')$('imageInput').click()});$('imageInput').addEventListener('change',e=>importFiles(e.target.files));['dragenter','dragover'].forEach(ev=>$('dropzone').addEventListener(ev,e=>{e.preventDefault();$('dropzone').classList.add('drag')}));['dragleave','drop'].forEach(ev=>$('dropzone').addEventListener(ev,e=>{e.preventDefault();$('dropzone').classList.remove('drag')}));$('dropzone').addEventListener('drop',e=>importFiles(e.dataTransfer.files));
+$('pickAudio').addEventListener('click',()=>$('audioInput').click());$('audioInput').addEventListener('change',e=>importAudio(e.target.files));
+
+/* ---------- sessions ---------- */
 function getSessions(){try{return JSON.parse(localStorage.getItem(KEYS.sessions)||'[]')}catch(_){return[]}}
 function saveSessions(records){try{localStorage.setItem(KEYS.sessions,JSON.stringify(records));return true}catch(_){return false}}
 function dummyImg(type,index){const neg=type!=='WNeu';let c1=neg?'#4e5369':'#6b8790',c2=neg?'#252939':'#304c59';const title=CONDITION_CODE[type];const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="${c1}"/><stop offset="1" stop-color="${c2}"/></linearGradient></defs><rect width="1200" height="720" fill="url(#g)"/><circle cx="600" cy="306" r="116" fill="#ffffff" opacity="0.09"/><text x="600" y="315" font-size="72" text-anchor="middle" font-family="sans-serif" font-weight="700" fill="white">${title}</text><text x="600" y="405" font-size="31" text-anchor="middle" font-family="sans-serif" fill="#e6e9ec">DEMO  /  ${String(index).padStart(2,'0')}</text><text x="600" y="645" font-size="22" text-anchor="middle" font-family="sans-serif" fill="#dbe4e7">TEST PLACEHOLDER — NOT AN EMOTIONAL STIMULUS</text></svg>`;return 'data:image/svg+xml;charset=UTF-8,'+encodeURIComponent(svg)}
 function shuffled(a){let arr=a.slice();for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]]}return arr}
- function buildTrials(c){
-  const types=c.order==='es-first'?['WNeu','ES','WNeg']:['WNeu','WNeg','ES'];
-  let out=[];
-  for(const type of types){
-    const entries=c.demo?Array.from({length:c.perType},(_,i)=>({id:`DEMO-${type}-${i+1}`,type,set:c.set,name:`DEMO_${type}_${i+1}.svg`,demo:true,src:dummyImg(type,i+1)})):
-       shuffled(bank.filter(p=>p.type===type&&p.set===c.set)).slice(0,c.perType);
-    if(entries.length<c.perType)return [];
-    out.push(...entries.map(image=>({image,condition:type})));
-  }
-  return out.map((item,i)=>({...item,number:i+1,fixationMs:null,imageOnsetMs:null,ratingOnsetMs:null,recoveryOnsetMs:null,valence:null,arousal:null,valenceRTms:null,arousalRTms:null,visibilityInterrupted:false,skipped:false,skippedAtStep:null,skipTimeMs:null,imageSizeAtOnsetPercent:null}));
+function buildTrials(c){
+ const av=HAS_AUDIO(c.modality);const types=c.order==='es-first'?['WNeu','ES','WNeg']:['WNeu','WNeg','ES'];let out=[];
+ for(const type of types){
+  let entries;
+  if(c.demo)entries=Array.from({length:c.perType},(_,i)=>({id:`DEMO-${type}-${i+1}`,type,set:c.set,name:`DEMO_${type}_${i+1}.svg`,demo:true,src:dummyImg(type,i+1),demoAudio:av?{id:`DEMO-AUDIO-${type}`,name:`DEMO_${type}_audio`,type,set:c.set,duration:Math.max(1,c.image-c.audioDelay),demo:true}:null}));
+  else entries=shuffled(av?pairedImages(c.set,type):bank.filter(p=>p.type===type&&p.set===c.set)).slice(0,c.perType);
+  if(entries.length<c.perType)return [];
+  out.push(...entries.map(image=>{const s=av?pairFor(image):null;const me=!image.demo?manifestEntry(image):null;return{image,condition:type,audio:s?{id:s.id,name:s.name,duration:s.duration??null,rmsDb:s.rmsDb??null,demo:!!s.demo}:null,category:me?me.category:'',normValence:me?me.normValence:'',normArousal:me?me.normArousal:''}}));
  }
-
+ return out.map((item,i)=>({...item,number:i+1,fixationMs:null,imageOnsetMs:null,visualFrameMs:null,audioScheduledMs:null,audioOnsetEstMs:null,audioOutputLatencyMs:null,audioBaseLatencyMs:null,audioStatus:av?'pending':'visual_only',audioEndedBeforeOffset:false,stimulusOffsetMs:null,stopOnsetMs:null,ratingOnsetMs:null,recoveryOnsetMs:null,valence:null,arousal:null,valenceRTms:null,arousalRTms:null,visibilityInterrupted:false,skipped:false,skippedAtStep:null,skipTimeMs:null,imageSizeAtOnsetPercent:null}));
+}
 function elapsed(){return Math.round(performance.now()-run.t0)}
-function logEvent(event,trial=null,detail=''){if(!run)return;run.events.push({sessionId:run.id,participant:run.c.participant,day:run.c.day,intervention:run.c.intervention,condition:trial?trial.condition:'',phase:run.c.phase,set:run.c.set,isDemo:run.c.demo,event,trial:trial?trial.number:'',imageType:trial?trial.image.type:'',imageFile:trial?trial.image.name:'',elapsedMs:elapsed(),utcIso:nowIso(),detail})}
+function eventCode(event,trial){let code=EVENT_CODE[event]||0;if(trial&&(event==='image_onset'||event==='stimulus_onset'||event==='audio_onset'))code+=CONDITION_OFFSET[trial.condition]||0;return code}
+function logEvent(event,trial=null,detail=''){if(!run)return;const code=eventCode(event,trial),ms=elapsed();let markerSent=false;if(typeof window.AffectLabMarker==='function'){try{window.AffectLabMarker({code,event,trial:trial?trial.number:null,elapsedMs:ms});markerSent=true}catch(_){markerSent=false}}run.events.push({sessionId:run.id,appVersion:VERSION,participant:run.c.participant,day:run.c.day,intervention:run.c.intervention,condition:trial?trial.condition:'',conditionCode:trial?CONDITION_CODE[trial.condition]:'',phase:run.c.phase,set:run.c.set,isDemo:run.c.demo,isPractice:run.c.practice,event,eventCode:code,trial:trial?trial.number:'',imageType:trial?trial.image.type:'',imageFile:trial?trial.image.name:'',audioFile:trial&&trial.audio?trial.audio.name:'',elapsedMs:ms,utcIso:nowIso(),markerHookCalled:markerSent,detail})}
 function setContent(html){$('exp-content').innerHTML=html}
 function setSkipAvailable(available){$('exp-skip').disabled=!available}
-function applyImageSize(value){
- imageSizePercent=Math.min(100,Math.max(30,Math.round(Number(value)||100)));
- $('exp-size-range').value=String(imageSizePercent);
- $('exp-size-value').textContent=imageSizePercent+'%';
- $('exp-content').style.setProperty('--stimulus-scale',imageSizePercent+'%');
-}
+function setPhotodiode(on){const p=$('photodiode-patch');p.classList.toggle('hide',!run||!run.c.photodiode);p.classList.toggle('on',!!on)}
+function applyImageSize(value){imageSizePercent=Math.min(100,Math.max(30,Math.round(Number(value)||100)));$('exp-size-range').value=String(imageSizePercent);$('exp-size-value').textContent=imageSizePercent+'%';$('exp-content').style.setProperty('--stimulus-scale',imageSizePercent+'%')}
 $('exp-size-range').addEventListener('input',e=>applyImageSize(e.target.value));
-$('exp-size-range').addEventListener('change',()=>{
- if(run)logEvent('image_size_changed',run.inInstruction?null:run.trials[run.index]||null,'sizePercent='+imageSizePercent);
-});
-async function preloadTrials(trials){const sources=trials.map(t=>photoSrc(t.image));const unique=[...new Set(sources)];await Promise.all(unique.map(src=>new Promise(resolve=>{let i=new Image();let done=false;const finish=()=>{if(!done){done=true;resolve()}};i.onload=finish;i.onerror=finish;i.src=src;if(i.complete)finish();setTimeout(finish,4000)})))}
-function submitStart(){if(run){toast('An experiment is already running');return}let c=getConfig();if(!c.participant){toast('Please enter a Participant ID');return}let trials=buildTrials(c);if(trials.length!==c.perType*3){toast('Not enough images. Please import the required stimuli first.');return}run={id:'AFL-'+Date.now()+'-'+Math.random().toString(36).slice(2,7),c,startedAt:nowIso(),endedAt:null,status:'running',t0:performance.now(),events:[],trials,index:0,step:0,stepStart:null,deadline:null,looping:false,interrupted:false,inInstruction:true};setSkipAvailable(false);applyImageSize(imageSizePercent);$('experiment').classList.add('active');document.body.style.overflow='hidden';$('exp-content').innerHTML='<div class="exp-loading">Preloading images<small>Keep this page active; the experiment will automatically advance through the trials.</small></div>';$('exp-trial-label').textContent='Preparing';$('exp-clock').textContent='—';$('exp-progress-inner').style.width='0%';$('exp-stage').textContent='PREPARING';$('exp-session-label').textContent=c.participant+' · Day '+c.day+' · '+c.intervention+' · '+c.phase+' · NEU-NAT / NEG-NAT / NEG-SUP';if($('experiment').requestFullscreen){$('experiment').requestFullscreen().catch(()=>{})}logEvent('session_start');preloadTrials(trials).then(()=>{if(!run)return;logEvent('image_preload_complete');showInstructions()}).catch(()=>{if(run){toast('Failed to preload images');endRun('aborted')}})}
+$('exp-size-range').addEventListener('change',()=>{if(run)logEvent('image_size_changed',run.inInstruction?null:run.trials[run.index]||null,'sizePercent='+imageSizePercent)});
+async function preloadTrials(trials){
+ const unique=[...new Set(trials.map(t=>photoSrc(t.image)))];
+ await Promise.all(unique.map(src=>new Promise(resolve=>{let i=new Image();let done=false;const finish=()=>{if(!done){done=true;resolve()}};i.onload=()=>{if(i.decode)i.decode().then(finish,finish);else finish()};i.onerror=finish;i.src=src;setTimeout(finish,4000)})));
+ if(run&&HAS_AUDIO(run.c.modality)){
+  for(const t of trials){if(!t.audio)continue;if(audioBuffers.has(t.audio.id))continue;
+   if(t.audio.demo){const b=demoBuffer(t.condition,Math.max(1,run.c.image-run.c.audioDelay));if(b)audioBuffers.set(t.audio.id,b);continue}
+   const rec=sounds.find(s=>s.id===t.audio.id);if(!rec){t.audioStatus='missing';continue}
+   try{audioBuffers.set(rec.id,await decodeArrayBuffer(await rec.blob.arrayBuffer()))}catch(err){t.audioStatus='decode_failed';logEvent('audio_error',t,'decode_failed:'+(err&&err.message||''))}}
+ }
+}
+function submitStart(){
+ if(run){toast('An experiment is already running');return}
+ let c=getConfig();if(!c.participant){toast('Please enter a Participant ID');return}
+ const audioReady=HAS_AUDIO(c.modality)?resumeAudio():Promise.resolve(true); // called inside the click gesture (autoplay policy)
+ let trials=buildTrials(c);if(trials.length!==c.perType*3){toast('Not enough stimuli. Please import the required images'+(HAS_AUDIO(c.modality)?' and paired audio':'')+' first.');return}
+ run={id:'AFL-'+Date.now()+'-'+Math.random().toString(36).slice(2,7),c:{...c,audioCheckUtc,userAgent:navigator.userAgent},startedAt:nowIso(),endedAt:null,status:'running',t0:performance.now(),events:[],trials,index:0,step:0,stepStart:null,deadline:null,interrupted:false,inInstruction:true};
+ setSkipAvailable(false);applyImageSize(imageSizePercent);document.querySelector('.exp-size-control').classList.toggle('hide',!HAS_IMAGE(c.modality));$('experiment').classList.add('active');document.body.style.overflow='hidden';
+ setContent('<div class="exp-loading">Preloading stimuli<small>Keep this page active; the experiment will automatically advance through the trials.</small></div>');
+ $('exp-trial-label').textContent='Preparing';$('exp-clock').textContent='—';$('exp-progress-inner').style.width='0%';$('exp-stage').textContent='PREPARING';
+ $('exp-session-label').textContent=c.participant+' · Day '+c.day+' · '+c.intervention+' · '+c.phase+' · '+MOD_NAME[c.modality]+(c.practice?' · PRACTICE':'');
+ if($('experiment').requestFullscreen){$('experiment').requestFullscreen().catch(()=>{})}
+ logEvent('session_start',null,'modality='+c.modality+';gain='+c.audioGain+';fadeMs='+c.fadeMs+';audioDelaySec='+c.audioDelay+';stopSec='+c.stop);
+ audioReady.then(ok=>{if(!run)return;if(HAS_AUDIO(c.modality)){if(!ok){toast('Audio could not start. Run the audio check and try again.');endRun('aborted');return}masterGain.gain.value=gainValue();run.c.audioSampleRate=audioCtx.sampleRate;run.c.audioBaseLatencyMs=round1((audioCtx.baseLatency||0)*1000);run.c.audioOutputLatencyMs=round1((audioCtx.outputLatency||0)*1000)}return preloadTrials(trials)}).then(()=>{if(!run)return;logEvent('stimulus_preload_complete');showInstructions()}).catch(()=>{if(run){toast('Failed to preload stimuli');endRun('aborted')}});
+}
 $('start').addEventListener('click',submitStart);
- function showInstructions(){
-  if(!run)return;run.inInstruction=true;setSkipAvailable(false);
-  $('exp-stage').textContent='TASK INSTRUCTIONS';$('exp-clock').textContent='—';$('exp-trial-label').textContent='Ready to begin';
-  setContent(`<div class="exp-rating" style="max-width:1120px"><div class="rating-title">Emotion Image Experiment · General Instructions</div><div class="rating-sub">NEU-NAT + NEG-NAT + NEG-SUP · ${run.c.demo?'Demo Mode':'Research stimuli'} · ${run.trials.length} trials</div><div class="scale-wrap" style="font-size:clamp(17px,2.15vw,22px);line-height:2.05;padding:34px 38px"><p style="margin:0 0 18px"><b>NEU-NAT: </b>View neutral images naturally.<br><b>NEG-NAT: </b>View negative images naturally and allow emotional responses to arise.<br><b>NEG-SUP: </b>While viewing negative images, suppress facial expressions and other outward emotional responses. Do not deliberately alter your internal feelings or divert your attention.</p><p style="margin:0;color:#b6c7d2">After each image, rate <b style="color:white">your actual internal feelings</b> for valence (pleasantness) and arousal (activation). Keep your head as still as possible. Instructions will be repeated before each block.</p></div><button id="begin-real" type="button" class="btn btn-primary btn-lg" style="align-self:center;width:360px;min-height:58px;font-size:18px">I Understand · Continue to First Block →</button></div>`);
-  logEvent('instructions_onset');
-  $('begin-real').addEventListener('click',()=>{if(!run)return;logEvent('participant_ready');showBlockInstruction()},{once:true});
- }
- function showBlockInstruction(){
-   if(!run||run.index>=run.trials.length)return;run.inInstruction=true;setSkipAvailable(false);
-   const type=run.trials[run.index].condition;
-   const info={
-    WNeu:{title:'NEU-NAT · Neutral Natural Exposure',cn:'View the following neutral images naturally. Do not deliberately control or regulate your emotions.'},
-    WNeg:{title:'NEG-NAT · Negative Natural Exposure',cn:'View the following negative images naturally. Allow your emotions to arise without deliberately suppressing or changing your feelings.'},
-    ES:{title:'NEG-SUP · Negative Expressive Suppression',cn:'Look carefully at the negative images while suppressing facial expressions and other outward signs of emotion. Do not re-interpret the images or divert your attention.'}
-   }[type];
-   $('exp-stage').textContent='BLOCK INSTRUCTIONS';$('exp-clock').textContent='—';$('exp-trial-label').textContent=CONDITION_CODE[type]+' · '+run.c.perType+' trials';
-   setContent(`<div class="exp-rating" style="max-width:780px"><div class="rating-title">${info.title}</div><div class="rating-sub">${run.c.perType} images in this block · Complete SAM ratings after each image</div><div class="scale-wrap" style="font-size:19px;line-height:1.8;text-align:center"><p style="margin:0">${info.cn}</p><p style="color:#b6c7d2;font-size:14px">Rate your actual internal feelings, even when you are suppressing their outward expression.</p></div><button id="begin-block" type="button" class="btn btn-primary btn-lg" style="align-self:center;width:280px">Start ${CONDITION_CODE[type]} →</button></div>`);
-   logEvent('block_instructions_onset',run.trials[run.index]);
-   $('begin-block').addEventListener('click',()=>{if(!run)return;logEvent('block_start',run.trials[run.index]);beginStep()},{once:true});
- }
+function showInstructions(){
+ if(!run)return;run.inInstruction=true;setSkipAvailable(false);const w=words(run.c.modality);
+ $('exp-stage').textContent='TASK INSTRUCTIONS';$('exp-clock').textContent='—';$('exp-trial-label').textContent='Ready to begin';
+ setContent(`<div class="exp-rating" style="max-width:1000px"><div class="rating-title">Before we begin</div><div class="rating-sub">${run.trials.length} trials in three blocks${run.c.demo?' · Demo Mode':''}${run.c.practice?' · Practice':''}</div><div class="instr-card" style="font-size:clamp(16px,1.9vw,20px)"><div class="instr-cond"><span class="instr-tag">NEU-NAT</span><span>${w.verb} neutral ${w.noun} naturally.</span><span class="instr-tag neg">NEG-NAT</span><span>${w.verb} negative ${w.noun} naturally and let any feelings arise.</span><span class="instr-tag sup">NEG-SUP</span><span>While ${w.ing} negative ${w.noun}, hide your feelings: keep your face and body still. Do not try to change how you feel or look away.</span></div><p style="margin:0;color:#aab6c6">After each ${w.one}, rate <b style="color:#fff">how you actually felt</b>: pleasantness (valence) and activation (arousal). Please keep your head as still as possible. Instructions are repeated before each block.</p></div><button id="begin-real" type="button" class="btn btn-primary btn-lg" style="align-self:center;min-width:320px;min-height:56px;font-size:17px">I understand · Continue →</button></div>`);
+ logEvent('instructions_onset');
+ $('begin-real').addEventListener('click',()=>{if(!run)return;resumeAudio();logEvent('participant_ready');showBlockInstruction()},{once:true});
+}
+function showBlockInstruction(){
+ if(!run||run.index>=run.trials.length)return;run.inInstruction=true;setSkipAvailable(false);setPhotodiode(false);
+ const type=run.trials[run.index].condition,w=words(run.c.modality),what=w.noun,av=true;
+ const info={WNeu:{title:'NEU-NAT · Neutral Natural Exposure',text:`Experience the following neutral ${what} naturally. Do not deliberately control or regulate your emotions.`},WNeg:{title:'NEG-NAT · Negative Natural Exposure',text:`Experience the following negative ${what} naturally. Allow your emotions to arise without deliberately suppressing or changing your feelings.`},ES:{title:'NEG-SUP · Negative Expressive Suppression',text:`Attend carefully to the negative ${what} while suppressing facial expressions and other outward signs of emotion. Do not re-interpret the content or divert your attention.`}}[type];
+ $('exp-stage').textContent='BLOCK INSTRUCTIONS';$('exp-clock').textContent='—';$('exp-trial-label').textContent=CONDITION_CODE[type]+' · '+run.c.perType+' trials';
+ setContent(`<div class="exp-rating" style="max-width:780px"><div class="rating-title">${info.title}</div><div class="rating-sub">${run.c.perType} ${w.noun} in this block · rate each ${w.one} after it ends</div><div class="instr-card" style="font-size:19px;line-height:1.8;text-align:center"><p style="margin:0">${info.text}</p><p style="color:#b6c7d2;font-size:14px">Rate your actual internal feelings, even when you are suppressing their outward expression.</p></div><button id="begin-block" type="button" class="btn btn-primary btn-lg" style="align-self:center;width:280px">Start ${CONDITION_CODE[type]} →</button></div>`);
+ logEvent('block_instructions_onset',run.trials[run.index]);
+ $('begin-block').addEventListener('click',()=>{if(!run)return;resumeAudio();logEvent('block_start',run.trials[run.index]);beginStep()},{once:true});
+}
 
-const STEPS=['fixation','image','sam','recovery'];
-function getDuration(c,step){return [c.fix,c.image,c.sam,c.rest][step]*1000}
-function beginStep(){if(!run)return;if(run.index>=run.trials.length){endRun('completed');return}run.inInstruction=false;setSkipAvailable(true);const t=run.trials[run.index],step=run.step,stepName=STEPS[step];run.stepStart=performance.now();run.deadline=run.stepStart+getDuration(run.c,step);const rel=elapsed();if(step===0)t.fixationMs=rel;if(step===1){t.imageOnsetMs=rel;t.imageSizeAtOnsetPercent=imageSizePercent}if(step===2)t.ratingOnsetMs=rel;if(step===3)t.recoveryOnsetMs=rel;logEvent(stepName+'_onset',t);$('exp-trial-label').textContent=CONDITION_CODE[t.condition]+' · Trial '+t.number+' / '+run.trials.length;$('exp-stage').textContent=({fixation:'FIXATION',image:'IMAGE VIEWING',sam:'SAM RATING',recovery:'RECOVERY'})[stepName];$('exp-progress-inner').style.width=((run.index+step/4)/run.trials.length*100)+'%';if(step===0)setContent('<div class="exp-plus" aria-label="Fixation cross">+</div>');if(step===1){const source=photoSrc(t.image);setContent('<img id="shown-stimulus" class="exp-visual" alt="Emotion stimulus" src="'+source+'" />')}if(step===2){setContent(`<div class="exp-rating"><div class="rating-title">Please rate how the previous image actually made you feel</div><div class="rating-sub">SAM-inspired · 1–5 Numerical Response</div><div class="scale-wrap"><div class="scale-label"><strong>Valence · Pleasantness</strong><small>How pleasant or unpleasant did you feel?</small></div><div class="scale-opts" data-dimension="valence">${[1,2,3,4,5].map(i=>`<button class="scale-btn" type="button" data-rating="${i}" data-dim="valence">${i}</button>`).join('')}</div><div class="scale-ends"><span>1 · Very unpleasant</span><span>5 · Very pleasant</span></div></div><div class="scale-wrap"><div class="scale-label"><strong>Arousal · Emotional Activation</strong><small>How calm or emotionally activated did you feel?</small></div><div class="scale-opts" data-dimension="arousal">${[1,2,3,4,5].map(i=>`<button class="scale-btn" type="button" data-rating="${i}" data-dim="arousal">${i}</button>`).join('')}</div><div class="scale-ends"><span>1 · Very calm</span><span>5 · Highly aroused</span></div></div></div>`)}if(step===3)setContent('<div class="exp-plus" aria-label="Recovery interval">+</div>');cancelAnimationFrame(animationId);animationId=requestAnimationFrame(tick)}
-function tick(){if(!run)return;let remain=Math.max(0,run.deadline-performance.now());$('exp-clock').textContent=(remain/1000).toFixed(1);if(remain<=0){nextStep();return}animationId=requestAnimationFrame(tick)}
- function nextStep(){
-  if(!run)return;
-  const t=run.trials[run.index];
-  if(run.step===2&&(t.valence===null||t.arousal===null))logEvent('sam_missing_response',t,`valence=${t.valence??'NA'};arousal=${t.arousal??'NA'}`);
-  run.step++;
-  if(run.step>3){
-    logEvent('trial_complete',t);
-    run.step=0;run.index++;
-    if(run.index<run.trials.length&&run.trials[run.index].condition!==t.condition){logEvent('block_end',t);showBlockInstruction();return}
-    if(run.index>=run.trials.length)logEvent('block_end',t);
-  }
-  beginStep();
+/* ---------- trial state machine ---------- */
+const STEPS=['fixation','stimulus','stop','sam','recovery'];
+function getDuration(c,step){return [c.fix,c.image,c.stop,c.sam,c.rest][step]*1000}
+function startAudio(t){
+ if(!HAS_AUDIO(run.c.modality))return;const fb=HAS_IMAGE(run.c.modality)?'stimulus presented visually only':'audio-only trial without sound';
+ if(t.audioStatus==='decode_failed'||t.audioStatus==='missing'||!t.audio){if(!t.audio)t.audioStatus='missing';logEvent('audio_error',t,t.audioStatus+'; '+fb);return}
+ const buf=audioBuffers.get(t.audio.id);if(!buf){t.audioStatus='missing';logEvent('audio_error',t,'buffer_missing; '+fb);return}
+ try{
+  stopActiveAudio(0);
+  const ctx=audioCtx,src=ctx.createBufferSource(),g=ctx.createGain();src.buffer=buf;g.gain.value=1;src.connect(g).connect(masterGain);
+  const when=ctx.currentTime+(run.c.audioDelay||0);src.start(when);activeAudio={src,gain:g,trial:t};
+  t.audioScheduledMs=elapsed();
+  const ts=ctx.getOutputTimestamp?ctx.getOutputTimestamp():null;
+  let est;
+  if(ts&&ts.performanceTime>0)est=ts.performanceTime+(when-ts.contextTime)*1000; // maps context time to the performance clock (includes output latency)
+  else est=performance.now()+((ctx.baseLatency||0)+(ctx.outputLatency||0))*1000;
+  t.audioOnsetEstMs=Math.round(est-run.t0);t.audioOutputLatencyMs=round1((ctx.outputLatency||0)*1000);t.audioBaseLatencyMs=round1((ctx.baseLatency||0)*1000);t.audioStatus='ok';
+  src.onended=()=>{if(run&&run.trials[run.index]===t&&run.step===1){t.audioEndedBeforeOffset=true;logEvent('audio_end',t,'ended_before_stimulus_offset')}};
+  logEvent('audio_onset',t,'estOnsetMs='+t.audioOnsetEstMs+';outputLatencyMs='+t.audioOutputLatencyMs+';baseLatencyMs='+t.audioBaseLatencyMs);
+ }catch(err){t.audioStatus='play_error';logEvent('audio_error',t,'play_error:'+(err&&err.message||''))}
+}
+function endStimulus(t){t.stimulusOffsetMs=elapsed();stopActiveAudio(run.c.fadeMs);setPhotodiode(false);if(t.audioOnsetEstMs!==null&&t.visualFrameMs!==null)t.avOffsetEstMs=t.audioOnsetEstMs-t.visualFrameMs;logEvent('stimulus_offset',t,'fadeMs='+run.c.fadeMs)}
+function beginStep(){
+ if(!run)return;if(run.index>=run.trials.length){endRun('completed');return}
+ while(run.step<STEPS.length&&getDuration(run.c,run.step)===0)run.step++; // optional steps (STOP) are skipped when set to 0 s
+ run.inInstruction=false;setSkipAvailable(true);
+ const t=run.trials[run.index],step=run.step,stepName=STEPS[step];run.stepStart=performance.now();run.deadline=run.stepStart+getDuration(run.c,step);const rel=elapsed();
+ $('exp-trial-label').textContent=CONDITION_CODE[t.condition]+' · Trial '+t.number+' / '+run.trials.length;
+ $('exp-stage').textContent=({fixation:'FIXATION',stimulus:({av:'AUDIOVISUAL STIMULUS',visual:'IMAGE VIEWING',audio:'AUDITORY STIMULUS'})[run.c.modality],stop:'STOP',sam:'RATING',recovery:'RECOVERY'})[stepName];
+ $('exp-progress-inner').style.width=((run.index+step/STEPS.length)/run.trials.length*100)+'%';
+ if(stepName==='fixation'){t.fixationMs=rel;logEvent('fixation_onset',t);setContent('<div class="exp-plus" aria-label="Fixation cross"></div>')}
+ if(stepName==='stimulus'){
+  t.imageSizeAtOnsetPercent=imageSizePercent;
+  if(HAS_IMAGE(run.c.modality)){setContent('<img id="shown-stimulus" class="exp-visual" alt="Emotion stimulus" src="'+photoSrc(t.image)+'" />');t.imageOnsetMs=elapsed();logEvent('image_onset',t)}
+  else{setContent('<div class="exp-listen"><div class="exp-plus" aria-label="Fixation cross"></div><small>LISTEN</small></div>');t.imageOnsetMs=elapsed();logEvent('stimulus_onset',t,'audio_only: no image shown')}
+  setPhotodiode(true);
+  requestAnimationFrame(ts=>{if(run&&run.trials[run.index]===t){t.visualFrameMs=Math.round(ts-run.t0);logEvent('visual_frame',t,HAS_IMAGE(run.c.modality)?'first animation frame after image insertion':'first animation frame of the audio-only screen')}});
+  startAudio(t);
  }
-
+ if(stepName==='stop'){t.stopOnsetMs=rel;logEvent('stop_onset',t);setContent('<div class="exp-stop" aria-label="Stop">STOP</div>')}
+ if(stepName==='sam'){t.ratingOnsetMs=rel;logEvent('sam_onset',t);setContent(`<div class="exp-rating"><div class="rating-title">How did the ${words(run.c.modality).one} make you feel?</div><div class="rating-sub">Rate what you actually felt · 1–5</div><div class="scale-wrap"><div class="scale-label"><strong>Valence · Pleasantness</strong><small>How pleasant or unpleasant did you feel?</small></div><div class="scale-opts" data-dimension="valence">${[1,2,3,4,5].map(i=>`<button class="scale-btn" type="button" data-rating="${i}" data-dim="valence">${i}</button>`).join('')}</div><div class="scale-ends"><span>1 · Very unpleasant</span><span>5 · Very pleasant</span></div></div><div class="scale-wrap"><div class="scale-label"><strong>Arousal · Emotional Activation</strong><small>How calm or emotionally activated did you feel?</small></div><div class="scale-opts" data-dimension="arousal">${[1,2,3,4,5].map(i=>`<button class="scale-btn" type="button" data-rating="${i}" data-dim="arousal">${i}</button>`).join('')}</div><div class="scale-ends"><span>1 · Very calm</span><span>5 · Highly aroused</span></div></div></div>`)}
+ if(stepName==='recovery'){t.recoveryOnsetMs=rel;logEvent('recovery_onset',t);setContent('<div class="exp-plus" aria-label="Recovery interval"></div>')}
+ cancelAnimationFrame(animationId);animationId=requestAnimationFrame(tick);armTimer();
+}
+function tick(){if(!run||run.inInstruction||run.deadline===null)return;let remain=Math.max(0,run.deadline-performance.now());$('exp-clock').textContent=(remain/1000).toFixed(1);if(remain<=0){nextStep();return}animationId=requestAnimationFrame(tick)}
+// setTimeout backstop: requestAnimationFrame is throttled when the window is hidden or occluded.
+function armTimer(){clearTimeout(run.timer);const ms=Math.max(0,run.deadline-performance.now());run.timer=setTimeout(()=>{if(run&&!run.inInstruction&&run.deadline!==null&&performance.now()>=run.deadline-1)nextStep()},ms+4)}
+function nextStep(){
+ if(!run||run.inInstruction||run.deadline===null)return;if(performance.now()<run.deadline-1)return;cancelAnimationFrame(animationId);clearTimeout(run.timer);const t=run.trials[run.index],stepName=STEPS[run.step];
+ if(stepName==='stimulus')endStimulus(t);
+ if(stepName==='sam'&&(t.valence===null||t.arousal===null))logEvent('sam_missing_response',t,`valence=${t.valence??'NA'};arousal=${t.arousal??'NA'}`);
+ run.step++;
+ while(run.step<STEPS.length&&getDuration(run.c,run.step)===0)run.step++;
+ if(run.step>=STEPS.length){
+  logEvent('trial_complete',t);run.step=0;run.index++;
+  if(run.index<run.trials.length&&run.trials[run.index].condition!==t.condition){run.deadline=null;logEvent('block_end',t);showBlockInstruction();return}
+  if(run.index>=run.trials.length)logEvent('block_end',t);
+ }
+ beginStep();
+}
 function skipCurrentTrial(){
  if(!run||run.inInstruction||run.deadline===null||run.index>=run.trials.length)return;
- const t=run.trials[run.index];
- if(t.skipped)return;
- t.skipped=true;
- t.skippedAtStep=STEPS[run.step];
- t.skipTimeMs=elapsed();
- // Discard any partial ratings; a skipped trial must not be analysed as a valid response.
+ const t=run.trials[run.index];if(t.skipped)return;
+ if(STEPS[run.step]==='stimulus')endStimulus(t);
+ t.skipped=true;t.skippedAtStep=STEPS[run.step];t.skipTimeMs=elapsed();
+ // Partial ratings are discarded: a skipped trial must not be analysed as a valid response.
  t.valence=null;t.arousal=null;t.valenceRTms=null;t.arousalRTms=null;
  logEvent('trial_skipped',t,'during='+t.skippedAtStep+';imageSizePercent='+imageSizePercent);
- cancelAnimationFrame(animationId);
- run.index++;run.step=0;run.deadline=null;run.stepStart=null;
+ cancelAnimationFrame(animationId);clearTimeout(run.timer);run.index++;run.step=0;run.deadline=null;run.stepStart=null;
  $('exp-progress-inner').style.width=(run.index/run.trials.length*100)+'%';
  if(run.index>=run.trials.length){logEvent('block_end',t);endRun('completed');return}
  if(run.trials[run.index].condition!==t.condition){logEvent('block_end',t);showBlockInstruction();return}
  beginStep();
 }
 $('exp-skip').addEventListener('click',skipCurrentTrial);
-$('exp-content').addEventListener('click',e=>{const btn=e.target.closest('button[data-dim][data-rating]');if(!btn||!run||run.step!==2)return;const t=run.trials[run.index];const dim=btn.dataset.dim,v=Number(btn.dataset.rating);t[dim]=v;t[dim+'RTms']=Math.round(performance.now()-run.stepStart);$$(`button[data-dim="${dim}"]`).forEach(b=>b.classList.toggle('selected',b===btn));logEvent('sam_'+dim+'_response',t,String(v))});
-function endRun(status){if(!run)return;cancelAnimationFrame(animationId);run.status=status;run.endedAt=nowIso();logEvent('session_'+status);const complete=run;const sessions=getSessions();sessions.unshift({id:complete.id,c:complete.c,startedAt:complete.startedAt,endedAt:complete.endedAt,status:complete.status,trials:complete.trials.map(t=>({...t,image:{id:t.image.id,type:t.image.type,set:t.image.set,name:t.image.name}})),events:complete.events});const ok=saveSessions(sessions.slice(0,100));run=null;setSkipAvailable(false);$('experiment').classList.remove('active');document.body.style.overflow='';if(document.fullscreenElement)document.exitFullscreen().catch(()=>{});changePage('results');toast(status==='completed'?'Experiment completed; data '+(ok?'saved locally':'generated, but local storage failed. Please export immediately'):'The session was interrupted. Recorded data can still be exported.');if(!ok){window.__unsavedLastSession=sessions[0];renderResults()}}
-$('exp-stop').addEventListener('click',()=>{if(run&&confirm('End this experiment early? Ratings already collected will be retained.'))endRun('aborted')});document.addEventListener('visibilitychange',()=>{if(run){logEvent(document.hidden?'visibility_hidden':'visibility_visible',run.trials[run.index]||null);if(document.hidden){run.interrupted=true;const t=run.trials[run.index];if(t)t.visibilityInterrupted=true}}});document.addEventListener('fullscreenchange',()=>{if(run)logEvent(document.fullscreenElement?'fullscreen_enter':'fullscreen_exit')});
-function csvCell(v){if(v===null||v===undefined)return '';const s=String(v);return /[",\r\n]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s}
-function csv(rows){if(!rows.length)return '';const keys=Object.keys(rows[0]);return '\ufeff'+keys.map(csvCell).join(',')+'\r\n'+rows.map(r=>keys.map(k=>csvCell(r[k])).join(',')).join('\r\n')}
- function exportTrials(sessions){
-  const out=[];
-  for(const s of sessions)for(const t of s.trials){out.push({
-   sessionId:s.id,participant:s.c.participant,day:s.c.day,intervention:s.c.intervention,
-   phase:s.c.phase,imageSet:s.c.set,isDemo:s.c.demo,sessionStatus:s.status,
-   sessionStartUtc:s.startedAt,trial:t.number,condition:t.condition||t.image.type,
-   imageType:(t.condition||t.image.type)==='WNeu'?'Neutral':'Negative',
-   imageFile:t.image.name,imageId:t.image.id,
-   valence:t.valence,arousal:t.arousal,valenceResponseMs:t.valenceRTms,arousalResponseMs:t.arousalRTms,
-   fixationOnsetMs:t.fixationMs,imageOnsetMs:t.imageOnsetMs,samOnsetMs:t.ratingOnsetMs,
-   recoveryOnsetMs:t.recoveryOnsetMs,visibilityInterrupted:t.visibilityInterrupted,
-   skipped:t.skipped??false,skippedAtStep:t.skippedAtStep??null,skipTimeMs:t.skipTimeMs??null,imageSizeAtOnsetPercent:t.imageSizeAtOnsetPercent??null,
-   durationFixSec:s.c.fix,durationImageSec:s.c.image,durationSamSec:s.c.sam,durationRecoverySec:s.c.rest
-  })}
-  return out;
- }
+$('exp-content').addEventListener('click',e=>{const btn=e.target.closest('button[data-dim][data-rating]');if(!btn||!run||STEPS[run.step]!=='sam')return;const t=run.trials[run.index];const dim=btn.dataset.dim,v=Number(btn.dataset.rating);const first=t.valence===null||t.arousal===null;t[dim]=v;t[dim+'RTms']=Math.round(performance.now()-run.stepStart);$$(`button[data-dim="${dim}"]`).forEach(b=>b.classList.toggle('selected',b===btn));logEvent('sam_'+dim+'_response',t,String(v));if(first&&t.valence!==null&&t.arousal!==null)logEvent('sam_complete',t,'valence='+t.valence+';arousal='+t.arousal)});
+function endRun(status){
+ if(!run)return;cancelAnimationFrame(animationId);clearTimeout(run.timer);run.deadline=null;const cur=run.trials[run.index];if(cur&&STEPS[run.step]==='stimulus'&&cur.stimulusOffsetMs===null&&cur.imageOnsetMs!==null)endStimulus(cur);stopActiveAudio(20);setPhotodiode(false);
+ run.status=status;run.endedAt=nowIso();logEvent('session_'+status);const complete=run;const sessions=getSessions();
+ sessions.unshift({id:complete.id,c:complete.c,startedAt:complete.startedAt,endedAt:complete.endedAt,status:complete.status,trials:complete.trials.map(t=>({...t,image:{id:t.image.id,type:t.image.type,set:t.image.set,name:t.image.name}})),events:complete.events});
+ const ok=saveSessions(sessions.slice(0,100));run=null;setSkipAvailable(false);$('experiment').classList.remove('active');document.body.style.overflow='';if(document.fullscreenElement)document.exitFullscreen().catch(()=>{});changePage('results');
+ toast(status==='completed'?'Experiment completed; data '+(ok?'saved locally':'generated, but local storage failed. Please export immediately'):'The session was interrupted. Recorded data can still be exported.');if(!ok){window.__unsavedLastSession=sessions[0];renderResults()}
+}
+$('exp-stop').addEventListener('click',()=>{if(run&&confirm('End this experiment early? Ratings already collected will be retained.'))endRun('aborted')});
+document.addEventListener('visibilitychange',()=>{if(run){logEvent(document.hidden?'visibility_hidden':'visibility_visible',run.trials[run.index]||null);if(document.hidden){run.interrupted=true;const t=run.trials[run.index];if(t)t.visibilityInterrupted=true}}});
+document.addEventListener('fullscreenchange',()=>{if(run)logEvent(document.fullscreenElement?'fullscreen_enter':'fullscreen_exit')});
 
+/* ---------- export ---------- */
+function csvCell(v){if(v===null||v===undefined)return '';const s=String(v);return /[",\r\n]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s}
+function csv(rows){if(!rows.length)return '';const keys=Object.keys(rows[0]);return '﻿'+keys.map(csvCell).join(',')+'\r\n'+rows.map(r=>keys.map(k=>csvCell(r[k])).join(',')).join('\r\n')}
+function trialStatus(t){if(t.skipped)return'skipped';if(t.imageOnsetMs===null||t.imageOnsetMs===undefined)return'not_presented';if(t.recoveryOnsetMs===null||t.recoveryOnsetMs===undefined)return'interrupted';if(t.visibilityInterrupted)return'visibility_interrupted';if(t.valence===null||t.arousal===null)return'incomplete_rating';return'complete'}
+function exportTrials(sessions){
+ const out=[];
+ for(const s of sessions)for(const t of s.trials){const status=trialStatus(t),av=HAS_AUDIO(s.c.modality||'visual'),audioOk=!av||t.audioStatus==='ok';out.push({
+  sessionId:s.id,appVersion:s.c.appVersion||'3.0.0',participant:s.c.participant,day:s.c.day,intervention:s.c.intervention,
+  phase:s.c.phase,imageSet:s.c.set,modality:s.c.modality||'visual',isDemo:s.c.demo,isPractice:!!s.c.practice,sessionStatus:s.status,
+  sessionStartUtc:s.startedAt,trial:t.number,condition:t.condition||t.image.type,conditionCode:CONDITION_CODE[t.condition||t.image.type],
+  imageType:(t.condition||t.image.type)==='WNeu'?'Neutral':'Negative',imageFile:t.image.name,imageId:t.image.id,pairId:stemOf(t.image.name),
+  audioFile:t.audio?t.audio.name:'',audioId:t.audio?t.audio.id:'',audioDurationSec:t.audio?t.audio.duration:'',audioRmsDbfs:t.audio?t.audio.rmsDb:'',
+  stimulusCategory:t.category||'',normValence:t.normValence||'',normArousal:t.normArousal||'',
+  valence:t.valence,arousal:t.arousal,valenceResponseMs:t.valenceRTms,arousalResponseMs:t.arousalRTms,
+  fixationOnsetMs:t.fixationMs,imageOnsetMs:t.imageOnsetMs,visualFrameMs:t.visualFrameMs??null,audioScheduledMs:t.audioScheduledMs??null,audioOnsetEstMs:t.audioOnsetEstMs??null,
+  avOffsetEstMs:t.avOffsetEstMs??null,audioOutputLatencyMs:t.audioOutputLatencyMs??null,audioBaseLatencyMs:t.audioBaseLatencyMs??null,audioStatus:t.audioStatus||'visual_only',audioEndedBeforeOffset:!!t.audioEndedBeforeOffset,
+  stimulusOffsetMs:t.stimulusOffsetMs??null,stimulusDurationMs:(t.stimulusOffsetMs!=null&&t.imageOnsetMs!=null)?t.stimulusOffsetMs-t.imageOnsetMs:null,stopOnsetMs:t.stopOnsetMs??null,samOnsetMs:t.ratingOnsetMs,recoveryOnsetMs:t.recoveryOnsetMs,
+  visibilityInterrupted:t.visibilityInterrupted,skipped:t.skipped??false,skippedAtStep:t.skippedAtStep??null,skipTimeMs:t.skipTimeMs??null,imageSizeAtOnsetPercent:t.imageSizeAtOnsetPercent??null,
+  trialStatus:status,ratingValid:status==='complete',audioValid:audioOk,
+  durationFixSec:s.c.fix,durationImageSec:s.c.image,durationStopSec:s.c.stop??0,durationSamSec:s.c.sam,durationRecoverySec:s.c.rest,
+  audioGainPercent:av?s.c.audioGain:'',audioFadeMs:av?s.c.fadeMs:'',audioCheckUtc:s.c.audioCheckUtc||'',photodiodeMarker:!!s.c.photodiode,imageShown:HAS_IMAGE(s.c.modality||'visual'),audioOnsetDelaySec:av?(s.c.audioDelay??0):''
+ })}
+ return out;
+}
 function exportEvents(sessions){return sessions.flatMap(s=>s.events||[])}
 function downloadText(textData,filename){const blob=new Blob([textData],{type:'text/csv;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=filename;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),5000)}
 function exportSome(sessions,type){if(!sessions.length){toast('There are no session records yet');return}const rows=type==='trials'?exportTrials(sessions):exportEvents(sessions);if(!rows.length){toast('No corresponding records were generated for this session');return}const dt=new Date().toISOString().slice(0,10),prefix=sessions.length===1?sessions[0].c.participant+'_'+sessions[0].c.phase+'_'+sessions[0].c.intervention:'ALL';downloadText(csv(rows),'AffectLab_'+prefix+'_'+(type==='trials'?'TrialData':'EventMarkers')+'_'+dt+'.csv');toast('CSV exported')}
 $('exportAllTrials').addEventListener('click',()=>exportSome(getDisplaySessions(),'trials'));
 $('exportAllEvents').addEventListener('click',()=>exportSome(getDisplaySessions(),'events'));
 function getDisplaySessions(){const ss=getSessions(),temp=window.__unsavedLastSession;if(temp&&!ss.find(x=>x.id===temp.id))ss.unshift(temp);return ss}
-function renderResults(){const sessions=getDisplaySessions();$('results-count').textContent=sessions.length+' session(s)';$('exportAllTrials').disabled=!sessions.length;$('exportAllEvents').disabled=!sessions.length;if(!sessions.length){$('results-container').innerHTML='<div class="empty-state">No data yet. SAM ratings and software event logs will appear here after a session.</div>';return}let html='<div class="table-scroll"><table class="result-table"><thead><tr><th>Date / ID</th><th>Participant</th><th>Day / Condition</th><th>Phase / Set</th><th>Images Shown (Valid)</th><th>Status</th><th>Export</th></tr></thead><tbody>';for(const s of sessions){const n=s.trials.filter(x=>x.imageOnsetMs!==null&&!x.skipped).length,skipped=s.trials.filter(x=>x.skipped).length;html+=`<tr><td>${safeText(s.startedAt.slice(0,16).replace('T',' '))}<br><span class="hint">${safeText(s.id.slice(-10))}</span></td><td><strong>${safeText(s.c.participant)}</strong>${s.c.demo?' <span class="pill pill-gray">DEMO</span>':''}</td><td>Day ${safeText(s.c.day)}<br>${safeText(s.c.intervention)}</td><td>${safeText(s.c.phase)}<br>Set ${safeText(s.c.set)} · NEU-NAT / NEG-NAT / NEG-SUP</td><td>${n} / ${s.trials.length}${skipped?`<br><span class="bad">${skipped} skipped</span>`:''}</td><td>${s.status==='completed'?'<span class="good">Completed</span>':'<span class="bad">Interrupted</span>'}</td><td><div class="button-row"><button class="btn" data-export-trials="${s.id}">Trials</button><button class="btn" data-export-events="${s.id}">Events</button><button class="btn btn-danger" data-delete-session="${s.id}" title="Delete record">×</button></div></td></tr>`}html+='</tbody></table></div>';$('results-container').innerHTML=html}
+function renderResults(){const sessions=getDisplaySessions();$('results-count').textContent=sessions.length+' session(s)';$('exportAllTrials').disabled=!sessions.length;$('exportAllEvents').disabled=!sessions.length;if(!sessions.length){$('results-container').innerHTML='<div class="empty-state">No data yet. Ratings and software event logs will appear here after a session.</div>';return}let html='<div class="table-scroll"><table class="result-table"><thead><tr><th>Date / ID</th><th>Participant</th><th>Day / Condition</th><th>Phase / Set</th><th>Trials (valid ratings)</th><th>Modality</th><th>Status</th><th>Export</th></tr></thead><tbody>';for(const s of sessions){const valid=s.trials.filter(x=>trialStatus(x)==='complete').length,skipped=s.trials.filter(x=>x.skipped).length,av=HAS_AUDIO(s.c.modality||'visual'),audioBad=av?s.trials.filter(x=>x.imageOnsetMs!==null&&x.audioStatus!=='ok').length:0;html+=`<tr><td>${safeText(s.startedAt.slice(0,16).replace('T',' '))}<br><span class="hint">${safeText(s.id.slice(-10))}</span></td><td><strong>${safeText(s.c.participant)}</strong>${s.c.demo?' <span class="pill pill-gray">DEMO</span>':''}${s.c.practice?' <span class="pill pill-gray">PRACTICE</span>':''}</td><td>Day ${safeText(s.c.day)}<br>${safeText(s.c.intervention)}</td><td>${safeText(s.c.phase)}<br>Set ${safeText(s.c.set)}</td><td>${valid} / ${s.trials.length}${skipped?`<br><span class="bad">${skipped} skipped</span>`:''}</td><td>${MOD_NAME[s.c.modality||'visual']}<br>${av?(audioBad?`<span class="bad">${audioBad} audio issue(s)</span>`:'<span class="good">audio ok</span>'):''}</td><td>${s.status==='completed'?'<span class="good">Completed</span>':'<span class="bad">Interrupted</span>'}</td><td><div class="button-row"><button class="btn" data-export-trials="${s.id}">Trials</button><button class="btn" data-export-events="${s.id}">Events</button><button class="btn btn-danger" data-delete-session="${s.id}" title="Delete record">×</button></div></td></tr>`}html+='</tbody></table></div>';$('results-container').innerHTML=html}
 $('results-container').addEventListener('click',e=>{const b=e.target.closest('button[data-export-trials],button[data-export-events],button[data-delete-session]');if(!b)return;const sessions=getDisplaySessions(),id=b.dataset.exportTrials||b.dataset.exportEvents||b.dataset.deleteSession;if(b.dataset.deleteSession){if(!confirm('Permanently delete this session and all its ratings? This action cannot be undone.'))return;saveSessions(getSessions().filter(s=>s.id!==id));if(window.__unsavedLastSession?.id===id)delete window.__unsavedLastSession;renderResults();toast('Local session record deleted');return}const session=sessions.find(s=>s.id===id);if(session)exportSome([session],b.dataset.exportTrials?'trials':'events')});
-async function init(){await initDatabase();bank=await storageAll();if(!dbPersistent)$('storage-hint').textContent='Persistent offline image storage is unavailable in this browser. Images may disappear after refreshing. Use Chrome or Edge before importing study stimuli.';renderLibrary();updateSummary();renderResults();}
+// Read-only hooks for verification scripts (no data leaves the browser).
+window.AffectLabQA=Object.freeze({version:VERSION,sessions:()=>getDisplaySessions(),trialRows:id=>exportTrials(getDisplaySessions().filter(s=>!id||s.id===id)),eventRows:id=>exportEvents(getDisplaySessions().filter(s=>!id||s.id===id)),trialCsv:id=>csv(exportTrials(getDisplaySessions().filter(s=>!id||s.id===id))),eventCodes:EVENT_CODE});
+async function init(){await initDatabase();bank=await storeAll('pictures');sounds=await storeAll('sounds');if(!dbPersistent)$('storage-hint').textContent='Persistent offline storage is unavailable in this browser. Stimuli may disappear after refreshing. Use Chrome or Edge before importing study stimuli.';$('audioGainValue').textContent=$('audioGain').value+'%';renderLibrary();updateSummary();renderResults();}
 window.addEventListener('beforeunload',e=>{if(run){e.preventDefault();e.returnValue=''}});window.addEventListener('pagehide',()=>{for(const url of photoURLs.values())URL.revokeObjectURL(url)});
 init().catch(err=>{console.error(err);toast('Initialisation failed. Please try Chrome or Edge.')});
 })();
+
 </script>
 </body>
 </html>
